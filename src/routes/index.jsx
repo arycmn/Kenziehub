@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+import Devs from "../pages/devs";
 
 const Routes = () => (
   <Switch>
@@ -6,7 +7,9 @@ const Routes = () => (
     <Route path="/profile" exact />
     <Route path="/login" exact />
     <Route path="/register" exact />
-    <Route path="/devs" exact />
+    <Route path="/devs" exact>
+      <Devs />
+    </Route>
   </Switch>
 );
 
