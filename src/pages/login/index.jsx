@@ -1,16 +1,21 @@
-import { PageLogin, BoxLogin, Info, Input, Button } from "./styled";
+import { PageLogin, FormLogin, InfoLog, InputLog, ButtonLog } from "./styled";
 
 const Login = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("ok");
+  };
+
   return (
     <>
       <PageLogin>
-        <BoxLogin>
-          <Info>Usuário</Info>
-          <Input />
-          <Info>Senha</Info>
-          <Input />
-          <Button>Entrar</Button>
-        </BoxLogin>
+        <FormLogin onSubmit={handleSubmit}>
+          <InfoLog>Usuário</InfoLog>
+          <InputLog />
+          <InfoLog>Senha</InfoLog>
+          <InputLog />
+          <ButtonLog type="submit">Entrar</ButtonLog>
+        </FormLogin>
       </PageLogin>
     </>
   );

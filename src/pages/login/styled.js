@@ -10,7 +10,7 @@ export const PageLogin = styled.div`
   align-items: center;
 `;
 
-export const BoxLogin = styled.div`
+export const FormLogin = styled.form`
   width: 25%;
   height: 40%;
   background: yellow;
@@ -21,13 +21,13 @@ export const BoxLogin = styled.div`
   align-items: center;
 `;
 
-export const Info = styled.div`
+export const InfoLog = styled.div`
   width: 75%;
   margin-top: 10px;
   text-align: center;
 `;
 
-export const Input = styled.input`
+export const InputLog = styled.input`
   width: 75%;
   height: 12.5%;
   margin-top: 10px;
@@ -35,7 +35,7 @@ export const Input = styled.input`
   outline: none;
 `;
 
-export const Button = styled.button`
+export const ButtonLog = styled.button`
   width: 25%;
   height: 12.5%;
   margin-top: 10px;
