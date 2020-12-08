@@ -1,11 +1,11 @@
-import { Login } from "./styled";
+import { BoxLogin } from "./styled";
 
-const BoxLogin = () => {
+const Login = () => {
   return (
     <>
-      <Login></Login>
+      <BoxLogin></BoxLogin>
     </>
   );
 };
 
-export default BoxLogin;
+export default Login;

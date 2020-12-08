@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SignIn = styled.div`
+export const BoxSignIn = styled.div`
   width: 50%;
   height: 50%;
 `;
