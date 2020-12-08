@@ -1,6 +1,4 @@
 import { Switch, Route } from "react-router-dom";
-import Login from "../pages/login";
-import SingIn from "../pages/sign-in";
 
 const Routes = () => (
   <Switch>
