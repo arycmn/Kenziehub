@@ -1,4 +1,4 @@
-import { GET_TOKEN } from "./actionsTypes";
+import { GET_TOKEN } from "./actionsType";
 
 const tokenReducer = (state = " ", action) => {
   switch (action.type) {
