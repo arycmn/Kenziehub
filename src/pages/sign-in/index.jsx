@@ -43,7 +43,7 @@ const SignIn = () => {
       .then((res) => history.push("/login"))
       .catch((err) =>
         setError("user_register", {
-          message: err.response.data.message,
+          message: "Email já existe",
         })
       );
   };
@@ -80,8 +80,7 @@ const SignIn = () => {
           />
           <p>{errors.password_confirm?.message}</p>
 
-          <InfoSign>Course Module</InfoSign>
-
+          <InfoSign>Módulo do curso</InfoSign>
           <SelectSign name="course_module" ref={register}>
             <option value="">Selecione o Módulo</option>
             <option value="Primeiro módulo (Introdução ao Frontend)">
