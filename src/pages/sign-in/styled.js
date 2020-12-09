@@ -18,4 +18,8 @@ export const InfoSign = styled(InfoLog)``;
 
 export const InputSign = styled(InputLog)``;
 
+export const SelectSign = styled.select`
+  outline: none;
+`;
+
 export const ButtonSign = styled(ButtonLog)``;
