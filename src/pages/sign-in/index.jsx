@@ -1,4 +1,4 @@
-import axios from "axios";
+import { api } from "../../services/API";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {
@@ -15,7 +15,7 @@ const SignIn = () => {
   const { register, handleSubmit, _watch, _errors } = useForm();
 
   const handleForm = (data) => {
-    axios
+    api
       .post("/users", { ...data })
       .then((res) => history.push("/login"))
       .catch((err) => console.log(err.response.data.message));

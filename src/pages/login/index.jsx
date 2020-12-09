@@ -1,15 +1,15 @@
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { PageLogin, FormLogin, InfoLog, InputLog, ButtonLog } from "./styled";
+import { api } from "../../services/API";
 
 const Login = () => {
   const { register, handleSubmit, _watch, _errors } = useForm();
 
   const handleForm = (data) => {
-    axios
+    api
       .post("/sessions", { ...data })
       .then((res) => {
-        window.localStorage.setItem("authToken", res.data.token);
+        window.localStorage.setItem("token", res.data.token);
         //props.setAuth(true)
         //history.push("/users")
       })
