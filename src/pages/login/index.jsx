@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import { PageLogin, FormLogin, InfoLog, InputLog, ButtonLog } from "./styled";
 
 const Login = () => {
@@ -6,6 +7,7 @@ const Login = () => {
 
   const handleForm = (data) => {
     console.log(data);
+    axios.get("/users").then((res) => console.log(res.data));
   };
 
   return (

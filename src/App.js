@@ -2,8 +2,11 @@ import styled from "styled-components";
 
 import Routes from "./routes";
 import GlobalStyle from "./styles/global";
+import { axiosConfig } from "./services/API";
 
 function App() {
+  axiosConfig();
+
   return (
     <Body>
       <GlobalStyle />

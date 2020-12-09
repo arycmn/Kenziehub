@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {
   PageSignIn,
@@ -9,9 +11,14 @@ import {
 } from "./styled";
 
 const SignIn = () => {
+  const history = useHistory();
   const { register, handleSubmit, _watch, _errors } = useForm();
+
   const handleForm = (data) => {
-    console.log(data);
+    axios
+      .post("/users", { ...data })
+      .then((res) => history.push("/login"))
+      .catch((err) => console.log(err.response.data.message));
   };
 
   return (
@@ -30,7 +37,7 @@ const SignIn = () => {
           <InputSign placeholder="Contato" name="contact" ref={register} />
           <InfoSign>Course Module</InfoSign>
 
-          <SelectSign name="course_modules" ref={register}>
+          <SelectSign name="course_module" ref={register}>
             <option value="">Selecione o Módulo</option>
             <option value="Primeiro módulo (Introdução ao Frontend)">
               Primeiro módulo (Introdução ao Frontend)
