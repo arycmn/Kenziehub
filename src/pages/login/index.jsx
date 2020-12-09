@@ -6,16 +6,22 @@ const Login = () => {
   const { register, handleSubmit, _watch, _errors } = useForm();
 
   const handleForm = (data) => {
-    console.log(data);
-    axios.get("/users").then((res) => console.log(res.data));
+    axios
+      .post("/sessions", { ...data })
+      .then((res) => {
+        window.localStorage.setItem("authToken", res.data.token);
+        //props.setAuth(true)
+        //history.push("/users")
+      })
+      .catch((err) => console.log(err.response.data.message));
   };
 
   return (
     <>
       <PageLogin>
         <FormLogin onSubmit={handleSubmit(handleForm)}>
-          <InfoLog>Usuário</InfoLog>
-          <InputLog placeholder="Usuário" ref={register} name="user" />
+          <InfoLog>Email</InfoLog>
+          <InputLog placeholder="Email" ref={register} name="email" />
           <InfoLog>Senha</InfoLog>
           <InputLog placeholder="Senha" ref={register} name="password" />
           <ButtonLog type="submit">Entrar</ButtonLog>
