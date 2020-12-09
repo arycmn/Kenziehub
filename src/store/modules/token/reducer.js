@@ -1,6 +1,8 @@
 import { GET_TOKEN } from "./actionsType";
 
-const tokenReducer = (state = " ", action) => {
+const token = localStorage.getItem("token");
+
+const tokenReducer = (state = token, action) => {
   switch (action.type) {
     case GET_TOKEN:
       const { token } = action;
