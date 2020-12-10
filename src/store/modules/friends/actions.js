@@ -1,10 +1,10 @@
 import { ADD_FRIEND, REMOVE_FRIEND } from "./actionsTypes";
 
-export const addFriends = (friend) => ({
+export const addFriends = (friendList) => ({
   type: ADD_FRIEND,
-  friend,
+  friendList,
 });
-export const removeFriends = (id) => ({
+export const removeFriends = (newFriendList) => ({
   type: REMOVE_FRIEND,
-  id,
+  newFriendList,
 });
