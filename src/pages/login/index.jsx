@@ -3,8 +3,10 @@ import { PageLogin, FormLogin, InfoLog, InputLog, ButtonLog } from "./styled";
 import { api } from "../../services/API";
 import { useDispatch } from "react-redux";
 import { getTokenThunk } from "../../store/modules/token/thunks";
+import { getProfile } from "../../store/modules/profile/actions";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -19,12 +21,16 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
+  const history = useHistory();
+
   const handleForm = (data) => {
     api
       .post("/sessions", { ...data })
       .then((res) => {
         window.localStorage.setItem("token", res.data.token);
         dispatch(getTokenThunk(res.data.token));
+        dispatch(getProfile(res.data.user));
+        history.push("/profile");
       })
       .catch((err) =>
         setError("user_login", {
