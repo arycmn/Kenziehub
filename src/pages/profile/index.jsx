@@ -22,7 +22,7 @@ const Profile = () => {
         </Info>
         <Tech>
           {mockData.techs.map((item) => (
-            <p key={item.id}>{item.title}</p>
+            <span key={item.id}>{item.title}</span>
           ))}
         </Tech>
 
