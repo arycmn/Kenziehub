@@ -1,4 +1,4 @@
-import { GET_DEV } from "./actionsTypes";
+import { GET_DEV } from "./actionTypes";
 
 const devsReducer = (state = [], action) => {
   switch (action.type) {
