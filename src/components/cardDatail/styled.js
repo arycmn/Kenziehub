@@ -5,9 +5,15 @@ export const Container = styled.div`
   height: 100%;
 `;
 
-export const StyledCard = styled.div``;
+export const Card = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 
-export const Image = styled.img``;
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+`;
 
 export const Name = styled.span``;
 
@@ -18,5 +24,3 @@ export const CourseModule = styled.span``;
 export const Bio = styled.span``;
 
 export const Contact = styled.span``;
-
-export const Button = styled.Button``;
