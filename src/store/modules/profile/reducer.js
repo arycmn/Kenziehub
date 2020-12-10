@@ -1,10 +1,11 @@
-import { GET_PROFILE } from "./actionsTypes";
+import { GET_PROFILE } from "./actionsType";
 
-const profileReducer = (state = [], action) => {
+const profileReducer = (state = {}, action) => {
+  console.log(action);
   switch (action.type) {
     case GET_PROFILE:
       const { profile } = action;
-      return [...state, profile];
+      return profile;
 
     default:
       return state;

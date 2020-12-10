@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import { PageLogin, FormLogin, InfoLog, InputLog, ButtonLog } from "./styled";
 import { api } from "../../services/API";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getTokenThunk } from "../../store/modules/token/thunks";
+import { getProfile } from "../../store/modules/profile/actions";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -25,6 +26,7 @@ const Login = () => {
       .then((res) => {
         window.localStorage.setItem("token", res.data.token);
         dispatch(getTokenThunk(res.data.token));
+        dispatch(getProfile(res.data.user));
       })
       .catch((err) =>
         setError("user_login", {
@@ -32,6 +34,10 @@ const Login = () => {
         })
       );
   };
+
+  const { profile } = useSelector((state) => state);
+
+  console.log(profile);
 
   return (
     <>

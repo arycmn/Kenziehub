@@ -4,6 +4,7 @@ export const mockData = {
   course_module: "2° Módulo (Frontend avançado)",
   bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
   contact: "https://linkedin.com/in/debora-lbarros",
+  password: "123456",
   techs: [
     {
       id: "55126701-18ac-40df-aab9-3a88657db446",
