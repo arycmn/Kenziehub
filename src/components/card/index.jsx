@@ -15,7 +15,7 @@ const Card = ({ user }) => {
 
   const cardDetail = () => {
     //abrir a popUp com o componente
-    // <CardDetail />;
+    // <CardDetail user={user}/>;
   };
 
   return (
