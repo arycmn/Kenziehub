@@ -1,3 +1,6 @@
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
 import { useState } from "react";
 import {
   Container,
@@ -16,9 +19,19 @@ import { mockData } from "../../helper/mockUser";
 const ProfileChanges = () => {
   const [user, setUser] = useState(mockData);
 
+  const schema = yup.object().shape({});
+
+  const { register, handleSubmit, errors, setError } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const handleForm = (data) => {
+    // requisição de API
+  };
+
   return (
     <Container>
-      <Form>
+      <Form onSubmit={handleSubmit(handleForm)}>
         <Avatar>
           <label htmlFor="avatar">
             <img src={user.avatar_url} alt={user.name} />
