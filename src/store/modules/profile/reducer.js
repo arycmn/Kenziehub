@@ -2,11 +2,7 @@ import { GET_PROFILE } from "./actionsType";
 
 const initialState = () => {
   const initialUser = localStorage.getItem("user");
-  if (initialUser) {
-    return JSON.parse(initialUser);
-  } else {
-    return [];
-  }
+  return initialUser ? JSON.parse(initialUser) : {};
 };
 
 const profileReducer = (state = initialState(), action) => {
