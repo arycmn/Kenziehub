@@ -1,30 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Input, Form, Button, CardContainer } from "./style";
 import Header from "../../components/header";
-import { useEffect } from "react";
-import axios from "axios";
 
 import Card from "../../components/card";
 
+import { getDevThunk } from "../../store/modules/devs/thunks";
+import { useDispatch, useSelector } from "react-redux";
+
 const Devs = () => {
-  const [page, setPage] = useState(1); //Page State
+  const [page, setPage] = useState(1);
+  const [input, setInput] = useState("");
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.devs);
+  const allDevs = useSelector((state) => state.allDevs);
+
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    axios
-      .get(`https://kenziehub.me/users?perPage=15&page=${page}`)
-      .then((res) => setData(res.data));
-  }, [`https://kenziehub.me/users?perPage=15&page=${page}`]);
+    setTotalPages(allDevs.length / 15);
+  }, [allDevs]);
 
-  const [data, setData] = useState([]);
-
-  const [input, setInput] = useState("");
+  useEffect(() => {
+    dispatch(getDevThunk(page));
+  }, [page]);
 
   const next = () => {
-    //Proxima pagina
     setPage(page + 1);
   };
   const prev = () => {
-    //Pagina anterior
     setPage(page - 1);
   };
 
@@ -34,7 +37,6 @@ const Devs = () => {
 
   const handdleSubmit = (event) => {
     event.preventDefault();
-    console.log(input);
   };
 
   return (
@@ -49,7 +51,7 @@ const Devs = () => {
           <Card user={data} />
           <div>
             {page > 1 && <button onClick={prev}>Anterior</button>}
-            <button onClick={next}>Próxima</button>
+            {page < totalPages && <button onClick={next}>Próxima</button>}
           </div>
         </CardContainer>
       </Container>

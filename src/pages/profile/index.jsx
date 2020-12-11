@@ -2,26 +2,28 @@ import { Link } from "react-router-dom";
 
 import { Container, Avatar, Name, Info, Bio, Tech } from "./style";
 import Header from "../../components/header";
-
+import { useSelector } from "react-redux";
 import { mockData } from "../../helper/mockUser";
 
 const Profile = () => {
+  const { profile } = useSelector((state) => state);
+
   return (
     <>
       <Header />
       <Container>
-        <Avatar src={mockData.avatar_url} alt={mockData.name} />
-        <Name>{mockData.name}</Name>
-        <Info>{mockData.email}</Info>
-        <Info>{mockData.course_module}</Info>
-        <Bio>{mockData.bio}</Bio>
+        <Avatar src={profile.avatar_url} alt={profile.name} />
+        <Name>{profile.name}</Name>
+        <Info>{profile.email}</Info>
+        <Info>{profile.course_module}</Info>
+        <Bio>{profile.bio}</Bio>
         <Info>
-          <a href={mockData.contact} rel="noreferrer" target="_blank">
-            {mockData.contact}
+          <a href={profile.contact} rel="noreferrer" target="_blank">
+            {profile.contact}
           </a>
         </Info>
         <Tech>
-          {mockData.techs.map((item) => (
+          {profile.techs?.map((item) => (
             <span key={item.id}>{item.title}</span>
           ))}
         </Tech>
