@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 600px;
+  width: 700px;
   height: 700px;
   background: #a6c6c2;
   display: flex;
@@ -13,6 +13,12 @@ export const Container = styled.div`
 export const Field = styled.p`
   width: 100%;
   margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+
+  span {
+    margin-top: 5px;
+  }
 `;
 
 export const Input = styled.input`
