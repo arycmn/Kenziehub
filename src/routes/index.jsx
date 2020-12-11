@@ -21,7 +21,7 @@ const Routes = () => {
       setIsAuth(true);
       history.push("/profile");
     }
-  }, [isAuth]);
+  }, [isAuth, history]);
 
   if (isAuth === false) {
     return (
