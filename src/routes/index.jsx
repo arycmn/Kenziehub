@@ -24,6 +24,7 @@ const Routes = () => {
   }, [isAuth, history]);
 
   if (isAuth === false) {
+    history.push("/");
     return (
       <Switch>
         <Route exact path="/">
