@@ -5,11 +5,12 @@ import Login from "../pages/login";
 import SignIn from "../pages/sign-in";
 import Profile from "../pages/profile";
 import ProfileChanges from "../pages/profile-changes";
+import Home from "../pages/home";
 
 const Routes = () => (
   <Switch>
     <Route path="/" exact />
-
+    <Home />
     <Route path="/profile" exact>
       <Profile />
     </Route>
