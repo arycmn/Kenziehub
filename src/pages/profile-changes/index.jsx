@@ -14,44 +14,23 @@ import {
   Options,
   SubmitButton,
 } from "./style";
-import * as yup from "yup";
+import { schema } from "./validations";
 
 import { api } from "../../services/API";
 
 const ProfileChanges = () => {
-  const defaultAvatar =
-    "https://www.ecp.org.br/wp-content/uploads/2017/12/default-avatar-1.png";
-
   const { profile } = useSelector((state) => state);
 
-  const history = useHistory();
-
   const [user, setUser] = useState(profile);
-  const [old_password, setOldPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  const schema = yup.object().shape({
-    email: yup.string().email("email invalido").required("Campo obrigatório"),
-    name: yup
-      .string()
-      .min(3, "O nome deve conter no mínimo 3 letras")
-      .required("Campo obrigatorio"),
-    bio: yup.string().required("Campo obrigatório"),
-    contact: yup.string().required("Campo obrigatório"),
-    password: yup
-      .string()
-      .min(6, "Senha deve conter no mínimo 6 dígitos")
-      .required("Campo obrigatório"),
-    password_confirm: yup
-      .string()
-      .oneOf([yup.ref("password")], "A senha deve ser igual"),
-    course_module: yup.string().required("Campo obrigatório"),
-  });
+  const history = useHistory();
 
   const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const defaultAvatar =
+    "https://www.ecp.org.br/wp-content/uploads/2017/12/default-avatar-1.png";
 
   const handleAvatarChange = (e) => {
     setUser({ ...user, avatar_url: URL.createObjectURL(e.target.files[0]) });
@@ -186,8 +165,6 @@ const ProfileChanges = () => {
             name="old_password"
             type="password"
             ref={register}
-            value={old_password}
-            onChange={(e) => setOldPassword(e.target.value)}
           />
           <span>{errors.old_password?.message}</span>
         </Field>
@@ -196,13 +173,8 @@ const ProfileChanges = () => {
           <Title htmlFor="password" name="password">
             Nova senha
           </Title>
-          <Input
-            id="password"
-            name="password"
-            ref={register}
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
+          <Input id="password" type="password" name="password" ref={register} />
+          <span>{errors.password?.message}</span>
         </Field>
 
         <Field>
@@ -214,8 +186,6 @@ const ProfileChanges = () => {
             type="password"
             name="password_confirm"
             ref={register}
-            value={passwordConfirm}
-            onChange={(e) => setPasswordConfirm(e.target.value)}
           />
           <span>{errors.password_confirm?.message}</span>
         </Field>
