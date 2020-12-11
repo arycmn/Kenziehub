@@ -198,7 +198,6 @@ const ProfileChanges = () => {
           </Title>
           <Input
             id="password"
-            type="password"
             name="password"
             ref={register}
             value={newPassword}
