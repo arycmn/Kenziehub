@@ -1,6 +1,15 @@
 import { GET_PROFILE } from "./actionsType";
 
-const profileReducer = (state = {}, action) => {
+const initialState = () => {
+  const initialUser = localStorage.getItem("user");
+  if (initialUser) {
+    return JSON.parse(initialUser);
+  } else {
+    return [];
+  }
+};
+
+const profileReducer = (state = initialState(), action) => {
   switch (action.type) {
     case GET_PROFILE:
       const { profile } = action;
