@@ -8,7 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setIsAuth }) => {
   const dispatch = useDispatch();
   const schema = yup.object().shape({
     email: yup.string().email("email invalido").required("Campo obrigatório"),
@@ -29,6 +29,7 @@ const Login = () => {
       .then((res) => {
         window.localStorage.setItem("token", res.data.token);
         dispatch(getTokenThunk(res.data.token));
+        setIsAuth(true);
         history.push("/profile");
         dispatch(getProfileThunk(res.data.user));
       })
