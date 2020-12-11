@@ -19,4 +19,4 @@ export const Bio = styled.span``;
 
 export const Contact = styled.span``;
 
-export const Button = styled.Button``;
+export const Button = styled.button``;
