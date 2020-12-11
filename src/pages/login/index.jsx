@@ -34,7 +34,7 @@ const Login = () => {
       })
       .catch((err) =>
         setError("user_login", {
-          message: "Email ou Senha incorreto",
+          message: "Email ou Senha incorreta",
         })
       );
   };

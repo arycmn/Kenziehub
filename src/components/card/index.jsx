@@ -7,7 +7,7 @@ import {
   Button,
 } from "./style";
 
-import CardDetail from "../cardDatail";
+//import CardDetail from "../cardDatail";
 
 const Card = ({ user }) => {
   const imageDefault =
