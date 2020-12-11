@@ -2,22 +2,21 @@ import { useState } from "react";
 import { Container, Input, Form, Button, CardContainer } from "./style";
 import Header from "../../components/header";
 import { useEffect } from "react";
-import axios from "axios";
 
 import Card from "../../components/card";
 
+import { getDevThunk } from "../../store/modules/devs/thunks";
+import { useDispatch, useSelector } from "react-redux";
+
 const Devs = () => {
   const [page, setPage] = useState(1); //Page State
+  const [input, setInput] = useState("");
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.devs);
 
   useEffect(() => {
-    axios
-      .get(`https://kenziehub.me/users?perPage=15&page=${page}`)
-      .then((res) => setData(res.data));
-  }, [`https://kenziehub.me/users?perPage=15&page=${page}`]);
-
-  const [data, setData] = useState([]);
-
-  const [input, setInput] = useState("");
+    dispatch(getDevThunk(page));
+  }, [page]);
 
   const next = () => {
     //Proxima pagina
