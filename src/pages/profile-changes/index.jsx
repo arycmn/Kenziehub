@@ -14,51 +14,21 @@ import {
   Options,
   SubmitButton,
 } from "./style";
-import * as yup from "yup";
-
+import { schema } from "./validations";
 import { api } from "../../services/API";
-
 const ProfileChanges = () => {
-  const defaultAvatar =
-    "https://www.ecp.org.br/wp-content/uploads/2017/12/default-avatar-1.png";
-
   const { profile } = useSelector((state) => state);
-
-  const history = useHistory();
-
   const [user, setUser] = useState(profile);
-  const [old_password, setOldPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
-
-  const schema = yup.object().shape({
-    email: yup.string().email("email invalido").required("Campo obrigatório"),
-    name: yup
-      .string()
-      .min(3, "O nome deve conter no mínimo 3 letras")
-      .required("Campo obrigatorio"),
-    bio: yup.string().required("Campo obrigatório"),
-    contact: yup.string().required("Campo obrigatório"),
-    password: yup
-      .string()
-      .min(6, "Senha deve conter no mínimo 6 dígitos")
-      .required("Campo obrigatório"),
-    password_confirm: yup
-      .string()
-      .oneOf([yup.ref("password")], "A senha deve ser igual"),
-    course_module: yup.string().required("Campo obrigatório"),
-  });
-
+  const history = useHistory();
   const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(schema),
   });
-
+  const defaultAvatar =
+    "https://www.ecp.org.br/wp-content/uploads/2017/12/default-avatar-1.png";
   const handleAvatarChange = (e) => {
     setUser({ ...user, avatar_url: URL.createObjectURL(e.target.files[0]) });
-
     const data = new FormData();
     data.append("avatar", e.target.files[0]);
-
     api
       .patch("/users/avatar", data)
       .then((res) => {
@@ -66,16 +36,13 @@ const ProfileChanges = () => {
       })
       .catch((err) => console.error(err));
   };
-
   const handleForm = (data) => {
     const { password_confirm, ...profile } = data;
-
     api
       .put("/profile", { ...profile })
       .then(() => history.push("/profile"))
       .catch(() => setError("old_password", { message: "Senha incorreta" }));
   };
-
   const options = [
     {
       value: "Primeiro módulo (Introdução ao Frontend)",
@@ -90,7 +57,6 @@ const ProfileChanges = () => {
       value: "Quarto módulo (Backend Avançado)",
     },
   ];
-
   return (
     <Container>
       <Form onSubmit={handleSubmit(handleForm)}>
@@ -110,7 +76,6 @@ const ProfileChanges = () => {
             onChange={handleAvatarChange}
           />
         </Avatar>
-
         <Field>
           <Title htmlFor="name">Nome</Title>
           <Input
@@ -122,7 +87,6 @@ const ProfileChanges = () => {
           />
           <span>{errors.name?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="email">Email</Title>
           <Input
@@ -134,7 +98,6 @@ const ProfileChanges = () => {
           />
           <span>{errors.email?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="course_module">Módulo</Title>
           <Options
@@ -154,7 +117,6 @@ const ProfileChanges = () => {
           </Options>
           <span>{errors.course_module?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="bio">Bio</Title>
           <Bio
@@ -166,7 +128,6 @@ const ProfileChanges = () => {
           />
           <span>{errors.bio?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="contact">Contato</Title>
           <Input
@@ -178,7 +139,6 @@ const ProfileChanges = () => {
           />
           <span>{errors.contact?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="old_password">Senha antiga</Title>
           <Input
@@ -186,25 +146,16 @@ const ProfileChanges = () => {
             name="old_password"
             type="password"
             ref={register}
-            value={old_password}
-            onChange={(e) => setOldPassword(e.target.value)}
           />
           <span>{errors.old_password?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="password" name="password">
             Nova senha
           </Title>
-          <Input
-            id="password"
-            name="password"
-            ref={register}
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
+          <Input id="password" type="password" name="password" ref={register} />
+          <span>{errors.password?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="password" name="password">
             Confirmação Nova senha
@@ -214,16 +165,12 @@ const ProfileChanges = () => {
             type="password"
             name="password_confirm"
             ref={register}
-            value={passwordConfirm}
-            onChange={(e) => setPasswordConfirm(e.target.value)}
           />
           <span>{errors.password_confirm?.message}</span>
         </Field>
-
         <SubmitButton type="submit">Salvar</SubmitButton>
       </Form>
     </Container>
   );
 };
-
 export default ProfileChanges;
