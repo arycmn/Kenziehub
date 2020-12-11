@@ -20,10 +20,10 @@ const Card = ({ user }) => {
 
   return (
     <Container>
-      {user.map(({ name, course_module, avatar }, index) => (
+      {user.map(({ name, course_module, avatar_url }, index) => (
         <StyledCard key={index}>
-          {{ avatar } !== null ? (
-            <Image alt={name} src={avatar} />
+          {avatar_url !== null ? (
+            <Image alt={name} src={avatar_url} />
           ) : (
             <Image alt={name} src={imageDefault} />
           )}
