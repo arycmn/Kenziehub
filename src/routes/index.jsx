@@ -9,8 +9,9 @@ import Home from "../pages/home";
 
 const Routes = () => (
   <Switch>
-    <Route path="/" exact />
-    <Home />
+    <Route path="/" exact>
+      <Home />
+    </Route>
     <Route path="/profile" exact>
       <Profile />
     </Route>

@@ -76,10 +76,6 @@ const ProfileChanges = () => {
       .catch(() => setError("old_password", { message: "Senha incorreta" }));
   };
 
-  const handleSave = () => {
-    history.push("/profile");
-  };
-
   const options = [
     {
       value: "Primeiro módulo (Introdução ao Frontend)",
@@ -225,9 +221,7 @@ const ProfileChanges = () => {
           <span>{errors.password_confirm?.message}</span>
         </Field>
 
-        <SubmitButton type="submit" onClick={handleSave}>
-          Salvar
-        </SubmitButton>
+        <SubmitButton type="submit">Salvar</SubmitButton>
       </Form>
     </Container>
   );
