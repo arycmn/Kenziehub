@@ -14,10 +14,18 @@ const Profile = () => {
     <>
       <Header />
       <Container>
+<<<<<<< HEAD
         <Avatar
           src={profile.avatar_url ? profile.avatar_url : imageDefault}
           alt={profile.name}
         />
+=======
+        {profile.avatar_url !== null ? (
+          <Avatar src={profile.avatar_url} alt={profile.name} />
+        ) : (
+          <Avatar src={imageDefault} alt={profile.name} />
+        )}
+>>>>>>> 20a0ed7daacd97819e894ec7659e067b5a400635
 
         <Name>{profile.name}</Name>
         <Info>{profile.email}</Info>
