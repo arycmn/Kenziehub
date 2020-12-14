@@ -1,5 +1,14 @@
 import { useForm } from "react-hook-form";
-import { PageLogin, FormLogin, InfoLog, InputLog, ButtonLog } from "./styled";
+import {
+  Container,
+  PageLogin,
+  FormLogin,
+  InfoLog,
+  InputLog,
+  ButtonLog,
+  Image,
+  FormContainer,
+} from "./styled";
 import { api } from "../../services/API";
 import { useDispatch } from "react-redux";
 import { getTokenThunk } from "../../store/modules/token/thunks";
@@ -7,6 +16,8 @@ import { getProfileThunk } from "../../store/modules/profile/thunks";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
+
+import ImageLogin from "../../images/ImageLogin.jpg";
 
 const Login = ({ setIsAuth }) => {
   const dispatch = useDispatch();
@@ -42,18 +53,23 @@ const Login = ({ setIsAuth }) => {
 
   return (
     <>
-      <PageLogin>
-        <FormLogin onSubmit={handleSubmit(handleForm)}>
-          <InfoLog>Email</InfoLog>
-          <InputLog placeholder="Email" ref={register} name="email" />
-          <p>{errors.email?.message}</p>
-          <InfoLog>Senha</InfoLog>
-          <InputLog placeholder="Senha" ref={register} name="password" />
-          <p>{errors.password?.message}</p>
-          <ButtonLog type="submit">Entrar</ButtonLog>
-          <p>{errors.user_login?.message}</p>
-        </FormLogin>
-      </PageLogin>
+      <Container>
+        <Image image={ImageLogin}></Image>
+        <FormContainer>
+          <PageLogin>
+            <FormLogin onSubmit={handleSubmit(handleForm)}>
+              <InfoLog>Email</InfoLog>
+              <InputLog placeholder="Email" ref={register} name="email" />
+              <p>{errors.email?.message}</p>
+              <InfoLog>Senha</InfoLog>
+              <InputLog placeholder="Senha" ref={register} name="password" />
+              <p>{errors.password?.message}</p>
+              <ButtonLog type="submit">Entrar</ButtonLog>
+              <p>{errors.user_login?.message}</p>
+            </FormLogin>
+          </PageLogin>
+        </FormContainer>
+      </Container>
     </>
   );
 };

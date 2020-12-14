@@ -1,5 +1,15 @@
-import { Container, Logo, Title, Phrase, Login, Register } from "./style";
+import {
+  Container,
+  Logo,
+  Title,
+  Phrase,
+  ButtonsPlace,
+  Menu,
+  Login,
+  Register,
+} from "./style";
 import { useHistory } from "react-router-dom";
+import imageHome from "../../images/imageHome.jpg";
 
 const Home = () => {
   let history = useHistory();
@@ -13,13 +23,17 @@ const Home = () => {
   };
   return (
     <Container>
-      <Logo />
-      <Title>Program Mate</Title>
-      <Phrase>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit.{" "}
-      </Phrase>
-      <Login onClick={handleClickLogin}>Login</Login>
-      <Register onClick={handleClickRegister}>Register</Register>
+      <Logo image={imageHome} />
+      <Menu>
+        <Title>ProgramMate</Title>
+        <Phrase>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit.{" "}
+        </Phrase>
+        <ButtonsPlace>
+          <Login onClick={handleClickLogin}>Login</Login>
+          <Register onClick={handleClickRegister}>Register</Register>
+        </ButtonsPlace>
+      </Menu>
     </Container>
   );
 };
