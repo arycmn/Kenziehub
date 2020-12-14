@@ -18,7 +18,7 @@ import { getProfileThunk } from "../../store/modules/profile/thunks";
 
 import { api } from "../../services/API";
 const ProfileChanges = () => {
-  const { profile } = useSelector((state) => state);
+  const { profile, token } = useSelector((state) => state);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -32,7 +32,11 @@ const ProfileChanges = () => {
     const data = new FormData();
     data.append("avatar", e.target.files[0]);
     api
-      .patch("/users/avatar", data)
+      .patch("/users/avatar", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         console.log(res);
         dispatch(getProfileThunk(res.data));
@@ -42,7 +46,15 @@ const ProfileChanges = () => {
   const handleForm = (data) => {
     const { password_confirm, ...profile } = data;
     api
-      .put("/profile", { ...profile })
+      .put(
+        "/profile",
+        { ...profile },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => history.push("/profile"))
       .catch((err) => console.log(err));
   };
