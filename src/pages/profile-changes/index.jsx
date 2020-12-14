@@ -17,9 +17,8 @@ import { schema } from "./validations";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
 
 import { api } from "../../services/API";
-
 const ProfileChanges = () => {
-  const { profile } = useSelector((state) => state);
+  const { profile, token } = useSelector((state) => state);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -27,32 +26,38 @@ const ProfileChanges = () => {
   const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(schema),
   });
-
   const defaultAvatar =
     "https://www.ecp.org.br/wp-content/uploads/2017/12/default-avatar-1.png";
-
   const handleAvatarChange = (e) => {
     const data = new FormData();
     data.append("avatar", e.target.files[0]);
-
     api
-      .patch("/users/avatar", data)
+      .patch("/users/avatar", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         console.log(res);
         dispatch(getProfileThunk(res.data));
       })
       .catch((err) => console.log(err));
   };
-
   const handleForm = (data) => {
     const { password_confirm, ...profile } = data;
-
     api
-      .put("/profile", { ...profile })
+      .put(
+        "/profile",
+        { ...profile },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => history.push("/profile"))
       .catch((err) => console.log(err));
   };
-
   const options = [
     {
       value: "Primeiro módulo (Introdução ao Frontend)",
@@ -67,7 +72,6 @@ const ProfileChanges = () => {
       value: "Quarto módulo (Backend Avançado)",
     },
   ];
-
   return (
     <Container>
       <Form onSubmit={handleSubmit(handleForm)}>
@@ -87,7 +91,6 @@ const ProfileChanges = () => {
             onChange={handleAvatarChange}
           />
         </Avatar>
-
         <Field>
           <Title htmlFor="name">Nome</Title>
           <Input
@@ -101,7 +104,6 @@ const ProfileChanges = () => {
           />
           <span>{errors.name?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="email">Email</Title>
           <Input
@@ -115,7 +117,6 @@ const ProfileChanges = () => {
           />
           <span>{errors.email?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="course_module">Módulo</Title>
           <Options
@@ -137,7 +138,6 @@ const ProfileChanges = () => {
           </Options>
           <span>{errors.course_module?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="bio">Bio</Title>
           <Bio
@@ -151,7 +151,6 @@ const ProfileChanges = () => {
           />
           <span>{errors.bio?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="contact">Contato</Title>
           <Input
@@ -165,7 +164,6 @@ const ProfileChanges = () => {
           />
           <span>{errors.contact?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="old_password">Senha antiga</Title>
           <Input
@@ -176,7 +174,6 @@ const ProfileChanges = () => {
           />
           <span>{errors.old_password?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="password" name="password">
             Nova senha
@@ -184,7 +181,6 @@ const ProfileChanges = () => {
           <Input id="password" type="password" name="password" ref={register} />
           <span>{errors.password?.message}</span>
         </Field>
-
         <Field>
           <Title htmlFor="password" name="password">
             Confirmação Nova senha
@@ -197,11 +193,9 @@ const ProfileChanges = () => {
           />
           <span>{errors.password_confirm?.message}</span>
         </Field>
-
         <SubmitButton type="submit">Salvar</SubmitButton>
       </Form>
     </Container>
   );
 };
-
 export default ProfileChanges;
