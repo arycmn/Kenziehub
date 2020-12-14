@@ -3,7 +3,7 @@ import { Switch, Route, useHistory } from "react-router-dom";
 
 import Devs from "../pages/devs";
 import Login from "../pages/login";
-import SignIn from "../pages/sign-in";
+import SignUp from "../pages/sign-up";
 import Profile from "../pages/profile";
 import ProfileChanges from "../pages/profile-changes";
 import Home from "../pages/home";
@@ -36,7 +36,7 @@ const Routes = () => {
         </Route>
 
         <Route path="/register" exact>
-          <SignIn />
+          <SignUp />
         </Route>
       </Switch>
     );

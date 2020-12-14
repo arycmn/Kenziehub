@@ -15,7 +15,7 @@ import {
   SelectSign,
 } from "./styled";
 
-const SignIn = () => {
+const SignUp = () => {
   const history = useHistory();
 
   const schema = yup.object().shape({
@@ -111,4 +111,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
