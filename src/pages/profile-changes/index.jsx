@@ -1,7 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
   Container,
@@ -15,15 +14,15 @@ import {
   SubmitButton,
 } from "./style";
 import { schema } from "./validations";
+import { getProfileThunk } from "../../store/modules/profile/thunks";
 
 import { api } from "../../services/API";
 
 const ProfileChanges = () => {
   const { profile } = useSelector((state) => state);
 
-  const [user, setUser] = useState(profile);
-
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(schema),
@@ -33,17 +32,16 @@ const ProfileChanges = () => {
     "https://www.ecp.org.br/wp-content/uploads/2017/12/default-avatar-1.png";
 
   const handleAvatarChange = (e) => {
-    setUser({ ...user, avatar_url: URL.createObjectURL(e.target.files[0]) });
-
     const data = new FormData();
     data.append("avatar", e.target.files[0]);
 
     api
       .patch("/users/avatar", data)
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
+        dispatch(getProfileThunk(res.data));
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.log(err));
   };
 
   const handleForm = (data) => {
@@ -76,8 +74,8 @@ const ProfileChanges = () => {
         <Avatar>
           <label htmlFor="avatar">
             <img
-              src={user.avatar_url ? user.avatar_url : defaultAvatar}
-              alt={user.name}
+              src={profile.avatar_url ? profile.avatar_url : defaultAvatar}
+              alt={profile.name}
             />
           </label>
           <input
@@ -95,9 +93,11 @@ const ProfileChanges = () => {
           <Input
             id="name"
             name="name"
-            value={user.name}
+            value={profile.name}
             ref={register}
-            onChange={(e) => setUser({ ...user, name: e.target.value })}
+            onChange={(e) =>
+              dispatch(getProfileThunk({ ...profile, name: e.target.value }))
+            }
           />
           <span>{errors.name?.message}</span>
         </Field>
@@ -107,9 +107,11 @@ const ProfileChanges = () => {
           <Input
             id="email"
             name="email"
-            value={user.email}
+            value={profile.email}
             ref={register}
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
+            onChange={(e) =>
+              dispatch(getProfileThunk({ ...profile, email: e.target.value }))
+            }
           />
           <span>{errors.email?.message}</span>
         </Field>
@@ -122,7 +124,9 @@ const ProfileChanges = () => {
             ref={register}
             defaultValue={profile.course_module}
             onChange={(e) =>
-              setUser({ ...user, course_module: e.target.value })
+              dispatch(
+                getProfileThunk({ ...profile, course_module: e.target.value })
+              )
             }
           >
             {options.map((option, index) => (
@@ -139,9 +143,11 @@ const ProfileChanges = () => {
           <Bio
             id="bio"
             name="bio"
-            value={user.bio}
+            value={profile.bio}
             ref={register}
-            onChange={(e) => setUser({ ...user, bio: e.target.value })}
+            onChange={(e) =>
+              dispatch(getProfileThunk({ ...profile, bio: e.target.value }))
+            }
           />
           <span>{errors.bio?.message}</span>
         </Field>
@@ -151,9 +157,11 @@ const ProfileChanges = () => {
           <Input
             id="contact"
             name="contact"
-            value={user.contact}
+            value={profile.contact}
             ref={register}
-            onChange={(e) => setUser({ ...user, contact: e.target.value })}
+            onChange={(e) =>
+              dispatch(getProfileThunk({ ...profile, contact: e.target.value }))
+            }
           />
           <span>{errors.contact?.message}</span>
         </Field>
