@@ -2,11 +2,10 @@ import { Modal } from "./style";
 import { api } from "../../services/API";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch, useSelector } from "react-redux";
+import { getProfileThunk } from "../../store/modules/profile/thunks";
 import Popup from "reactjs-popup";
 import * as yup from "yup";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { getProfileThunk } from "../../store/modules/profile/thunks";
 
 const PopupExample = () => {
   const schema = yup.object().shape({
@@ -21,23 +20,31 @@ const PopupExample = () => {
       .required("Campo obrigatório"),
   });
 
+  const { profile, token } = useSelector((state) => state);
+
   const dispatch = useDispatch();
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [deploy_url, setDeployUrl] = useState("");
-
-  const { register, handleSubmit, errors, setError } = useForm({
+  const { register, handleSubmit, errors, reset } = useForm({
     resolver: yupResolver(schema),
   });
 
   const handleAddWork = (data) => {
     api
-      .post("/users/works", data)
+      .post("/users/works", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
-        setTitle("");
-        setDescription("");
-        setDeployUrl("");
+        dispatch(
+          getProfileThunk({ ...profile, works: [...profile.works, res.data] })
+        );
+
+        reset({
+          title: "",
+          description: "",
+          deploy_url: "",
+        });
       })
       .catch((err) => console.log(err));
   };
@@ -57,35 +64,27 @@ const PopupExample = () => {
           <div className="content">
             <form onSubmit={handleSubmit(handleAddWork)}>
               <label htmlFor="title">Título</label>
-              <input
-                type="text"
-                name="title"
-                id="title"
-                ref={register}
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
+              <input type="text" name="title" id="title" ref={register} />
               <span>{errors.title?.message}</span>
+
               <label htmlFor="description">Descrição</label>
               <textarea
                 type="text"
                 name="description"
                 id="description"
                 ref={register}
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
               />
               <span>{errors.description?.message}</span>
+
               <label htmlFor="deploy_url">Url</label>
               <input
                 type="url"
                 name="deploy_url"
                 id="deploy_url"
                 ref={register}
-                value={deploy_url}
-                onChange={(e) => setDeployUrl(e.target.value)}
               />
               <span>{errors.deploy_url?.message}</span>
+
               <button type="submit">Enviar</button>
             </form>
           </div>
