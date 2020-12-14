@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
 import Header from "../../components/header";
 import PopupExample from "../../components/add-work";
+import AddTech from "../../components/add-tech";
 
 const Profile = () => {
   const { profile, token } = useSelector((state) => state);
@@ -54,6 +55,7 @@ const Profile = () => {
             </span>
           ))}
         </Tech>
+        <AddTech />
         <PopupExample />
 
         <Link to="/profile/settings">Alterar informações</Link>
