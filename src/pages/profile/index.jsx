@@ -14,7 +14,7 @@ const Profile = () => {
     <>
       <Header />
       <Container>
-        {profile.avatar.url !== null ? (
+        {profile.avatar_url !== null ? (
           <Avatar src={profile.avatar_url} alt={profile.name} />
         ) : (
           <Avatar src={imageDefault} alt={profile.name} />
