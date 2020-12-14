@@ -4,11 +4,7 @@ import { api } from "../../services/API";
 import { useSelector, useDispatch } from "react-redux";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
 import Header from "../../components/header";
-<<<<<<< HEAD
-import { useSelector } from "react-redux";
-=======
 import PopupExample from "../../components/add-work";
->>>>>>> df17dda5f812570787f931ac6d6d293a74d64b7c
 
 const Profile = () => {
   const { profile, token } = useSelector((state) => state);
