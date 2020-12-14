@@ -14,33 +14,21 @@ import {
   SubmitButton,
 } from "./style";
 import { schema } from "./validations";
-<<<<<<< HEAD
-=======
 import { getProfileThunk } from "../../store/modules/profile/thunks";
 
->>>>>>> 20a0ed7daacd97819e894ec7659e067b5a400635
 import { api } from "../../services/API";
 const ProfileChanges = () => {
   const { profile } = useSelector((state) => state);
-<<<<<<< HEAD
-  const [user, setUser] = useState(profile);
-  const history = useHistory();
-=======
 
   const history = useHistory();
   const dispatch = useDispatch();
 
->>>>>>> 20a0ed7daacd97819e894ec7659e067b5a400635
   const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(schema),
   });
   const defaultAvatar =
     "https://www.ecp.org.br/wp-content/uploads/2017/12/default-avatar-1.png";
   const handleAvatarChange = (e) => {
-<<<<<<< HEAD
-    setUser({ ...user, avatar_url: URL.createObjectURL(e.target.files[0]) });
-=======
->>>>>>> 20a0ed7daacd97819e894ec7659e067b5a400635
     const data = new FormData();
     data.append("avatar", e.target.files[0]);
     api
