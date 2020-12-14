@@ -4,6 +4,9 @@ import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {
+  Container,
+  Image,
+  FormContainer,
   PageSignIn,
   FormSignIn,
   InfoSign,
@@ -50,58 +53,60 @@ const SignUp = () => {
 
   return (
     <>
-      <PageSignIn>
-        <FormSignIn onSubmit={handleSubmit(handleForm)}>
-          <InfoSign>Email</InfoSign>
-          <InputSign placeholder="Email" name="email" ref={register} />
-          <p>{errors.email?.message}</p>
+      <Container>
+        <PageSignIn>
+          <FormSignIn onSubmit={handleSubmit(handleForm)}>
+            <InfoSign>Email</InfoSign>
+            <InputSign placeholder="Email" name="email" ref={register} />
+            <p>{errors.email?.message}</p>
 
-          <InfoSign>Nome</InfoSign>
-          <InputSign placeholder="Nome" name="name" ref={register} />
-          <p>{errors.name?.message}</p>
+            <InfoSign>Nome</InfoSign>
+            <InputSign placeholder="Nome" name="name" ref={register} />
+            <p>{errors.name?.message}</p>
 
-          <InfoSign>Bio</InfoSign>
-          <InputSign placeholder="Sobre você" name="bio" ref={register} />
-          <p>{errors.bio?.message}</p>
+            <InfoSign>Bio</InfoSign>
+            <InputSign placeholder="Sobre você" name="bio" ref={register} />
+            <p>{errors.bio?.message}</p>
 
-          <InfoSign>Contact</InfoSign>
-          <InputSign placeholder="Contato" name="contact" ref={register} />
-          <p>{errors.contact?.message}</p>
+            <InfoSign>Contact</InfoSign>
+            <InputSign placeholder="Contato" name="contact" ref={register} />
+            <p>{errors.contact?.message}</p>
 
-          <InfoSign>Senha</InfoSign>
-          <InputSign placeholder="Senha" name="password" ref={register} />
-          <p>{errors.password?.message}</p>
+            <InfoSign>Senha</InfoSign>
+            <InputSign placeholder="Senha" name="password" ref={register} />
+            <p>{errors.password?.message}</p>
 
-          <InfoSign>Confirme a senha</InfoSign>
-          <InputSign
-            placeholder="confirme a senha"
-            name="password_confirm"
-            ref={register}
-          />
-          <p>{errors.password_confirm?.message}</p>
+            <InfoSign>Confirme a senha</InfoSign>
+            <InputSign
+              placeholder="confirme a senha"
+              name="password_confirm"
+              ref={register}
+            />
+            <p>{errors.password_confirm?.message}</p>
 
-          <InfoSign>Módulo do curso</InfoSign>
-          <SelectSign name="course_module" ref={register}>
-            <option value="">Selecione o Módulo</option>
-            <option value="Primeiro módulo (Introdução ao Frontend)">
-              Primeiro módulo (Introdução ao Frontend)
-            </option>
-            <option value="Segundo módulo (Frontend Avançado)">
-              Segundo módulo (Frontend Avançado)
-            </option>
-            <option value="Terceiro módulo (Introdução ao Backend)">
-              Terceiro módulo (Introdução ao Backend)
-            </option>
-            <option value="Quarto módulo (Backend Avançado)">
-              Quarto módulo (Backend Avançado)
-            </option>
-          </SelectSign>
-          <p>{errors.course_module?.message}</p>
+            <InfoSign>Módulo do curso</InfoSign>
+            <SelectSign name="course_module" ref={register}>
+              <option value="">Selecione o Módulo</option>
+              <option value="Primeiro módulo (Introdução ao Frontend)">
+                Primeiro módulo (Introdução ao Frontend)
+              </option>
+              <option value="Segundo módulo (Frontend Avançado)">
+                Segundo módulo (Frontend Avançado)
+              </option>
+              <option value="Terceiro módulo (Introdução ao Backend)">
+                Terceiro módulo (Introdução ao Backend)
+              </option>
+              <option value="Quarto módulo (Backend Avançado)">
+                Quarto módulo (Backend Avançado)
+              </option>
+            </SelectSign>
+            <p>{errors.course_module?.message}</p>
 
-          <ButtonSign type="submit">Enviar cadastro</ButtonSign>
-          <p>{errors.user_register?.message}</p>
-        </FormSignIn>
-      </PageSignIn>
+            <ButtonSign type="submit">Enviar cadastro</ButtonSign>
+            <p>{errors.user_register?.message}</p>
+          </FormSignIn>
+        </PageSignIn>
+      </Container>
     </>
   );
 };
