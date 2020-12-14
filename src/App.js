@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import "./index.css";
+import "./styles/index.css";
 import "reactjs-popup/dist/index.css";
 import Routes from "./routes";
 import GlobalStyle from "./styles/global";
