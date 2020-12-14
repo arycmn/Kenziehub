@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Avatar, Name, Info, Bio, Tech } from "./style";
 import Header from "../../components/header";
 import { useSelector } from "react-redux";
-import { mockData } from "../../helper/mockUser";
+import PopupExample from "../../components/add-work";
 
 const Profile = () => {
   const { profile } = useSelector((state) => state);
@@ -14,11 +14,10 @@ const Profile = () => {
     <>
       <Header />
       <Container>
-        {profile.avatar.url !== null ? (
-          <Avatar src={profile.avatar_url} alt={profile.name} />
-        ) : (
-          <Avatar src={imageDefault} alt={profile.name} />
-        )}
+        <Avatar
+          src={profile.avatar_url ? profile.avatar_url : imageDefault}
+          alt={profile.name}
+        />
 
         <Name>{profile.name}</Name>
         <Info>{profile.email}</Info>
@@ -29,7 +28,11 @@ const Profile = () => {
           {profile.techs?.map((item) => (
             <span key={item.id}>{item.title}</span>
           ))}
+          {profile.works?.map((item) => (
+            <span key={item.id}>{item.title}</span>
+          ))}
         </Tech>
+        <PopupExample />
 
         <Link to="/profile/settings">Alterar informações</Link>
       </Container>

@@ -45,6 +45,9 @@ export const Bio = styled.p`
 export const Tech = styled.p`
   font: 400 1.3rem Roboto, sans-serif;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   p {
     text-align: center;
