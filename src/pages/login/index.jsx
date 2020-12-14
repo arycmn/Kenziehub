@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
 import {
   Container,
-  PageLogin,
   FormLogin,
   InfoLog,
   InputLog,
   ButtonLog,
   Image,
   FormContainer,
+  ErrorParagraph,
 } from "./styled";
 import { api } from "../../services/API";
 import { useDispatch } from "react-redux";
@@ -56,18 +56,16 @@ const Login = ({ setIsAuth }) => {
       <Container>
         <Image image={ImageLogin}></Image>
         <FormContainer>
-          <PageLogin>
-            <FormLogin onSubmit={handleSubmit(handleForm)}>
-              <InfoLog>Email</InfoLog>
-              <InputLog placeholder="Email" ref={register} name="email" />
-              <p>{errors.email?.message}</p>
-              <InfoLog>Senha</InfoLog>
-              <InputLog placeholder="Senha" ref={register} name="password" />
-              <p>{errors.password?.message}</p>
-              <ButtonLog type="submit">Entrar</ButtonLog>
-              <p>{errors.user_login?.message}</p>
-            </FormLogin>
-          </PageLogin>
+          <FormLogin onSubmit={handleSubmit(handleForm)}>
+            <InfoLog>Email</InfoLog>
+            <InputLog placeholder="Email" ref={register} name="email" />
+            <ErrorParagraph>{errors.email?.message}</ErrorParagraph>
+            <InfoLog>Senha</InfoLog>
+            <InputLog placeholder="Senha" ref={register} name="password" />
+            <ErrorParagraph>{errors.password?.message}</ErrorParagraph>
+            <ButtonLog type="submit">Entrar</ButtonLog>
+            <ErrorParagraph>{errors.user_login?.message}</ErrorParagraph>
+          </FormLogin>
         </FormContainer>
       </Container>
     </>

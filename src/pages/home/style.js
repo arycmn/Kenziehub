@@ -60,6 +60,7 @@ export const Login = styled.button`
   height: 60%;
   margin: 10%;
   padding: 10%;
+  border: none;
   border-radius: 15%;
   font-family: "Offside";
   font-size: 100%;
@@ -71,6 +72,7 @@ export const Register = styled.button`
   height: 60%;
   margin: 10%;
   padding: 10%;
+  border: none;
   border-radius: 15%;
   font-family: "Offside";
   font-size: 100%;
