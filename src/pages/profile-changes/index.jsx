@@ -49,8 +49,8 @@ const ProfileChanges = () => {
 
     api
       .put("/profile", { ...profile })
-      .then(() => history.push("/profile"))
-      .catch(() => setError("old_password", { message: "Senha incorreta" }));
+      .then((res) => history.push("/profile"))
+      .catch((err) => console.log(err));
   };
 
   const options = [

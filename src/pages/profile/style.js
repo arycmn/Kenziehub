@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 400px;
-  height: 400px;
   background: #a6c6c2;
   display: flex;
   flex-direction: column;
@@ -45,6 +44,9 @@ export const Bio = styled.p`
 export const Tech = styled.p`
   font: 400 1.3rem Roboto, sans-serif;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   p {
     text-align: center;
