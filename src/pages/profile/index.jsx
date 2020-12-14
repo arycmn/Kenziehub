@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Container, Avatar, Name, Info, Bio, Tech } from "./style";
 import Header from "../../components/header";
 import { useSelector } from "react-redux";
-import { mockData } from "../../helper/mockUser";
 
 const Profile = () => {
   const { profile } = useSelector((state) => state);

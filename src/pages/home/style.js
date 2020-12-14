@@ -40,6 +40,12 @@ export const Title = styled.div`
   font-size: 400%;
   padding: 10%;
   font-family: "Offside";
+  transition: all 0.5s;
+  cursor: pointer;
+  :hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
 `;
 
 export const Phrase = styled.div`
@@ -56,24 +62,42 @@ export const ButtonsPlace = styled.div`
 `;
 export const Login = styled.button`
   background-color: #7fab99;
+  color: #ffebd4;
   height: 80%;
   height: 60%;
   margin: 10%;
-  padding: 10%;
-  border: none;
+  padding: 6%;
   border-radius: 15%;
   font-family: "Offside";
-  font-size: 100%;
+  font-size: 120%;
+  transition: all 0.6s;
+  border: 10px solid transparent;
+  :hover {
+    cursor: pointer;
+
+    border: 10px solid #7fab99;
+    border-radius: 30%;
+  }
 `;
 
 export const Register = styled.button`
   background-color: #ffae42;
+  color: #ffebd4;
   height: 80%;
   height: 60%;
   margin: 10%;
-  padding: 10%;
-  border: none;
+  padding: 7%;
+  font-size: 120%;
   border-radius: 15%;
   font-family: "Offside";
-  font-size: 100%;
+
+  transition: all 0.6s;
+  border: 5px solid transparent;
+
+  :hover {
+    cursor: pointer;
+    font-weight: bolder;
+    border: 10px solid #ffae42;
+    border-radius: 30%;
+  }
 `;

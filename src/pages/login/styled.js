@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 50%;
+  margin-top: 15%;
   font-size: 120%;
 `;
 
@@ -63,7 +63,7 @@ export const ButtonLog = styled.button`
   width: 30%;
   font-size: 100%;
   font-family: "Offside";
-  background: #006c5f;
+  background: #d1101d;
   border-radius: 15px;
   padding: 3%;
   color: white;
