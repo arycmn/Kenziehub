@@ -19,6 +19,8 @@ import { getProfileThunk } from "../../store/modules/profile/thunks";
 import Header from "../../components/header";
 import { message } from "antd";
 import { Loading3QuartersOutlined } from "@ant-design/icons";
+import { getDevThunk } from "../../store/modules/devs/thunks";
+import { allDevsThunk } from "../../store/modules/allDevs/thunks";
 
 import { api } from "../../services/API";
 const ProfileChanges = () => {
@@ -46,7 +48,6 @@ const ProfileChanges = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
         setProfileChange({ ...profileChange, avatar_url: res.data.avatar_url });
         dispatch(getProfileThunk(res.data));
         message.success("Imagem atualizada com sucesso");
@@ -78,7 +79,8 @@ const ProfileChanges = () => {
       )
       .then((res) => {
         setLoad(false);
-
+        dispatch(allDevsThunk());
+        dispatch(getDevThunk(1));
         dispatch(getProfileThunk(profileChange));
         setError("user_avatar", {
           message: "",
