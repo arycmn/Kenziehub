@@ -1,13 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 95vh;
 `;
 
-export const Form = styled.form``;
+export const Content = styled.div`
+  width: 80%;
+  height: 85%;
+`;
+export const SearchArea = styled.div`
+  width: 100%;
+  height: 15%;
+`;
 
-export const Input = styled.input``;
+export const Input = styled.input`
+  width: 30%;
+`;
 
 export const Button = styled.button``;
 

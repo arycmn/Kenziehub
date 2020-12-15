@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { Container, Input, Button, CardContainer } from "./style";
+import {
+  Container,
+  Input,
+  Button,
+  CardContainer,
+  Content,
+  SearchArea,
+} from "./style";
 import Header from "../../components/header";
 
 import Card from "../../components/card";
@@ -44,19 +51,23 @@ const Devs = () => {
     <>
       <Container>
         <Header />
-        <div>
-          <Input
-            placeholder="Procure o dev pelo nome"
-            onChange={handdleInput}
-            value={input}
-          />
-        </div>
         <CardContainer page={page} setPage={setPage}>
-          {input === "" ? <Card user={devs} /> : <Card user={filteredUsers} />}
-          <div>
+          <SearchArea>
+            <Input
+              placeholder="Procure o dev pelo nome"
+              onChange={handdleInput}
+              value={input}
+            />
+          </SearchArea>
+          <Content>
+            {input === "" ? (
+              <Card user={devs} />
+            ) : (
+              <Card user={filteredUsers} />
+            )}
             {page > 1 && <button onClick={prev}>Anterior</button>}
             {page < totalPages && <button onClick={next}>Próxima</button>}
-          </div>
+          </Content>
         </CardContainer>
       </Container>
     </>
