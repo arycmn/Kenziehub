@@ -82,7 +82,7 @@ const AttWork = ({ id }) => {
       <Popup
         onOpen={findWork}
         trigger={
-          <Button className="button">
+          <Button className="button" title="Atualizar trabalho">
             {" "}
             <img
               alt="edit"

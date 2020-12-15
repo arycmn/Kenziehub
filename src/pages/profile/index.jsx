@@ -12,7 +12,7 @@ import {
   Works,
   Button,
 } from "./style";
-import { message } from "antd";
+import { message, Popconfirm } from "antd";
 import { useHistory } from "react-router-dom";
 import { api } from "../../services/API";
 import { useSelector, useDispatch } from "react-redux";
@@ -135,11 +135,26 @@ const Profile = () => {
                       Nível: {item.status}
                     </Info>
                     <AttTech id={item.id} />
+<<<<<<< HEAD
                     <Button onClick={() => handleRemoveTech(item.id)}>
                       <img
                         alt="lixo"
                         src="https://img.icons8.com/clouds/80/000000/delete-trash.png"
                       />
+=======
+                    <Button title="Excluir tecnologia">
+                      <Popconfirm
+                        title="Tem certeza que quer excluir esta tecnologia?"
+                        okText="Sim"
+                        cancelText="Não"
+                        onConfirm={() => handleRemoveTech(item.id)}
+                      >
+                        <img
+                          alt="lixo"
+                          src="https://img.icons8.com/clouds/60/000000/delete-trash.png"
+                        />
+                      </Popconfirm>
+>>>>>>> ce6238f29bbd07322a665e8dd50e7afebcf6b488
                     </Button>
                   </Techs>
                 ))}
@@ -170,11 +185,26 @@ const Profile = () => {
                     </h3>
                   </Info>
                   <AttWork id={item.id} />
+<<<<<<< HEAD
                   <Button onClick={() => handleRemoveWork(item.id)}>
                     <img
                       alt="lixo"
                       src="https://img.icons8.com/clouds/80/000000/delete-trash.png"
                     />
+=======
+                  <Button title="Excluir trabalho">
+                    <Popconfirm
+                      title="Tem certeza que quer excluir este trabalho?"
+                      okText="Sim"
+                      cancelText="Não"
+                      onConfirm={() => handleRemoveWork(item.id)}
+                    >
+                      <img
+                        alt="lixo"
+                        src="https://img.icons8.com/clouds/60/000000/delete-trash.png"
+                      />
+                    </Popconfirm>
+>>>>>>> ce6238f29bbd07322a665e8dd50e7afebcf6b488
                   </Button>
                 </Works>
               ))}

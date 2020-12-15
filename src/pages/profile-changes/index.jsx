@@ -46,6 +46,8 @@ const ProfileChanges = () => {
         },
       })
       .then((res) => {
+        console.log(res.data);
+        setProfileChange({ ...profileChange, avatar_url: res.data.avatar_url });
         dispatch(getProfileThunk(res.data));
         message.success("Imagem atualizada com sucesso");
 

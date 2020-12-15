@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { Container, Input, Form, Button, CardContainer } from "./style";
+import {
+  Container,
+  Input,
+  Button,
+  CardContainer,
+  Content,
+  SearchArea,
+} from "./style";
 import Header from "../../components/header";
 
 import Card from "../../components/card";
@@ -10,9 +17,10 @@ import { useDispatch, useSelector } from "react-redux";
 const Devs = () => {
   const [page, setPage] = useState(1);
   const [input, setInput] = useState("");
+  const [filteredUsers, setFilteredUsers] = useState([]);
+
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.devs);
-  const allDevs = useSelector((state) => state.allDevs);
+  const { devs, allDevs } = useSelector((state) => state);
 
   const [totalPages, setTotalPages] = useState(0);
 
@@ -31,28 +39,35 @@ const Devs = () => {
     setPage(page - 1);
   };
 
-  const handdleInput = (event) => {
-    setInput(event.target.value);
-  };
-
-  const handdleSubmit = (event) => {
-    event.preventDefault();
+  const handdleInput = (e) => {
+    setInput(e.target.value);
+    const searchDevs = allDevs.filter((dev) =>
+      dev.name.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFilteredUsers(searchDevs);
   };
 
   return (
     <>
       <Container>
         <Header />
-        <Form onSubmit={(event) => handdleSubmit(event)}>
-          <Input onChange={(event) => handdleInput(event)} value={input} />
-          <Button type="submit">Pesquisar</Button>
-        </Form>
         <CardContainer page={page} setPage={setPage}>
-          <Card user={data} />
-          <div>
+          <SearchArea>
+            <Input
+              placeholder="Procure o dev pelo nome"
+              onChange={handdleInput}
+              value={input}
+            />
+          </SearchArea>
+          <Content>
+            {input === "" ? (
+              <Card user={devs} />
+            ) : (
+              <Card user={filteredUsers} />
+            )}
             {page > 1 && <button onClick={prev}>Anterior</button>}
             {page < totalPages && <button onClick={next}>Próxima</button>}
-          </div>
+          </Content>
         </CardContainer>
       </Container>
     </>
