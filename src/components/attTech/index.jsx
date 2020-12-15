@@ -19,7 +19,7 @@ const AttTech = ({ id }) => {
     status: yup.string().required("Campo obrigatório"),
   });
 
-  const { register, handleSubmit, setError } = useForm({
+  const { register, handleSubmit, setError, errors } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -86,25 +86,12 @@ const AttTech = ({ id }) => {
                     <option value="Intermediário">Intermediário</option>
                     <option value="Avançado">Avançado</option>
                   </select>
+                  <p>{errors.status?.message}</p>
                   <button type="submit" disabled={loading}>
                     {loading ? <Loading3QuartersOutlined spin /> : "Atualizar"}
                   </button>
                 </form>
               </div>
-
-              <div className="header">Atualizar nível</div>
-              <div className="content">
-                <form onSubmit={handleSubmit(handleForm)}>
-                  <select name="status" ref={register}>
-                    <option value="">Selecione o nível</option>
-                    <option value="Iniciante">Iniciante</option>
-                    <option value="Intermediário">Intermediário</option>
-                    <option value="Avançado">Avançado</option>
-                  </select>
-                  <button type="submit">Enviar</button>
-                </form>
-              </div>
-
               <div className="actions"></div>
             </div>
           </Modal>

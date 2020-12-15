@@ -27,40 +27,52 @@ const AddWork = () => {
 
   const dispatch = useDispatch();
 
-  const { register, handleSubmit, errors, reset } = useForm({
+  const { register, handleSubmit, errors, reset, setError } = useForm({
     resolver: yupResolver(schema),
   });
 
   const [loading, setLoad] = useState(false);
 
+  const alreadyHasWork = (title) => {
+    return profile.works.some((work) => work.title === title);
+  };
+
   const handleAddWork = (data) => {
     setLoad(true);
 
-    api
-      .post("/users/works", data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        message.success("Trabalho adicionado com sucesso");
-        setLoad(false);
+    if (alreadyHasWork(data.title)) {
+      setLoad(false);
+      setError("title", { message: "Trabalho já cadastrado" });
+    } else {
+      api
+        .post("/users/works", data, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          message.success("Trabalho adicionado com sucesso");
+          setLoad(false);
 
-        dispatch(
-          getProfileThunk({ ...profile, works: [...profile.works, res.data] })
-        );
+          dispatch(
+            getProfileThunk({
+              ...profile,
+              works: [...profile.works, res.data],
+            })
+          );
 
-        reset({
-          title: "",
-          description: "",
-          deploy_url: "",
+          reset({
+            title: "",
+            description: "",
+            deploy_url: "",
+          });
+        })
+        .catch((err) => {
+          setLoad(false);
+          console.log(err);
+          message.error("Erro ao adicionar trabalho");
         });
-      })
-      .catch((err) => {
-        setLoad(false);
-        console.log(err);
-        message.error("Erro ao adicionar trabalho");
-      });
+    }
   };
 
   return (
