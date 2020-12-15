@@ -79,12 +79,15 @@ const AddTech = () => {
                   name="title"
                   ref={register}
                 />
+                <span>{errors.title?.message}</span>
+
                 <select name="status" ref={register}>
                   <option value="">Selecione o nível</option>
                   <option value="Iniciante">Iniciante</option>
                   <option value="Intermediário">Intermediário</option>
                   <option value="Avançado">Avançado</option>
                 </select>
+                <p>{errors.status?.message}</p>
                 <p>{errors.user_tech?.message}</p>
                 <button type="submit" disabled={loading}>
                   {loading ? <Loading3QuartersOutlined spin /> : "Adicionar"}
