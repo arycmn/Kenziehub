@@ -6,21 +6,20 @@ import { useForm } from "react-hook-form";
 import { api } from "../../services/API";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
 
-const AddTech = () => {
+const AttTech = ({ id }) => {
   const { token, profile } = useSelector((state) => state);
   const dispatch = useDispatch();
   const schema = yup.object().shape({
-    title: yup.string().required("Campo obrigatorio"),
     status: yup.string().required("Campo obrigatório"),
   });
 
-  const { register, handleSubmit, errors, setError } = useForm({
+  const { register, handleSubmit, setError } = useForm({
     resolver: yupResolver(schema),
   });
 
   const handleForm = (data) => {
     api
-      .post("/users/techs", data, {
+      .put(`/users/techs/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -29,9 +28,14 @@ const AddTech = () => {
         setError("user_tech", {
           message: "",
         });
-        dispatch(
-          getProfileThunk({ ...profile, techs: [...profile.techs, res.data] })
-        );
+
+        const attTech = profile.techs.find((tech) => {
+          if (tech.id === res.data.id) {
+            return (tech.status = res.data.status);
+          }
+        });
+        console.log(attTech);
+        dispatch(getProfileThunk({ ...profile, techs: [...profile.techs] }));
       })
       .catch((err) =>
         setError("user_tech", {
@@ -43,7 +47,7 @@ const AddTech = () => {
   return (
     <>
       <Popup
-        trigger={<button className="button"> Adicionar tecnologia </button>}
+        trigger={<button className="button"> Atualizar tecnologia </button>}
         modal
         nested
       >
@@ -52,21 +56,15 @@ const AddTech = () => {
             <button className="close" onClick={close}>
               &times;
             </button>
-            <div className="header">Adicionar tecnologia</div>
+            <div className="header">Atualizar nível</div>
             <div className="content">
               <form onSubmit={handleSubmit(handleForm)}>
-                <input
-                  placeholder="Nome da Tecnologia"
-                  name="title"
-                  ref={register}
-                />
                 <select name="status" ref={register}>
                   <option value="">Selecione o nível</option>
                   <option value="Iniciante">Iniciante</option>
                   <option value="Intermediário">Intermediário</option>
                   <option value="Avançado">Avançado</option>
                 </select>
-                <p>{errors.user_tech?.message}</p>
                 <button type="submit">Enviar</button>
               </form>
             </div>
@@ -88,4 +86,4 @@ const AddTech = () => {
   );
 };
 
-export default AddTech;
+export default AttTech;

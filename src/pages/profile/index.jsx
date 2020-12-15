@@ -6,6 +6,7 @@ import { getProfileThunk } from "../../store/modules/profile/thunks";
 import Header from "../../components/header";
 import PopupExample from "../../components/add-work";
 import AddTech from "../../components/add-tech";
+import AttTech from "../../components/attTech";
 
 const Profile = () => {
   const { profile, token } = useSelector((state) => state);
@@ -62,6 +63,7 @@ const Profile = () => {
             <div key={index}>
               <div>{item.title} </div>
               <div> Nível: {item.status}</div>
+              <AttTech id={item.id} />
               <button onClick={() => handleRemoveTech(item.id)}>
                 Excluir Tecnologia
               </button>
