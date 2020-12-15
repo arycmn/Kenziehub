@@ -22,7 +22,6 @@ import AddWork from "../../components/add-work";
 import AttWork from "../../components/att-work";
 import AddTech from "../../components/add-tech";
 import AttTech from "../../components/attTech";
-import { AddButton } from "../../components/add-work/style";
 
 const Profile = () => {
   const { profile, token } = useSelector((state) => state);
@@ -145,7 +144,7 @@ const Profile = () => {
                       >
                         <img
                           alt="lixo"
-                          src="https://img.icons8.com/clouds/60/000000/delete-trash.png"
+                          src="https://img.icons8.com/clouds/80/000000/delete-trash.png"
                         />
                       </Popconfirm>
                     </Button>
@@ -187,7 +186,7 @@ const Profile = () => {
                     >
                       <img
                         alt="lixo"
-                        src="https://img.icons8.com/clouds/60/000000/delete-trash.png"
+                        src="https://img.icons8.com/clouds/80/000000/delete-trash.png"
                       />
                     </Popconfirm>
                   </Button>
