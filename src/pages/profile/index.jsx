@@ -135,13 +135,12 @@ const Profile = () => {
                       Nível: {item.status}
                     </Info>
                     <AttTech id={item.id} />
-<<<<<<< HEAD
                     <Button onClick={() => handleRemoveTech(item.id)}>
                       <img
                         alt="lixo"
                         src="https://img.icons8.com/clouds/80/000000/delete-trash.png"
-                      />
-=======
+                      />{" "}
+                    </Button>
                     <Button title="Excluir tecnologia">
                       <Popconfirm
                         title="Tem certeza que quer excluir esta tecnologia?"
@@ -154,7 +153,6 @@ const Profile = () => {
                           src="https://img.icons8.com/clouds/60/000000/delete-trash.png"
                         />
                       </Popconfirm>
->>>>>>> ce6238f29bbd07322a665e8dd50e7afebcf6b488
                     </Button>
                   </Techs>
                 ))}
@@ -185,13 +183,6 @@ const Profile = () => {
                     </h3>
                   </Info>
                   <AttWork id={item.id} />
-<<<<<<< HEAD
-                  <Button onClick={() => handleRemoveWork(item.id)}>
-                    <img
-                      alt="lixo"
-                      src="https://img.icons8.com/clouds/80/000000/delete-trash.png"
-                    />
-=======
                   <Button title="Excluir trabalho">
                     <Popconfirm
                       title="Tem certeza que quer excluir este trabalho?"
@@ -204,13 +195,13 @@ const Profile = () => {
                         src="https://img.icons8.com/clouds/60/000000/delete-trash.png"
                       />
                     </Popconfirm>
->>>>>>> ce6238f29bbd07322a665e8dd50e7afebcf6b488
                   </Button>
                 </Works>
               ))}
             </Tech>
             <AddWork />
           </ButtonsDiv>
+
           <ChangeInfo onClick={handleClickChangeInfo}>
             Alterar informações
           </ChangeInfo>
