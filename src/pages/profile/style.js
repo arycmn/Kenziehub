@@ -62,7 +62,7 @@ export const ChangeInfo = styled.button`
     color: #d1101d;
   }
 `;
-export const Tech = styled.p`
+export const Tech = styled.div`
   font: 400 1.3rem;
   color: #fff;
   display: flex;

@@ -19,10 +19,11 @@ import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 import { message } from "antd";
 import { Loading3QuartersOutlined } from "@ant-design/icons";
+import { validateThunk } from "../../store/modules/auth/thunks";
 
 import ImageLogin from "../../images/ImageLogin.jpg";
 
-const Login = ({ setIsAuth }) => {
+const Login = () => {
   const dispatch = useDispatch();
   const schema = yup.object().shape({
     email: yup.string().email("email invalido").required("Campo obrigatório"),
@@ -50,7 +51,7 @@ const Login = ({ setIsAuth }) => {
         window.localStorage.setItem("token", res.data.token);
 
         dispatch(getTokenThunk(res.data.token));
-        setIsAuth(true);
+        dispatch(validateThunk(true));
         history.push("/profile");
         dispatch(getProfileThunk(res.data.user));
       })
