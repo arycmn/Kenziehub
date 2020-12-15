@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { api } from "../../services/API";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -14,6 +15,8 @@ import {
   ErrorParagraph,
 } from "./styled";
 import imageSignup from "../../images/imageSignup.jpg";
+import { message } from "antd";
+import { Loading3QuartersOutlined } from "@ant-design/icons";
 
 const SignUp = () => {
   const history = useHistory();
@@ -40,15 +43,27 @@ const SignUp = () => {
     resolver: yupResolver(schema),
   });
 
+  const [loading, setLoad] = useState(false);
+
   const handleForm = (data) => {
+    setLoad(true);
+
     api
       .post("/users", { ...data })
-      .then((res) => history.push("/login"))
-      .catch((err) =>
+      .then((res) => {
+        setLoad(false);
+
+        history.push("/login");
+        message.success("Cadastrado com sucesso");
+      })
+      .catch((err) => {
+        setLoad(false);
+        message.error("Erro no cadastro");
+
         setError("user_register", {
           message: "Email já existe",
-        })
-      );
+        });
+      });
   };
 
   return (
@@ -102,7 +117,9 @@ const SignUp = () => {
             </SelectSign>
             <ErrorParagraph>{errors.course_module?.message}</ErrorParagraph>
 
-            <ButtonSign type="submit">Enviar cadastro</ButtonSign>
+            <ButtonSign type="submit" disabled={loading}>
+              {loading ? <Loading3QuartersOutlined spin /> : "Cadastrar"}
+            </ButtonSign>
             <ErrorParagraph>{errors.user_register?.message}</ErrorParagraph>
           </FormSignIn>
         </FormContainer>

@@ -1,6 +1,6 @@
 import { Container, Box } from "./style";
 import { Link } from "react-router-dom";
-import LogoutButton from "../../components/buttonLogOut";
+import LogoutButton from "../buttonLogOut";
 
 const Header = () => (
   <Container>
