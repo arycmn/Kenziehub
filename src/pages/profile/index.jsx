@@ -142,7 +142,7 @@ const Profile = () => {
                     </h3>
                   </Info>
                   <AttWork id={item.id} />
-                  <Button>
+                  <Button title="Excluir trabalho">
                     <Popconfirm
                       title="Tem certeza que quer excluir este trabalho?"
                       okText="Sim"
