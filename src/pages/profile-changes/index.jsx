@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
@@ -20,6 +21,7 @@ import Header from "../../components/header";
 import { api } from "../../services/API";
 const ProfileChanges = () => {
   const { profile, token } = useSelector((state) => state);
+  const [profileChange, setProfileChange] = useState(profile);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -52,6 +54,7 @@ const ProfileChanges = () => {
   };
   const handleForm = (data) => {
     const { password_confirm, ...profile } = data;
+
     api
       .put(
         "/profile",
@@ -63,6 +66,7 @@ const ProfileChanges = () => {
         }
       )
       .then((res) => {
+        dispatch(getProfileThunk(profileChange));
         setError("user_avatar", {
           message: "",
         });
@@ -115,10 +119,10 @@ const ProfileChanges = () => {
             <Input
               id="name"
               name="name"
-              value={profile.name}
+              value={profileChange.name}
               ref={register}
               onChange={(e) =>
-                dispatch(getProfileThunk({ ...profile, name: e.target.value }))
+                setProfileChange({ ...profileChange, name: e.target.value })
               }
             />
             <span>{errors.name?.message}</span>
@@ -128,10 +132,10 @@ const ProfileChanges = () => {
             <Input
               id="email"
               name="email"
-              value={profile.email}
+              value={profileChange.email}
               ref={register}
               onChange={(e) =>
-                dispatch(getProfileThunk({ ...profile, email: e.target.value }))
+                setProfileChange({ ...profileChange, email: e.target.value })
               }
             />
             <span>{errors.email?.message}</span>
@@ -142,11 +146,12 @@ const ProfileChanges = () => {
               id="course_module"
               name="course_module"
               ref={register}
-              defaultValue={profile.course_module}
+              defaultValue={profileChange.course_module}
               onChange={(e) =>
-                dispatch(
-                  getProfileThunk({ ...profile, course_module: e.target.value })
-                )
+                setProfileChange({
+                  ...profileChange,
+                  course_module: e.target.value,
+                })
               }
             >
               {options.map((option, index) => (
@@ -162,10 +167,10 @@ const ProfileChanges = () => {
             <Bio
               id="bio"
               name="bio"
-              value={profile.bio}
+              value={profileChange.bio}
               ref={register}
               onChange={(e) =>
-                dispatch(getProfileThunk({ ...profile, bio: e.target.value }))
+                setProfileChange({ ...profileChange, bio: e.target.value })
               }
             />
             <span>{errors.bio?.message}</span>
@@ -175,12 +180,10 @@ const ProfileChanges = () => {
             <Input
               id="contact"
               name="contact"
-              value={profile.contact}
+              value={profileChange.contact}
               ref={register}
               onChange={(e) =>
-                dispatch(
-                  getProfileThunk({ ...profile, contact: e.target.value })
-                )
+                setProfileChange({ ...profileChange, contact: e.target.value })
               }
             />
             <span>{errors.contact?.message}</span>

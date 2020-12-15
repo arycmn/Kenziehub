@@ -29,12 +29,9 @@ const AttTech = ({ id }) => {
           message: "",
         });
 
-        const attTech = profile.techs.find((tech) => {
-          if (tech.id === res.data.id) {
-            return (tech.status = res.data.status);
-          }
-        });
-        console.log(attTech);
+        const attTech = profile.techs.find(
+          (tech) => tech.id === res.data.id && (tech.status = res.data.status)
+        );
         dispatch(getProfileThunk({ ...profile, techs: [...profile.techs] }));
       })
       .catch((err) =>
