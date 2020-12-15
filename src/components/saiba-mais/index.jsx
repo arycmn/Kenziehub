@@ -2,7 +2,7 @@ import React from "react";
 import Popup from "reactjs-popup";
 import { Modal, Image } from "./style";
 
-const SaibaMais = ({ user }) => {
+const SaibaMais = ({ user, imageDefault }) => {
   console.log(user);
   return (
     <Popup
@@ -18,21 +18,44 @@ const SaibaMais = ({ user }) => {
           <div className="header"> {user.name} </div>
 
           <div className="content">
-            <Image src={user.avatar_url} alt={`Avatar de ${user.name}`} />
+            {user.avatar_url ? (
+              <Image src={user.avatar_url} alt={`Avatar de ${user.name}`} />
+            ) : (
+              <Image src={imageDefault} alt={`Avatar de ${user.name}`} />
+            )}
             <p>Email : {user.email}</p>
             <p>Nível : {user.course_module}</p>
 
             <p>
               Techs :
-              {/* {user.techs ? (
+              {user.techs ? (
                 <ul>
                   {user.techs.map((tech, index) => (
-                    <li key={index}>{tech}</li>
+                    <li key={index}>
+                      {tech.title} {tech.status}
+                    </li>
                   ))}
                 </ul>
               ) : (
-                <p>Não possui Techs</p>
-              )} */}
+                <span>Não possui Techs</span>
+              )}
+            </p>
+
+            <p>
+              Trabalhos :
+              {user.works ? (
+                <ul>
+                  {user.works.map((work, index) => (
+                    <li key={index}>
+                      <span>{work.title}</span>
+                      <br />
+                      <span>{work.description}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <span>Não possui Techs</span>
+              )}
             </p>
 
             <p>
