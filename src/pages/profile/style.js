@@ -9,6 +9,7 @@ export const Container = styled.div`
 export const Box = styled.div`
   margin: 3%;
   min-width: 700px;
+  max-width: 850px;
   background: rgba(255, 174, 66, 0.5);
   display: flex;
   flex-direction: column;
@@ -17,6 +18,11 @@ export const Box = styled.div`
   text-align: center;
   border-radius: 10%;
   padding: 7% 3%;
+  hr {
+    margin: 5px;
+    border: none;
+    border-top: 0.5px solid rgb(255, 174, 66);
+  }
   /* border: 5px solid rgb(209, 16, 29); */
 `;
 
@@ -26,29 +32,26 @@ export const Avatar = styled.img`
   border-radius: 50%;
   border: 1px solid #000;
   padding: 2px;
-  margin: 5%;
 `;
 
 export const Name = styled.h1`
   font: 700 2rem;
   background: rgba(255, 174, 66, 0);
-  padding: 10px;
+  padding: 5px;
 `;
 
 export const Info = styled.div`
   font: 400 1.2rem;
   color: black;
-  opacity: 0.5;
-  padding: 10px;
+  padding: 5px;
   font-size: 130%;
   background: rgba(255, 174, 66, 0);
 
   a {
     text-decoration: none;
-    color: inherit;
-
+    color: #006c5f;
     background: rgba(255, 174, 66, 0);
-    opacity: 0.5;
+
     :hover {
       text-decoration: underline;
     }
@@ -56,8 +59,18 @@ export const Info = styled.div`
   div {
     background: rgba(255, 174, 66, 0);
   }
-  p {
-    background: rgba(255, 174, 66, 0);
+
+  hr {
+    margin: 5px;
+    border: none;
+    border-top: 0.5px solid rgb(255, 174, 66);
+  }
+  h3 {
+    color: gray;
+  }
+  h5 {
+    text-align: center;
+    margin: 0;
   }
 `;
 
@@ -68,8 +81,8 @@ export const ProfileButton = styled.button`
 export const Bio = styled.p`
   font: 400 1rem Roboto, sans-serif;
   color: #333;
-  margin: 10px 0;
   background: rgba(255, 174, 66, 0);
+  padding: 5px;
 `;
 export const ChangeInfo = styled.button`
   border: none;
@@ -91,7 +104,7 @@ export const ButtonsDiv = styled.div`
   flex-direction: column;
   background: rgba(255, 174, 66, 0);
   width: inherit;
-  padding: 10px;
+  padding: 5px;
 `;
 export const Tech = styled.div`
   font: 400 1.3rem;

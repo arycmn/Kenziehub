@@ -4,13 +4,13 @@ import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
-  Container,
-  Form,
-  Field,
-  Title,
   Avatar,
-  Input,
+  Container,
   Bio,
+  Field,
+  Form,
+  Title,
+  Input,
   Options,
   SubmitButton,
 } from "./style";

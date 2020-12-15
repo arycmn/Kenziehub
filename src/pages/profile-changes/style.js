@@ -1,13 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 700px;
-  height: 700px;
-  background: #a6c6c2;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 `;
 
 export const Field = styled.p`
@@ -27,7 +24,7 @@ export const Input = styled.input`
   border-radius: 5px;
   border: none;
   background: #fff;
-  font: 400 1rem Roboto, sans-serif;
+  font: 400 1rem;
 `;
 
 export const Bio = styled.textarea`
@@ -37,7 +34,7 @@ export const Bio = styled.textarea`
   border: none;
   background: #fff;
   resize: none;
-  font: 400 1rem Roboto, sans-serif;
+  font: 400 1rem;
 `;
 
 export const Options = styled.select`
@@ -46,7 +43,7 @@ export const Options = styled.select`
   border-radius: 5px;
   border: none;
   background: #fff;
-  font: 400 1rem Roboto, sans-serif;
+  font: 400 1rem;
 `;
 
 export const Title = styled.label`
@@ -75,14 +72,30 @@ export const Avatar = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-  width: 100%;
-  padding: 10px;
-  margin: 10px auto;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font: 400 1.2rem Roboto, sans-serif;
-  background: #0f0;
+  border-radius: 15px;
+  font-size: 100%;
+  padding: 2%;
+  background: rgba(255, 174, 66);
+  max-width: 100%;
+
+  :hover {
+    cursor: pointer;
+    background-color: #d1101d;
+    color: white;
+  }
 `;
 
-export const Form = styled.form``;
+export const Form = styled.form`
+  margin: 3%;
+  min-width: 700px;
+  max-width: 850px;
+  background: rgba(255, 174, 66, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10%;
+  padding: 7% 3%;
+`;
