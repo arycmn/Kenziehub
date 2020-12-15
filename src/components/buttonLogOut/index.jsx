@@ -9,7 +9,6 @@ const LogoutButton = () => {
 
     window.localStorage.clear();
     history.push("/");
-    window.location.reload();
   };
 
   return <button onClick={logout}>Logout</button>;
