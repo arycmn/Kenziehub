@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Modal = styled.div`
   font-size: 20px;
+
   .header {
     width: 100%;
     border: none;
@@ -14,8 +15,9 @@ export const Modal = styled.div`
     width: 100%;
     padding: 10px 5px;
     border-radius: 20px;
+    background: rgba(209, 16, 29, 0);
     /* display: flex !important;
-    flex-direction: column !important; */
+  flex-direction: column !important; */
   }
   .actions {
     width: 100%;
@@ -90,9 +92,8 @@ export const AddButton = styled.button`
   padding: 5px;
   margin: 1%;
   font-size: 90%;
-  border: none;
   align-self: center;
-
+  border: none;
   max-width: 60%;
   :hover {
     cursor: pointer;

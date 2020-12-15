@@ -1,4 +1,17 @@
-import { Container, Avatar, Name, Info, Bio, Tech, ChangeInfo } from "./style";
+import {
+  Container,
+  Avatar,
+  Name,
+  Info,
+  Bio,
+  Tech,
+  Techs,
+  Box,
+  ButtonsDiv,
+  ChangeInfo,
+  Works,
+  Button,
+} from "./style";
 import { message, Popconfirm } from "antd";
 import { useHistory } from "react-router-dom";
 import { api } from "../../services/API";
@@ -9,6 +22,7 @@ import AddWork from "../../components/add-work";
 import AttWork from "../../components/att-work";
 import AddTech from "../../components/add-tech";
 import AttTech from "../../components/attTech";
+import { AddButton } from "../../components/add-work/style";
 
 const Profile = () => {
   const { profile, token } = useSelector((state) => state);
@@ -63,66 +77,94 @@ const Profile = () => {
   return (
     <>
       <Header />
+
       <Container>
-        <Avatar
-          src={profile.avatar_url ? profile.avatar_url : imageDefault}
-          alt={profile.name}
-        />
+        <Box>
+          <Avatar
+            src={profile.avatar_url ? profile.avatar_url : imageDefault}
+            alt={profile.name}
+          />
 
-        <Name>{profile.name}</Name>
-        <Info>{profile.email}</Info>
-        <Info>{profile.course_module}</Info>
-        <Bio>{profile.bio}</Bio>
-        <Info>{profile.contact}</Info>
-        <Tech>
-          {profile.techs?.map((item, index) => (
-            <div key={index}>
-              <div>{item.title} </div>
-              <div> Nível: {item.status}</div>
-              <AttTech id={item.id} />
-              <button>
-                <Popconfirm
-                  title="Você tem certeza que quer excluir esta tecnologia?"
-                  onConfirm={() => handleRemoveTech(item.id)}
-                  okText="Sim"
-                  cancelText="Não"
-                >
-                  Excluir Tecnologia
-                </Popconfirm>
-              </button>
-            </div>
-          ))}
-          <AddTech />
-        </Tech>
-        <Tech>
-          {profile.works?.map((item, index) => (
-            <div key={index}>
-              <div>Nome: {item.title}</div>
+          <Name>{profile.name}</Name>
+          <Info>{profile.email}</Info>
+          <Info>{profile.course_module}</Info>
+          <Bio>{profile.bio}</Bio>
+          <Info>{profile.contact}</Info>
+          <p> Tecnologias e Linguagens:</p>
+          <ButtonsDiv>
+            <Tech>
               <div>
-                Site:
-                <a href={item.deploy_url} target="_blank" rel="noreferrer">
-                  Ver deploy
-                </a>
+                {profile.techs?.map((item, index) => (
+                  <Techs key={index}>
+                    <Info>
+                      {" "}
+                      <h3>{item.title}</h3>
+                      Nível: {item.status}
+                    </Info>
+                    <AttTech id={item.id} />
+                    <Button title="Excluir tecnologia">
+                      <Popconfirm
+                        title="Tem certeza que quer excluir esta tecnologia?"
+                        okText="Sim"
+                        cancelText="Não"
+                        onConfirm={() => handleRemoveTech(item.id)}
+                      >
+                        <img
+                          alt="lixo"
+                          src="https://img.icons8.com/clouds/60/000000/delete-trash.png"
+                        />
+                      </Popconfirm>
+                    </Button>
+                  </Techs>
+                ))}
               </div>
-              <AttWork id={item.id} />
-              <button>
-                <Popconfirm
-                  title="Você tem certeza que quer excluir este trabalho?"
-                  onConfirm={() => handleRemoveWork(item.id)}
-                  okText="Sim"
-                  cancelText="Não"
-                >
-                  Excluir Trabalho
-                </Popconfirm>
-              </button>
-            </div>
-          ))}
-        </Tech>
-        <AddWork />
+            </Tech>
+            <AddTech />
+            <p> Trabalhos realizados: </p>
+            <Tech>
+              {profile.works?.map((item, index) => (
+                <Works key={index}>
+                  <Info>
+                    <h4>Nome: </h4>
+                    <h3>{item.title} </h3>{" "}
+                  </Info>
+                  <Info>
+                    {" "}
+                    <h4>Site:</h4>
+                    <h3>
+                      <a
+                        href={item.deploy_url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Ver deploy
+                      </a>
+                    </h3>
+                  </Info>
+                  <AttWork id={item.id} />
+                  <Button>
+                    <Popconfirm
+                      title="Tem certeza que quer excluir este trabalho?"
+                      okText="Sim"
+                      cancelText="Não"
+                      onConfirm={() => handleRemoveWork(item.id)}
+                    >
+                      <img
+                        alt="lixo"
+                        src="https://img.icons8.com/clouds/60/000000/delete-trash.png"
+                      />
+                    </Popconfirm>
+                  </Button>
+                </Works>
+              ))}
+            </Tech>
+            <AddWork />
+          </ButtonsDiv>
 
-        <ChangeInfo onClick={handleClickChangeInfo}>
-          Alterar informações
-        </ChangeInfo>
+          <ChangeInfo onClick={handleClickChangeInfo}>
+            Alterar informações
+          </ChangeInfo>
+        </Box>
       </Container>
     </>
   );

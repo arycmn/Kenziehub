@@ -1,15 +1,23 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin: 10%;
-  width: 700px;
-  background: rgba(209, 16, 29, 0.6);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+export const Box = styled.div`
+  margin: 3%;
+  min-width: 700px;
+  background: rgba(255, 174, 66, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
   border-radius: 10%;
-  padding: 3%;
+  padding: 7% 3%;
+  /* border: 5px solid rgb(209, 16, 29); */
 `;
 
 export const Avatar = styled.img`
@@ -23,54 +31,107 @@ export const Avatar = styled.img`
 
 export const Name = styled.h1`
   font: 700 2rem;
-  background: rgba(209, 16, 29, 0);
+  background: rgba(255, 174, 66, 0);
+  padding: 10px;
 `;
 
-export const Info = styled.h3`
-  background: rgba(209, 16, 29, 0);
+export const Info = styled.div`
   font: 400 1.2rem;
   color: black;
   opacity: 0.5;
+  padding: 10px;
+  font-size: 130%;
+  background: rgba(255, 174, 66, 0);
 
   a {
     text-decoration: none;
     color: inherit;
-    background: #d1101d;
+
+    background: rgba(255, 174, 66, 0);
     opacity: 0.5;
     :hover {
       text-decoration: underline;
     }
   }
+  div {
+    background: rgba(255, 174, 66, 0);
+  }
+  p {
+    background: rgba(255, 174, 66, 0);
+  }
 `;
 
 export const ProfileButton = styled.button`
-  background: rgba(209, 16, 29, 0);
+  background: rgba(255, 174, 66, 0);
 `;
 
 export const Bio = styled.p`
   font: 400 1rem Roboto, sans-serif;
   color: #333;
   margin: 10px 0;
-  background: rgba(209, 16, 29, 0);
+  background: rgba(255, 174, 66, 0);
 `;
 export const ChangeInfo = styled.button`
   border: none;
-  border-radius: 15%;
+  border-radius: 15px;
   font-size: 100%;
   padding: 2%;
+  background: rgba(255, 174, 66);
+  max-width: 100%;
+
   :hover {
-    color: #d1101d;
+    cursor: pointer;
+    background-color: #d1101d;
+    color: white;
   }
+`;
+export const ButtonsDiv = styled.div`
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 174, 66, 0);
+  width: inherit;
+  padding: 10px;
 `;
 export const Tech = styled.div`
   font: 400 1.3rem;
-  color: #fff;
+
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0px;
+  padding: 10px;
   align-items: center;
+  background: rgba(255, 174, 66, 0);
 
   p {
     text-align: center;
-    margin: 10px 0;
+    background: rgba(255, 174, 66, 0);
+  }
+`;
+export const Techs = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  min-width: 650px;
+  background: rgba(255, 174, 66, 0);
+`;
+export const Works = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-width: 650px;
+  background: rgba(255, 174, 66, 0);
+`;
+export const Button = styled.button`
+  border: none;
+  background: rgba(255, 174, 66, 0);
+  transition: all 0.5s;
+  cursor: pointer;
+  :hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
   }
 `;
