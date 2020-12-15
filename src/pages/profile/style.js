@@ -128,7 +128,6 @@ export const Works = styled.div`
 export const Button = styled.button`
   border: none;
   background: rgba(255, 174, 66, 0);
-
   transition: all 0.5s;
   cursor: pointer;
   :hover {

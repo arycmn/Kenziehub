@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
+import { validateThunk } from "../store/modules/auth/thunks";
 import Devs from "../pages/devs";
 import Login from "../pages/login";
 import SignUp from "../pages/sign-up";
@@ -9,19 +11,20 @@ import ProfileChanges from "../pages/profile-changes";
 import Home from "../pages/home";
 
 const Routes = () => {
-  const [isAuth, setIsAuth] = useState(undefined);
+  const dispatch = useDispatch();
+  const { isAuth } = useSelector((state) => state);
+
   const history = useHistory();
-  console.log(isAuth);
 
   useEffect(() => {
     const token = window.localStorage.getItem("token");
     if (!token) {
-      return setIsAuth(false);
+      return dispatch(validateThunk(false));
     } else {
-      setIsAuth(true);
+      dispatch(validateThunk(true));
       history.push("/profile");
     }
-  }, [isAuth, history]);
+  }, [isAuth, history, dispatch]);
 
   if (isAuth === false) {
     history.push("/");
@@ -32,7 +35,7 @@ const Routes = () => {
         </Route>
 
         <Route path="/login" exact>
-          <Login setIsAuth={setIsAuth} />
+          <Login />
         </Route>
 
         <Route path="/register" exact>
@@ -41,7 +44,7 @@ const Routes = () => {
       </Switch>
     );
   }
-  if (isAuth === undefined) {
+  if (isAuth === null) {
     return <div>Loading...</div>;
   }
 

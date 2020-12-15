@@ -5,6 +5,7 @@ import tokenReducer from "./modules/token/reducer";
 import devsReducer from "./modules/devs/reducer";
 import profileReducer from "./modules/profile/reducer";
 import allDevsReducer from "./modules/allDevs/reducer";
+import validateReducer from "./modules/auth/reducer";
 
 const reducers = combineReducers({
   friends: friendsReducer,
@@ -12,6 +13,7 @@ const reducers = combineReducers({
   devs: devsReducer,
   profile: profileReducer,
   allDevs: allDevsReducer,
+  isAuth: validateReducer,
 });
 
 const store = createStore(reducers, applyMiddleware(thunk));

@@ -12,6 +12,7 @@ import {
   Works,
   Button,
 } from "./style";
+import { message } from "antd";
 import { useHistory } from "react-router-dom";
 import { api } from "../../services/API";
 import { useSelector, useDispatch } from "react-redux";
@@ -40,10 +41,15 @@ const Profile = () => {
         },
       })
       .then(() => {
+        message.success("Trabalho removido");
+
         const list = profile.works.filter((work) => work.id !== id);
         dispatch(getProfileThunk({ ...profile, works: list }));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        message.error("Erro ao remover trabalho");
+        console.log(err);
+      });
   };
 
   const handleRemoveTech = (id) => {
@@ -54,10 +60,15 @@ const Profile = () => {
         },
       })
       .then((res) => {
+        message.success("Tecnologia removida");
+
         const techList = profile.techs.filter((techs) => techs.id !== id);
         dispatch(getProfileThunk({ ...profile, techs: techList }));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        message.error("Erro ao remover tecnologia");
+        console.log(err);
+      });
   };
 
   const handleClickChangeInfo = () => {
