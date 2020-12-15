@@ -35,7 +35,7 @@ export const PageSignIn = styled.div`
   text-align: center;
 `;
 
-export const FormSignIn = styled.div`
+export const FormSignIn = styled.form`
   width: 130%;
   height: 70%;
   background: #006c5f;

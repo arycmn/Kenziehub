@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,10 +16,12 @@ import {
 } from "./style";
 import { schema } from "./validations";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
+import Header from "../../components/header";
 
 import { api } from "../../services/API";
 const ProfileChanges = () => {
   const { profile, token } = useSelector((state) => state);
+  const [profileChange, setProfileChange] = useState(profile);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -38,13 +41,20 @@ const ProfileChanges = () => {
         },
       })
       .then((res) => {
-        console.log(res);
         dispatch(getProfileThunk(res.data));
+        setError("user_avatar", {
+          message: "",
+        });
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>
+        setError("user_avatar", {
+          message: "Não foi possível adicionar a foto",
+        })
+      );
   };
   const handleForm = (data) => {
     const { password_confirm, ...profile } = data;
+
     api
       .put(
         "/profile",
@@ -55,8 +65,18 @@ const ProfileChanges = () => {
           },
         }
       )
-      .then((res) => history.push("/profile"))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        dispatch(getProfileThunk(profileChange));
+        setError("user_avatar", {
+          message: "",
+        });
+        history.push("/profile");
+      })
+      .catch((err) =>
+        setError("user_changes", {
+          message: err.response.data.message,
+        })
+      );
   };
   const options = [
     {
@@ -73,129 +93,140 @@ const ProfileChanges = () => {
     },
   ];
   return (
-    <Container>
-      <Form onSubmit={handleSubmit(handleForm)}>
-        <Avatar>
-          <label htmlFor="avatar">
-            <img
-              src={profile.avatar_url ? profile.avatar_url : defaultAvatar}
-              alt={profile.name}
+    <>
+      <Header />
+      <Container>
+        <Form onSubmit={handleSubmit(handleForm)}>
+          <Avatar>
+            <label htmlFor="avatar">
+              <img
+                src={profile.avatar_url ? profile.avatar_url : defaultAvatar}
+                alt={profile.name}
+              />
+            </label>
+            <input
+              id="avatar"
+              type="file"
+              accept="image/*"
+              ref={register}
+              name="avatar_url"
+              onChange={handleAvatarChange}
             />
-          </label>
-          <input
-            id="avatar"
-            type="file"
-            accept="image/*"
-            ref={register}
-            name="avatar_url"
-            onChange={handleAvatarChange}
-          />
-        </Avatar>
-        <Field>
-          <Title htmlFor="name">Nome</Title>
-          <Input
-            id="name"
-            name="name"
-            value={profile.name}
-            ref={register}
-            onChange={(e) =>
-              dispatch(getProfileThunk({ ...profile, name: e.target.value }))
-            }
-          />
-          <span>{errors.name?.message}</span>
-        </Field>
-        <Field>
-          <Title htmlFor="email">Email</Title>
-          <Input
-            id="email"
-            name="email"
-            value={profile.email}
-            ref={register}
-            onChange={(e) =>
-              dispatch(getProfileThunk({ ...profile, email: e.target.value }))
-            }
-          />
-          <span>{errors.email?.message}</span>
-        </Field>
-        <Field>
-          <Title htmlFor="course_module">Módulo</Title>
-          <Options
-            id="course_module"
-            name="course_module"
-            ref={register}
-            defaultValue={profile.course_module}
-            onChange={(e) =>
-              dispatch(
-                getProfileThunk({ ...profile, course_module: e.target.value })
-              )
-            }
-          >
-            {options.map((option, index) => (
-              <option key={index} value={option.value}>
-                {option.value}
-              </option>
-            ))}
-          </Options>
-          <span>{errors.course_module?.message}</span>
-        </Field>
-        <Field>
-          <Title htmlFor="bio">Bio</Title>
-          <Bio
-            id="bio"
-            name="bio"
-            value={profile.bio}
-            ref={register}
-            onChange={(e) =>
-              dispatch(getProfileThunk({ ...profile, bio: e.target.value }))
-            }
-          />
-          <span>{errors.bio?.message}</span>
-        </Field>
-        <Field>
-          <Title htmlFor="contact">Contato</Title>
-          <Input
-            id="contact"
-            name="contact"
-            value={profile.contact}
-            ref={register}
-            onChange={(e) =>
-              dispatch(getProfileThunk({ ...profile, contact: e.target.value }))
-            }
-          />
-          <span>{errors.contact?.message}</span>
-        </Field>
-        <Field>
-          <Title htmlFor="old_password">Senha antiga</Title>
-          <Input
-            id="old_password"
-            name="old_password"
-            type="password"
-            ref={register}
-          />
-          <span>{errors.old_password?.message}</span>
-        </Field>
-        <Field>
-          <Title htmlFor="password" name="password">
-            Nova senha
-          </Title>
-          <Input id="password" type="password" name="password" ref={register} />
-          <span>{errors.password?.message}</span>
-        </Field>
-        <Field>
-          <Title htmlFor="password" name="password">
-            Confirmação Nova senha
-          </Title>
-          <Input
-            id="password_confirm"
-            type="password"
-            name="password_confirm"
-            ref={register}
-          />
-          <span>{errors.password_confirm?.message}</span>
-        </Field>
-        <SubmitButton type="submit">Salvar</SubmitButton>
-      </Form>
-    </Container>
+            <p>{errors.user_avatar?.message}</p>
+          </Avatar>
+          <Field>
+            <Title htmlFor="name">Nome</Title>
+            <Input
+              id="name"
+              name="name"
+              value={profileChange.name}
+              ref={register}
+              onChange={(e) =>
+                setProfileChange({ ...profileChange, name: e.target.value })
+              }
+            />
+            <span>{errors.name?.message}</span>
+          </Field>
+          <Field>
+            <Title htmlFor="email">Email</Title>
+            <Input
+              id="email"
+              name="email"
+              value={profileChange.email}
+              ref={register}
+              onChange={(e) =>
+                setProfileChange({ ...profileChange, email: e.target.value })
+              }
+            />
+            <span>{errors.email?.message}</span>
+          </Field>
+          <Field>
+            <Title htmlFor="course_module">Módulo</Title>
+            <Options
+              id="course_module"
+              name="course_module"
+              ref={register}
+              defaultValue={profileChange.course_module}
+              onChange={(e) =>
+                setProfileChange({
+                  ...profileChange,
+                  course_module: e.target.value,
+                })
+              }
+            >
+              {options.map((option, index) => (
+                <option key={index} value={option.value}>
+                  {option.value}
+                </option>
+              ))}
+            </Options>
+            <span>{errors.course_module?.message}</span>
+          </Field>
+          <Field>
+            <Title htmlFor="bio">Bio</Title>
+            <Bio
+              id="bio"
+              name="bio"
+              value={profileChange.bio}
+              ref={register}
+              onChange={(e) =>
+                setProfileChange({ ...profileChange, bio: e.target.value })
+              }
+            />
+            <span>{errors.bio?.message}</span>
+          </Field>
+          <Field>
+            <Title htmlFor="contact">Contato</Title>
+            <Input
+              id="contact"
+              name="contact"
+              value={profileChange.contact}
+              ref={register}
+              onChange={(e) =>
+                setProfileChange({ ...profileChange, contact: e.target.value })
+              }
+            />
+            <span>{errors.contact?.message}</span>
+          </Field>
+          <Field>
+            <Title htmlFor="old_password">Senha antiga</Title>
+            <Input
+              id="old_password"
+              name="old_password"
+              type="password"
+              ref={register}
+            />
+            <span>{errors.old_password?.message}</span>
+          </Field>
+          <Field>
+            <Title htmlFor="password" name="password">
+              Nova senha
+            </Title>
+            <Input
+              id="password"
+              type="password"
+              name="password"
+              ref={register}
+            />
+            <span>{errors.password?.message}</span>
+          </Field>
+          <Field>
+            <Title htmlFor="password" name="password">
+              Confirmação Nova senha
+            </Title>
+            <Input
+              id="password_confirm"
+              type="password"
+              name="password_confirm"
+              ref={register}
+            />
+            <span>{errors.password_confirm?.message}</span>
+          </Field>
+          <p>{errors.user_changes?.message}</p>
+          <SubmitButton type="submit">Salvar</SubmitButton>
+        </Form>
+      </Container>
+    </>
   );
 };
 export default ProfileChanges;

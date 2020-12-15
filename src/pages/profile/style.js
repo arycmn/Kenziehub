@@ -62,16 +62,12 @@ export const ChangeInfo = styled.button`
     color: #d1101d;
   }
 `;
-
 export const Tech = styled.p`
   font: 400 1.3rem;
   color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 20%;
-  font-size: 150%;
-  padding: 1%;
 
   p {
     text-align: center;
