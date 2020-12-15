@@ -24,7 +24,7 @@ const Home = () => {
   };
   return (
     <Container>
-      <Logo image={imageHome} />
+      <Logo src={imageHome} />
       <Menu>
         <Content>
           <Title>ProgramMate</Title>
