@@ -7,34 +7,30 @@ export const TitleFont = createGlobalStyle`
 }`;
 
 export const Container = styled.div`
+  height: 100vh;
   background-color: #ffebd4;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  margin-top: 10%;
 `;
 
-export const Logo = styled.div`
-  background-image: url(${(props) => props.image});
-
-  background-size: cover;
-  width: 850px;
-  height: 620px;
-  object-fit: fill;
+export const Logo = styled.img`
+  width: 722.5px;
+  height: 527px;
 `;
 
 export const Menu = styled.div`
+  height: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0;
-  margin: 0;
 `;
 
 export const Content = styled.div`
-  height: 50%;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -45,11 +41,12 @@ export const Content = styled.div`
 export const Title = styled.div`
   color: #d1101d;
   position: right;
-  align-items: center;
+  display: flex;
+  align-items: flex-end;
   font-size: 4em;
   font-family: "Offside";
   transition: all 0.5s;
-  height: 30%;
+  height: 50%;
   user-select: none;
 
   :hover {
@@ -60,26 +57,28 @@ export const Title = styled.div`
 export const Phrase = styled.div`
   font-size: 20px;
   color: #006c5f;
-  padding: 5%;
+  padding: 0 50px;
   text-align: center;
   width: 75%;
-  height: 40%;
+  height: 35%;
+  display: flex;
+  align-items: center;
 `;
 
 export const ButtonsPlace = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  height: 25%;
+  height: 50%;
   width: 100%;
 `;
 
 export const Login = styled.button`
   background-color: #ffae42;
   color: #ffebd4;
-  height: 30%;
-  width: 20%;
-  margin: 20px;
+  height: 35%;
+  width: 22.5%;
+  margin-right: 20px;
   border-radius: 5px;
   font-family: "Offside";
   font-size: 120%;
