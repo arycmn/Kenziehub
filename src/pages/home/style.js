@@ -33,17 +33,26 @@ export const Menu = styled.div`
   margin: 0;
 `;
 
+export const Teste = styled.div`
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
 export const Title = styled.div`
   color: #d1101d;
   position: right;
   align-items: center;
-  font-size: 400%;
-  padding: 10%;
+  font-size: 4em;
   font-family: "Offside";
   transition: all 0.5s;
-  cursor: pointer;
+  height: 30%;
+  user-select: none;
+
   :hover {
-    -webkit-transform: scale(1.2);
     transform: scale(1.2);
   }
 `;
@@ -53,51 +62,43 @@ export const Phrase = styled.div`
   color: #006c5f;
   padding: 5%;
   text-align: center;
+  width: 75%;
+  height: 40%;
 `;
 
 export const ButtonsPlace = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  height: 25%;
+  width: 100%;
 `;
+
 export const Login = styled.button`
-  background-color: #7fab99;
+  background-color: #ffae42;
   color: #ffebd4;
-  height: 80%;
-  height: 60%;
-  margin: 10%;
-  padding: 6%;
-  border-radius: 15%;
+  height: 30%;
+  width: 20%;
+  margin: 20px;
+  border-radius: 5px;
   font-family: "Offside";
   font-size: 120%;
   transition: all 0.6s;
-  border: 10px solid transparent;
+  border: none;
+
   :hover {
     cursor: pointer;
+    background: #7fab99;
 
-    border: 10px solid #7fab99;
-    border-radius: 30%;
+    transform: scale(1.1);
   }
 `;
 
-export const Register = styled.button`
-  background-color: #ffae42;
-  color: #ffebd4;
-  height: 80%;
-  height: 60%;
-  margin: 10%;
-  padding: 7%;
-  font-size: 120%;
-  border-radius: 15%;
-  font-family: "Offside";
-
-  transition: all 0.6s;
-  border: 5px solid transparent;
+export const Register = styled(Login)`
+  background: #7fab99;
 
   :hover {
     cursor: pointer;
-    font-weight: bolder;
-    border: 10px solid #ffae42;
-    border-radius: 30%;
+    background-color: #ffae42;
   }
 `;
