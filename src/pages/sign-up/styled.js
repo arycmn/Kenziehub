@@ -35,26 +35,27 @@ export const PageSignIn = styled.div`
   text-align: center;
 `;
 
-export const FormSignIn = styled.div`
+export const FormSignIn = styled.form`
   width: 130%;
   height: 70%;
   background: #006c5f;
   opacity: 0.5;
   border-radius: 10px;
-  margin: 0%;
-  padding: 10% 0;
+  padding: 5% 0;
 `;
 
 export const ErrorParagraph = styled.p`
   color: white;
   font-weight: bold;
-  margin-bottom: 3%;
+  margin-bottom: 5%;
+  font-size: 100%;
 `;
 
 export const SelectSign = styled.select`
   outline: none;
   padding: 3%;
   color: #006c5f;
+  font-size: 100%;
   :hover {
     cursor: pointer;
     background: white;
@@ -64,10 +65,12 @@ export const SelectSign = styled.select`
 
 export const InfoSign = styled.div`
   text-align: center;
+  background: #006c5f;
   width: 100%;
   height: 20%;
   font-weight: bolder;
   color: black;
+  font-size: 130%;
 `;
 
 export const InputSign = styled.input`

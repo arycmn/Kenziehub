@@ -7,7 +7,7 @@ import { getProfileThunk } from "../../store/modules/profile/thunks";
 import Popup from "reactjs-popup";
 import * as yup from "yup";
 
-const PopupExample = () => {
+const AddWork = () => {
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
     description: yup.string().required("Campo obrigatório"),
@@ -51,7 +51,7 @@ const PopupExample = () => {
 
   return (
     <Popup
-      trigger={<button className="button"> Adicionar Trabalho </button>}
+      trigger={<button className="add"> Adicionar Trabalho </button>}
       modal
       nested
     >
@@ -93,4 +93,4 @@ const PopupExample = () => {
     </Popup>
   );
 };
-export default PopupExample;
+export default AddWork;
