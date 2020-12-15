@@ -41,15 +41,14 @@ export const Bio = styled.p`
   margin: 10px 0;
 `;
 
-export const Tech = styled.p`
+export const Tech = styled.div`
   font: 400 1.3rem Roboto, sans-serif;
   color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  p {
-    text-align: center;
-    margin: 10px 0;
-  }
+  color: black;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 `;
