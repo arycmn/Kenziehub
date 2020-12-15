@@ -60,7 +60,7 @@ const AttTech = ({ id }) => {
     <>
       <Popup
         trigger={
-          <Button className="button">
+          <Button className="button" title="Atualizar tecnologia">
             {" "}
             <img
               alt="edit"
