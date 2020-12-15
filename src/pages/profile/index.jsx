@@ -84,14 +84,47 @@ const Profile = () => {
             src={profile.avatar_url ? profile.avatar_url : imageDefault}
             alt={profile.name}
           />
-
           <Name>{profile.name}</Name>
-          <Info>{profile.email}</Info>
-          <Info>{profile.course_module}</Info>
-          <Bio>{profile.bio}</Bio>
-          <Info>{profile.contact}</Info>
-          <p> Tecnologias e Linguagens:</p>
+          <hr />
+          <Info>
+            {" "}
+            <img
+              alt="e-mail"
+              src="https://img.icons8.com/clouds/100/000000/email.png"
+            />{" "}
+            {profile.email}
+          </Info>
+          <Info>
+            {profile.course_module}{" "}
+            <img
+              alt="tech"
+              src="https://img.icons8.com/clouds/100/000000/laptop.png"
+            />
+          </Info>
+          <Bio>
+            {" "}
+            <img
+              alt="aspasesquerdas"
+              src="https://img.icons8.com/doodle/48/000000/quote-left.png"
+            />
+            {profile.bio}{" "}
+            <img
+              alt="aspasdireitas"
+              src="https://img.icons8.com/doodle/48/000000/quote-right.png"
+            />
+          </Bio>
+          <Info>
+            {" "}
+            <img
+              alt="contact"
+              src="https://img.icons8.com/clouds/100/000000/business-contact.png"
+            />
+            {profile.contact}
+          </Info>
+
           <ButtonsDiv>
+            <hr />
+            <h2> Tecnologias e Linguagens:</h2>
             <Tech>
               <div>
                 {profile.techs?.map((item, index) => (
@@ -102,6 +135,7 @@ const Profile = () => {
                       Nível: {item.status}
                     </Info>
                     <AttTech id={item.id} />
+
                     <Button title="Excluir tecnologia">
                       <Popconfirm
                         title="Tem certeza que quer excluir esta tecnologia?"
@@ -120,13 +154,15 @@ const Profile = () => {
               </div>
             </Tech>
             <AddTech />
-            <p> Trabalhos realizados: </p>
+            <hr />
+            <h2> Trabalhos realizados: </h2>
             <Tech>
               {profile.works?.map((item, index) => (
                 <Works key={index}>
                   <Info>
                     <h4>Nome: </h4>
-                    <h3>{item.title} </h3>{" "}
+                    <h3>{item.title} </h3>
+                    <h5> "{item.description}"</h5>
                   </Info>
                   <Info>
                     {" "}

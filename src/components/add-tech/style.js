@@ -97,6 +97,6 @@ export const AddButton = styled.button`
   max-width: 60%;
   :hover {
     cursor: pointer;
-    background-color: #ffcc8a;
+    background-color: #609c8b;
   }
 `;
