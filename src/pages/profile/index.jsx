@@ -4,7 +4,8 @@ import { api } from "../../services/API";
 import { useSelector, useDispatch } from "react-redux";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
 import Header from "../../components/header";
-import PopupExample from "../../components/add-work";
+import AddWork from "../../components/add-work";
+import AttWork from "../../components/att-work";
 import AddTech from "../../components/add-tech";
 import AttTech from "../../components/attTech";
 
@@ -73,15 +74,22 @@ const Profile = () => {
         </Tech>
         <Tech>
           {profile.works?.map((item, index) => (
-            <span key={index}>
-              {item.title}
+            <div key={index}>
+              <div>Nome: {item.title}</div>
+              <div>
+                Site:
+                <a href={item.deploy_url} target="_blank" rel="noreferrer">
+                  Ver deploy
+                </a>
+              </div>
+              <AttWork id={item.id} />
               <button onClick={() => handleRemoveWork(item.id)}>
                 Excluir Trabalho
               </button>
-            </span>
+            </div>
           ))}
         </Tech>
-        <PopupExample />
+        <AddWork />
 
         <Link to="/profile/settings">Alterar informações</Link>
       </Container>

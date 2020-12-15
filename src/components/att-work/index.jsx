@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Popup from "reactjs-popup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -8,8 +9,14 @@ import { getProfileThunk } from "../../store/modules/profile/thunks";
 
 const AttWork = ({ id }) => {
   const { token, profile } = useSelector((state) => state);
-
+  const [changeWorks, setChangeWorks] = useState({});
   const dispatch = useDispatch();
+
+  const findWork = () => {
+    const find = profile.works.find((work) => work.id === id);
+    setChangeWorks(find);
+    console.log("executei");
+  };
 
   const schema = yup.object().shape({
     title: yup.string().optional(),
@@ -41,11 +48,13 @@ const AttWork = ({ id }) => {
         setError("user_works", {
           message: "",
         });
-
-        const attWork = profile.techs.find(
-          (tech) => tech.id === res.data.id && (tech.status = res.data.status)
+        const attWork = profile.works.find(
+          (work) =>
+            work.id === res.data.id &&
+            ((work.title = res.data.title),
+            (work.description = res.data.description),
+            (work.deploy_url = res.data.deploy_url))
         );
-        console.log(attWork);
         dispatch(getProfileThunk({ ...profile, works: [...profile.works] }));
       })
       .catch((err) =>
@@ -58,7 +67,8 @@ const AttWork = ({ id }) => {
   return (
     <>
       <Popup
-        trigger={<button className="button"> Atualizar Trabalho </button>}
+        onOpen={findWork}
+        trigger={<button className="button">Atualizar Trabalho</button>}
         modal
         nested
       >
@@ -70,27 +80,52 @@ const AttWork = ({ id }) => {
             <div className="header">Atualizar Trabalho</div>
             <div className="content">
               <form onSubmit={handleSubmit(handleForm)}>
-                <label htmlFor="title">Título</label>
-                <input type="text" name="title" id="title" ref={register} />
-                <span>{errors.title?.message}</span>
-
-                <label htmlFor="description">Descrição</label>
-                <textarea
-                  type="text"
-                  name="description"
-                  id="description"
-                  ref={register}
-                />
-                <span>{errors.description?.message}</span>
-
-                <label htmlFor="deploy_url">Url</label>
-                <input
-                  type="url"
-                  name="deploy_url"
-                  id="deploy_url"
-                  ref={register}
-                />
-                <span>{errors.deploy_url?.message}</span>
+                <div>
+                  <label htmlFor="title">Título</label>
+                  <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    value={changeWorks.title}
+                    ref={register}
+                    onChange={(e) => setChangeWorks({ title: e.target.value })}
+                  />
+                  <span>{errors.title?.message}</span>
+                </div>
+                <div>
+                  <label htmlFor="description">Descrição</label>
+                  <textarea
+                    type="text"
+                    name="description"
+                    value={changeWorks.description}
+                    onChange={(e) =>
+                      setChangeWorks({
+                        ...changeWorks,
+                        description: e.target.value,
+                      })
+                    }
+                    id="description"
+                    ref={register}
+                  />
+                  <span>{errors.description?.message}</span>
+                </div>
+                <div>
+                  <label htmlFor="deploy_url">Url</label>
+                  <input
+                    type="url"
+                    name="deploy_url"
+                    value={changeWorks.deploy_url}
+                    onChange={(e) =>
+                      setChangeWorks({
+                        ...changeWorks,
+                        deploy_url: e.target.value,
+                      })
+                    }
+                    id="deploy_url"
+                    ref={register}
+                  />
+                  <span>{errors.deploy_url?.message}</span>
+                </div>
                 <button type="submit">Enviar</button>
               </form>
             </div>
