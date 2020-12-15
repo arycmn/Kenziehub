@@ -11,7 +11,7 @@ import { Button } from "../../pages/profile/style";
 import { message } from "antd";
 import { Loading3QuartersOutlined } from "@ant-design/icons";
 
-export const AttWork = ({ id }) => {
+const AttWork = ({ id }) => {
   const { token, profile } = useSelector((state) => state);
   const [changeWorks, setChangeWorks] = useState({});
   const [loading, setLoad] = useState(false);
@@ -162,3 +162,5 @@ export const AttWork = ({ id }) => {
     </>
   );
 };
+
+export default AttWork;
