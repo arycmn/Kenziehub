@@ -51,7 +51,7 @@ const PopupExample = () => {
 
   return (
     <Popup
-      trigger={<button className="button"> Adicionar Trabalho </button>}
+      trigger={<button className="add"> Adicionar Trabalho </button>}
       modal
       nested
     >
