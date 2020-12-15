@@ -16,10 +16,10 @@ const CardDetail = ({ user }) => {
   return (
     <Container>
       {user.map(
-        ({ name, email, course_module, bio, contact, avatar }, index) => (
+        ({ name, email, course_module, bio, contact, avatar_url }, index) => (
           <Card key={index}>
-            {{ avatar } !== null ? (
-              <Image alt={name} src={avatar} />
+            {avatar_url !== null ? (
+              <Image alt={name} src={avatar_url} />
             ) : (
               <Image alt={name} src={imageDefault} />
             )}
