@@ -33,7 +33,7 @@ export const Menu = styled.div`
   margin: 0;
 `;
 
-export const Teste = styled.div`
+export const Content = styled.div`
   height: 50%;
   width: 100%;
   display: flex;

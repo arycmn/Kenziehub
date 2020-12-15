@@ -7,7 +7,7 @@ import {
   Menu,
   Login,
   Register,
-  Teste,
+  Content,
 } from "./style";
 import { useHistory } from "react-router-dom";
 import imageHome from "../../images/imageHome.jpg";
@@ -26,12 +26,12 @@ const Home = () => {
     <Container>
       <Logo image={imageHome} />
       <Menu>
-        <Teste>
+        <Content>
           <Title>ProgramMate</Title>
           <Phrase>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit.{" "}
           </Phrase>
-        </Teste>
+        </Content>
         <ButtonsPlace>
           <Login onClick={handleClickLogin}>Login</Login>
           <Register onClick={handleClickRegister}>Register</Register>
