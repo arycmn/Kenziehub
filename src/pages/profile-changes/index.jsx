@@ -17,11 +17,14 @@ import {
 import { schema } from "./validations";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
 import Header from "../../components/header";
+import { message } from "antd";
+import { Loading3QuartersOutlined } from "@ant-design/icons";
 
 import { api } from "../../services/API";
 const ProfileChanges = () => {
   const { profile, token } = useSelector((state) => state);
   const [profileChange, setProfileChange] = useState(profile);
+  const [loading, setLoad] = useState(false);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -29,8 +32,10 @@ const ProfileChanges = () => {
   const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(schema),
   });
+
   const defaultAvatar =
     "https://www.ecp.org.br/wp-content/uploads/2017/12/default-avatar-1.png";
+
   const handleAvatarChange = (e) => {
     const data = new FormData();
     data.append("avatar", e.target.files[0]);
@@ -42,6 +47,8 @@ const ProfileChanges = () => {
       })
       .then((res) => {
         dispatch(getProfileThunk(res.data));
+        message.success("Imagem atualizada com sucesso");
+
         setError("user_avatar", {
           message: "",
         });
@@ -52,8 +59,10 @@ const ProfileChanges = () => {
         })
       );
   };
+
   const handleForm = (data) => {
     const { password_confirm, ...profile } = data;
+    setLoad(true);
 
     api
       .put(
@@ -66,17 +75,23 @@ const ProfileChanges = () => {
         }
       )
       .then((res) => {
+        setLoad(false);
+
         dispatch(getProfileThunk(profileChange));
         setError("user_avatar", {
           message: "",
         });
+
         history.push("/profile");
+        message.success("Atualizado com sucesso");
       })
-      .catch((err) =>
+      .catch((err) => {
+        message.error("Erro na atualização");
+
         setError("user_changes", {
           message: err.response.data.message,
-        })
-      );
+        });
+      });
   };
   const options = [
     {
@@ -223,7 +238,9 @@ const ProfileChanges = () => {
             <span>{errors.password_confirm?.message}</span>
           </Field>
           <p>{errors.user_changes?.message}</p>
-          <SubmitButton type="submit">Salvar</SubmitButton>
+          <SubmitButton type="submit" disabled={loading}>
+            {loading ? <Loading3QuartersOutlined spin /> : "Salvar"}
+          </SubmitButton>
         </Form>
       </Container>
     </>

@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Modal } from "./style";
 import { api } from "../../services/API";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
+import { message } from "antd";
+import { Loading3QuartersOutlined } from "@ant-design/icons";
 import Popup from "reactjs-popup";
 import * as yup from "yup";
 
@@ -28,7 +31,11 @@ const AddWork = () => {
     resolver: yupResolver(schema),
   });
 
+  const [loading, setLoad] = useState(false);
+
   const handleAddWork = (data) => {
+    setLoad(true);
+
     api
       .post("/users/works", data, {
         headers: {
@@ -36,6 +43,9 @@ const AddWork = () => {
         },
       })
       .then((res) => {
+        message.success("Trabalho adicionado com sucesso");
+        setLoad(false);
+
         dispatch(
           getProfileThunk({ ...profile, works: [...profile.works, res.data] })
         );
@@ -46,7 +56,11 @@ const AddWork = () => {
           deploy_url: "",
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setLoad(false);
+        console.log(err);
+        message.error("Erro ao adicionar trabalho");
+      });
   };
 
   return (
@@ -85,7 +99,9 @@ const AddWork = () => {
               />
               <span>{errors.deploy_url?.message}</span>
 
-              <button type="submit">Enviar</button>
+              <button type="submit" disabled={loading}>
+                {loading ? <Loading3QuartersOutlined spin /> : "Adicionar"}
+              </button>
             </form>
           </div>
         </Modal>
