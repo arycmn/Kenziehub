@@ -24,13 +24,24 @@ const Profile = () => {
       })
       .then(() => {
         const list = profile.works.filter((work) => work.id !== id);
-
         dispatch(getProfileThunk({ ...profile, works: list }));
       })
       .catch((err) => console.log(err));
   };
 
-  const handleRemoveTech = (id) => {};
+  const handleRemoveTech = (id) => {
+    api
+      .delete(`/users/techs/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        const techList = profile.techs.filter((techs) => techs.id !== id);
+        dispatch(getProfileThunk({ ...profile, techs: techList }));
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
