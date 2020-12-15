@@ -1,5 +1,5 @@
+import { Modal, AddButton } from "./style";
 import { useState } from "react";
-import { Modal } from "./style";
 import { api } from "../../services/API";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -65,7 +65,7 @@ const AddWork = () => {
 
   return (
     <Popup
-      trigger={<button className="add"> Adicionar Trabalho </button>}
+      trigger={<AddButton className="add"> Adicionar Trabalho </AddButton>}
       modal
       nested
     >
