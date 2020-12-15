@@ -17,7 +17,7 @@ const Card = ({ user }) => {
           )}
           <Name>{uniqueUser.name}</Name>
           <CourseModule>{uniqueUser.course_module}</CourseModule>
-          <SaibaMais user={uniqueUser} />
+          <SaibaMais user={uniqueUser} imageDefault={imageDefault} />
         </StyledCard>
       ))}
     </Container>

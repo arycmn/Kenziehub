@@ -11,9 +11,11 @@ export const Modal = styled.div`
     padding: 5px;
   }
   .content {
+    overflow: auto;
     width: 100%;
     padding: 10px 5px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
