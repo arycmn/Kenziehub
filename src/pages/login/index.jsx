@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Container,
@@ -16,6 +17,8 @@ import { getProfileThunk } from "../../store/modules/profile/thunks";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
+import { message } from "antd";
+import { Loading3QuartersOutlined } from "@ant-design/icons";
 
 import ImageLogin from "../../images/ImageLogin.jpg";
 
@@ -34,21 +37,31 @@ const Login = ({ setIsAuth }) => {
 
   const history = useHistory();
 
+  const [loading, setLoad] = useState(false);
+
   const handleForm = (data) => {
+    setLoad(true);
+
     api
       .post("/sessions", { ...data })
       .then((res) => {
+        setLoad(false);
+        message.success("Logado com sucesso");
         window.localStorage.setItem("token", res.data.token);
+
         dispatch(getTokenThunk(res.data.token));
         setIsAuth(true);
         history.push("/profile");
         dispatch(getProfileThunk(res.data.user));
       })
-      .catch((err) =>
+      .catch((err) => {
+        setLoad(false);
+        message.error("Erro no login");
+
         setError("user_login", {
           message: "Email ou Senha incorreta",
-        })
-      );
+        });
+      });
   };
 
   return (
@@ -63,7 +76,9 @@ const Login = ({ setIsAuth }) => {
             <InfoLog>Senha</InfoLog>
             <InputLog placeholder="Senha" ref={register} name="password" />
             <ErrorParagraph>{errors.password?.message}</ErrorParagraph>
-            <ButtonLog type="submit">Entrar</ButtonLog>
+            <ButtonLog type="submit" disabled={loading}>
+              {loading ? <Loading3QuartersOutlined spin /> : "Entrar"}
+            </ButtonLog>
             <ErrorParagraph>{errors.user_login?.message}</ErrorParagraph>
           </FormLogin>
         </FormContainer>

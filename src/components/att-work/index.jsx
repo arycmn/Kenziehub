@@ -6,16 +6,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/API";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
+import { message } from "antd";
+import { Loading3QuartersOutlined } from "@ant-design/icons";
 
 const AttWork = ({ id }) => {
   const { token, profile } = useSelector((state) => state);
   const [changeWorks, setChangeWorks] = useState({});
+  const [loading, setLoad] = useState(false);
+
   const dispatch = useDispatch();
 
   const findWork = () => {
     const find = profile.works.find((work) => work.id === id);
     setChangeWorks(find);
-    console.log("executei");
   };
 
   const schema = yup.object().shape({
@@ -38,6 +41,8 @@ const AttWork = ({ id }) => {
   });
 
   const handleForm = (data) => {
+    setLoad(true);
+
     api
       .put(`/users/works/${id}`, data, {
         headers: {
@@ -45,10 +50,14 @@ const AttWork = ({ id }) => {
         },
       })
       .then((res) => {
+        setLoad(false);
+        message.success("Trabalho atualizado com sucesso");
+
         setError("user_works", {
           message: "",
         });
-        const attWork = profile.works.find(
+
+        profile.works.find(
           (work) =>
             work.id === res.data.id &&
             ((work.title = res.data.title),
@@ -57,11 +66,13 @@ const AttWork = ({ id }) => {
         );
         dispatch(getProfileThunk({ ...profile, works: [...profile.works] }));
       })
-      .catch((err) =>
+      .catch((err) => {
+        message.error("Erro ao atualizar trabalho");
+
         setError("user_works", {
           message: "Você ja criou essa tecnologia, tente atualiza-lá",
-        })
-      );
+        });
+      });
   };
 
   return (
@@ -126,7 +137,9 @@ const AttWork = ({ id }) => {
                   />
                   <span>{errors.deploy_url?.message}</span>
                 </div>
-                <button type="submit">Enviar</button>
+                <button type="submit" disabled={loading}>
+                  {loading ? <Loading3QuartersOutlined spin /> : "Atualizar"}
+                </button>
               </form>
             </div>
 

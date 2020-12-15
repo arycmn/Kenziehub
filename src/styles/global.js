@@ -7,6 +7,9 @@ export default createGlobalStyle`
         box-sizing: border-box;
         outline: none;
         font-family: "Offside", cursive;
+    }
+
+    body {
         background-color: #ffebd4;
     }
 `;

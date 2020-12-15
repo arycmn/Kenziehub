@@ -1,3 +1,4 @@
+import "antd/dist/antd.css";
 import "reactjs-popup/dist/index.css";
 import Routes from "./routes";
 import GlobalStyle from "./styles/global";
