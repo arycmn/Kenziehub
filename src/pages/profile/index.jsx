@@ -1,14 +1,5 @@
-import {
-  Container,
-  Avatar,
-  Name,
-  Info,
-  Bio,
-  Tech,
-  ProfileButton,
-  ChangeInfo,
-} from "./style";
-import { message } from "antd";
+import { Container, Avatar, Name, Info, Bio, Tech, ChangeInfo } from "./style";
+import { message, Popconfirm } from "antd";
 import { useHistory } from "react-router-dom";
 import { api } from "../../services/API";
 import { useSelector, useDispatch } from "react-redux";
@@ -89,8 +80,15 @@ const Profile = () => {
               <div>{item.title} </div>
               <div> Nível: {item.status}</div>
               <AttTech id={item.id} />
-              <button onClick={() => handleRemoveTech(item.id)}>
-                Excluir tecnologia
+              <button>
+                <Popconfirm
+                  title="Você tem certeza que quer excluir esta tecnologia?"
+                  onConfirm={() => handleRemoveTech(item.id)}
+                  okText="Sim"
+                  cancelText="Não"
+                >
+                  Excluir Tecnologia
+                </Popconfirm>
               </button>
             </div>
           ))}
@@ -107,8 +105,15 @@ const Profile = () => {
                 </a>
               </div>
               <AttWork id={item.id} />
-              <button onClick={() => handleRemoveWork(item.id)}>
-                Excluir Trabalho
+              <button>
+                <Popconfirm
+                  title="Você tem certeza que quer excluir este trabalho?"
+                  onConfirm={() => handleRemoveWork(item.id)}
+                  okText="Sim"
+                  cancelText="Não"
+                >
+                  Excluir Trabalho
+                </Popconfirm>
               </button>
             </div>
           ))}
