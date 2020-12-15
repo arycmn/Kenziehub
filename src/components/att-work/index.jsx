@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/API";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
+import { Modal } from "../add-tech/style";
+import { Button } from "../../pages/profile/style";
 
 const AttWork = ({ id }) => {
   const { token, profile } = useSelector((state) => state);
@@ -68,79 +70,82 @@ const AttWork = ({ id }) => {
     <>
       <Popup
         onOpen={findWork}
-        trigger={<button className="button">Atualizar Trabalho</button>}
+        trigger={
+          <Button className="button">
+            {" "}
+            <img
+              alt="edit"
+              src="https://img.icons8.com/clouds/70/000000/edit.png"
+            />
+          </Button>
+        }
         modal
         nested
       >
         {(close) => (
-          <div className="modal">
-            <button className="close" onClick={close}>
-              &times;
-            </button>
-            <div className="header">Atualizar Trabalho</div>
-            <div className="content">
-              <form onSubmit={handleSubmit(handleForm)}>
-                <div>
-                  <label htmlFor="title">Título</label>
-                  <input
-                    type="text"
-                    name="title"
-                    id="title"
-                    value={changeWorks.title}
-                    ref={register}
-                    onChange={(e) => setChangeWorks({ title: e.target.value })}
-                  />
-                  <span>{errors.title?.message}</span>
-                </div>
-                <div>
-                  <label htmlFor="description">Descrição</label>
-                  <textarea
-                    type="text"
-                    name="description"
-                    value={changeWorks.description}
-                    onChange={(e) =>
-                      setChangeWorks({
-                        ...changeWorks,
-                        description: e.target.value,
-                      })
-                    }
-                    id="description"
-                    ref={register}
-                  />
-                  <span>{errors.description?.message}</span>
-                </div>
-                <div>
-                  <label htmlFor="deploy_url">Url</label>
-                  <input
-                    type="url"
-                    name="deploy_url"
-                    value={changeWorks.deploy_url}
-                    onChange={(e) =>
-                      setChangeWorks({
-                        ...changeWorks,
-                        deploy_url: e.target.value,
-                      })
-                    }
-                    id="deploy_url"
-                    ref={register}
-                  />
-                  <span>{errors.deploy_url?.message}</span>
-                </div>
-                <button type="submit">Enviar</button>
-              </form>
-            </div>
-
-            <div className="actions">
-              <button
-                className="button"
-                onClick={() => {
-                  close();
-                }}
-              >
-                Fechar
+          <Modal>
+            <div className="modal">
+              <button className="close" onClick={close}>
+                &times;
               </button>
+              <div className="header">Atualizar Trabalho</div>
+              <div className="content">
+                <form onSubmit={handleSubmit(handleForm)}>
+                  <div>
+                    <label htmlFor="title">Título</label>
+                    <input
+                      type="text"
+                      name="title"
+                      id="title"
+                      value={changeWorks.title}
+                      ref={register}
+                      onChange={(e) =>
+                        setChangeWorks({ title: e.target.value })
+                      }
+                    />
+                    <span>{errors.title?.message}</span>
+                  </div>
+                  <div>
+                    <label htmlFor="description">Descrição</label>
+                    <textarea
+                      type="text"
+                      name="description"
+                      value={changeWorks.description}
+                      onChange={(e) =>
+                        setChangeWorks({
+                          ...changeWorks,
+                          description: e.target.value,
+                        })
+                      }
+                      id="description"
+                      ref={register}
+                    />
+                    <span>{errors.description?.message}</span>
+                  </div>
+                  <div>
+                    <label htmlFor="deploy_url">Url</label>
+                    <input
+                      type="url"
+                      name="deploy_url"
+                      value={changeWorks.deploy_url}
+                      onChange={(e) =>
+                        setChangeWorks({
+                          ...changeWorks,
+                          deploy_url: e.target.value,
+                        })
+                      }
+                      id="deploy_url"
+                      ref={register}
+                    />
+                    <span>{errors.deploy_url?.message}</span>
+                  </div>
+                  <button type="submit">Enviar</button>
+                </form>
+              </div>
+
+              <div className="actions"></div>
             </div>
-          </div>
+          </Modal>
         )}
       </Popup>
     </>

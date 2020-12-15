@@ -1,11 +1,11 @@
-import Popup from "reactjs-popup";
+import { Modal, AddButton } from "./style";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/API";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
-
+import Popup from "reactjs-popup";
 const AddTech = () => {
   const { token, profile } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -43,12 +43,12 @@ const AddTech = () => {
   return (
     <>
       <Popup
-        trigger={<button className="button"> Adicionar tecnologia </button>}
+        trigger={<AddButton> Adicionar Tecnologia </AddButton>}
         modal
         nested
       >
         {(close) => (
-          <div className="modal">
+          <Modal>
             <button className="close" onClick={close}>
               &times;
             </button>
@@ -69,19 +69,10 @@ const AddTech = () => {
                 <p>{errors.user_tech?.message}</p>
                 <button type="submit">Enviar</button>
               </form>
-            </div>
 
-            <div className="actions">
-              <button
-                className="button"
-                onClick={() => {
-                  close();
-                }}
-              >
-                Fechar
-              </button>
+              <div className="actions"></div>
             </div>
-          </div>
+          </Modal>
         )}
       </Popup>
     </>

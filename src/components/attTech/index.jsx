@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/API";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
+import { Modal } from "../add-tech/style";
+import { Button } from "../../pages/profile/style";
 
 const AttTech = ({ id }) => {
   const { token, profile } = useSelector((state) => state);
@@ -44,39 +46,40 @@ const AttTech = ({ id }) => {
   return (
     <>
       <Popup
-        trigger={<button className="button"> Atualizar tecnologia </button>}
+        trigger={
+          <Button className="button">
+            {" "}
+            <img
+              alt="edit"
+              src="https://img.icons8.com/clouds/70/000000/edit.png"
+            />{" "}
+          </Button>
+        }
         modal
         nested
       >
         {(close) => (
-          <div className="modal">
-            <button className="close" onClick={close}>
-              &times;
-            </button>
-            <div className="header">Atualizar nível</div>
-            <div className="content">
-              <form onSubmit={handleSubmit(handleForm)}>
-                <select name="status" ref={register}>
-                  <option value="">Selecione o nível</option>
-                  <option value="Iniciante">Iniciante</option>
-                  <option value="Intermediário">Intermediário</option>
-                  <option value="Avançado">Avançado</option>
-                </select>
-                <button type="submit">Enviar</button>
-              </form>
-            </div>
-
-            <div className="actions">
-              <button
-                className="button"
-                onClick={() => {
-                  close();
-                }}
-              >
-                Fechar
+          <Modal>
+            <div className="modal">
+              <button className="close" onClick={close}>
+                &times;
               </button>
+              <div className="header">Atualizar nível</div>
+              <div className="content">
+                <form onSubmit={handleSubmit(handleForm)}>
+                  <select name="status" ref={register}>
+                    <option value="">Selecione o nível</option>
+                    <option value="Iniciante">Iniciante</option>
+                    <option value="Intermediário">Intermediário</option>
+                    <option value="Avançado">Avançado</option>
+                  </select>
+                  <button type="submit">Enviar</button>
+                </form>
+              </div>
+
+              <div className="actions"></div>
             </div>
-          </div>
+          </Modal>
         )}
       </Popup>
     </>
