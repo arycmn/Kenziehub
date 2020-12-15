@@ -135,12 +135,7 @@ const Profile = () => {
                       Nível: {item.status}
                     </Info>
                     <AttTech id={item.id} />
-                    <Button onClick={() => handleRemoveTech(item.id)}>
-                      <img
-                        alt="lixo"
-                        src="https://img.icons8.com/clouds/80/000000/delete-trash.png"
-                      />{" "}
-                    </Button>
+
                     <Button title="Excluir tecnologia">
                       <Popconfirm
                         title="Tem certeza que quer excluir esta tecnologia?"
