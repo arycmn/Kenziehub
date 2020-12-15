@@ -15,7 +15,6 @@ const AttWork = ({ id }) => {
   const findWork = () => {
     const find = profile.works.find((work) => work.id === id);
     setChangeWorks(find);
-    console.log("executei");
   };
 
   const schema = yup.object().shape({
