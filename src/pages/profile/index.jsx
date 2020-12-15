@@ -30,6 +30,8 @@ const Profile = () => {
       .catch((err) => console.log(err));
   };
 
+  const handleRemoveTech = (id) => {};
+
   return (
     <>
       <Header />
@@ -45,17 +47,27 @@ const Profile = () => {
         <Bio>{profile.bio}</Bio>
         <Info>{profile.contact}</Info>
         <Tech>
-          {profile.techs?.map((item) => (
-            <span key={item.id}>{item.title}</span>
+          {profile.techs?.map((item, index) => (
+            <div key={index}>
+              <div>{item.title} </div>
+              <div> Nível: {item.status}</div>
+              <button onClick={() => handleRemoveTech(item.id)}>
+                Excluir Tecnologia
+              </button>
+            </div>
           ))}
+          <AddTech />
+        </Tech>
+        <Tech>
           {profile.works?.map((item, index) => (
             <span key={index}>
               {item.title}
-              <button onClick={() => handleRemoveWork(item.id)}>Excluir</button>
+              <button onClick={() => handleRemoveWork(item.id)}>
+                Excluir Trabalho
+              </button>
             </span>
           ))}
         </Tech>
-        <AddTech />
         <PopupExample />
 
         <Link to="/profile/settings">Alterar informações</Link>
