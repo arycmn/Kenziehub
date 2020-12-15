@@ -1,23 +1,10 @@
-import {
-  Container,
-  StyledCard,
-  Image,
-  Name,
-  CourseModule,
-  Button,
-} from "./style";
+import { Container, StyledCard, Image, Name, CourseModule } from "./style";
 
-//import CardDetail from "../cardDatail";
 import SaibaMais from "../saiba-mais";
 
 const Card = ({ user }) => {
   const imageDefault =
     "https://www.auctus.com.br/wp-content/uploads/2017/09/sem-imagem-avatar.png";
-
-  const cardDetail = () => {
-    //abrir a popUp com o componente
-    // <CardDetail user={user}/>;
-  };
 
   return (
     <Container>
