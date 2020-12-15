@@ -8,6 +8,7 @@ import {
 } from "./style";
 
 //import CardDetail from "../cardDatail";
+import SaibaMais from "../saiba-mais";
 
 const Card = ({ user }) => {
   const imageDefault =
@@ -20,16 +21,16 @@ const Card = ({ user }) => {
 
   return (
     <Container>
-      {user.map(({ name, course_module, avatar_url }, index) => (
+      {user.map((uniqueUser, index) => (
         <StyledCard key={index}>
-          {avatar_url !== null ? (
-            <Image alt={name} src={avatar_url} />
+          {uniqueUser.avatar_url !== null ? (
+            <Image alt={uniqueUser.name} src={uniqueUser.avatar_url} />
           ) : (
-            <Image alt={name} src={imageDefault} />
+            <Image alt={uniqueUser.name} src={imageDefault} />
           )}
-          <Name>{name}</Name>
-          <CourseModule>{course_module}</CourseModule>
-          <Button onClick={cardDetail}>Saber mais</Button>
+          <Name>{uniqueUser.name}</Name>
+          <CourseModule>{uniqueUser.course_module}</CourseModule>
+          <SaibaMais user={uniqueUser} />
         </StyledCard>
       ))}
     </Container>
