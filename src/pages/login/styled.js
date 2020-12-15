@@ -37,6 +37,7 @@ export const InfoLog = styled.div`
   height: 20%;
   font-weight: bolder;
   color: black;
+  background: #d1101d;
 `;
 
 export const InputLog = styled.input`
@@ -57,6 +58,7 @@ export const ErrorParagraph = styled.p`
   color: white;
   font-weight: bold;
   margin-bottom: 3%;
+  background: #d1101d;
 `;
 
 export const ButtonLog = styled.button`

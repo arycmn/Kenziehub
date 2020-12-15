@@ -1,12 +1,19 @@
-import { Container } from "./style";
+import { Container, Box } from "./style";
 import { Link } from "react-router-dom";
 import LogoutButton from "../../components/buttonLogOut";
 
 const Header = () => (
   <Container>
-    <Link to="/profile">Profile</Link>
-    <Link to="/devs">Devs</Link>
-    <LogoutButton />
+    <Box>
+      <Link to="/profile">Profile</Link>{" "}
+    </Box>
+    <Box>
+      {" "}
+      <Link to="/devs">Devs</Link>
+    </Box>
+    <Box>
+      <LogoutButton />
+    </Box>
   </Container>
 );
 

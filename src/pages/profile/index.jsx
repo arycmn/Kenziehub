@@ -1,5 +1,14 @@
-import { Link } from "react-router-dom";
-import { Container, Avatar, Name, Info, Bio, Tech } from "./style";
+import {
+  Container,
+  Avatar,
+  Name,
+  Info,
+  Bio,
+  Tech,
+  ProfileButton,
+  ChangeInfo,
+} from "./style";
+import { useHistory } from "react-router-dom";
 import { api } from "../../services/API";
 import { useSelector, useDispatch } from "react-redux";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
@@ -16,6 +25,7 @@ const Profile = () => {
     "https://www.auctus.com.br/wp-content/uploads/2017/09/sem-imagem-avatar.png";
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleRemoveWork = (id) => {
     api
@@ -45,6 +55,9 @@ const Profile = () => {
       .catch((err) => console.log(err));
   };
 
+  const handleClickChangeInfo = () => {
+    history.push("/profile/settings");
+  };
   return (
     <>
       <Header />
@@ -91,7 +104,9 @@ const Profile = () => {
         </Tech>
         <AddWork />
 
-        <Link to="/profile/settings">Alterar informações</Link>
+        <ChangeInfo onClick={handleClickChangeInfo}>
+          Alterar informações
+        </ChangeInfo>
       </Container>
     </>
   );
