@@ -60,7 +60,7 @@ const SaibaMais = ({ user, imageDefault }) => {
                 <div>
                   {user.contact.includes("http://") ||
                   user.contact.includes("https://") ? (
-                    <a href={user.contact} target="_blank" rel="noopener">
+                    <a href={user.contact} target="_blank" rel="noreferrer">
                       {user.contact}
                     </a>
                   ) : (
@@ -101,7 +101,7 @@ const SaibaMais = ({ user, imageDefault }) => {
                             <a
                               href={user.deploy_url}
                               target="_blank"
-                              rel="noopener"
+                              rel="noreferrer"
                             >
                               Ver deploy
                             </a>
