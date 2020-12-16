@@ -44,20 +44,23 @@ const Login = () => {
 
   const [loading, setLoad] = useState(false);
 
+  const closePopUp = (close) => {
+    close();
+  };
+
   const handleForm = (data) => {
     setLoad(true);
 
     api
       .post("/sessions", { ...data })
       .then((res) => {
-        setLoad(false);
         message.success("Logado com sucesso");
         window.localStorage.setItem("token", res.data.token);
-
         dispatch(getTokenThunk(res.data.token));
         dispatch(validateThunk(true));
-        history.push("/profile");
         dispatch(getProfileThunk(res.data.user));
+        setLoad(false);
+        history.push("/profile");
       })
       .catch((err) => {
         setLoad(false);
