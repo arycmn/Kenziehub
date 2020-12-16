@@ -19,6 +19,16 @@ export const Container = styled.div`
 export const Logo = styled.img`
   width: 722.5px;
   height: 527px;
+
+  @media (max-width: 1024px) {
+    width: 578px;
+    height: 421px;
+  }
+
+  @media (max-width: 425px) {
+    width: 289px;
+    height: 210px;
+  }
 `;
 
 export const Menu = styled.div`
@@ -27,6 +37,13 @@ export const Menu = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    height: 40%;
+  }
+  @media (max-width: 425px) {
+    height: 50%;
+  }
 `;
 
 export const Content = styled.div`
@@ -52,6 +69,13 @@ export const Title = styled.div`
   :hover {
     transform: scale(1.2);
   }
+
+  @media (max-width: 768px) {
+    font-size: 3em;
+  }
+  @media (max-width: 425px) {
+    font-size: 2em;
+  }
 `;
 
 export const Phrase = styled.div`
@@ -63,6 +87,15 @@ export const Phrase = styled.div`
   height: 35%;
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    height: 60%;
+  }
+
+  @media (max-width: 425px) {
+    font-size: 10px;
+  }
 `;
 
 export const ButtonsPlace = styled.div`
@@ -70,7 +103,11 @@ export const ButtonsPlace = styled.div`
   align-items: center;
   justify-content: center;
   height: 50%;
-  width: 100%;
+  width: 75%;
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+  }
 `;
 
 export const ButtonLogin = styled.button`
@@ -90,6 +127,9 @@ export const ButtonLogin = styled.button`
     background: #7fab99;
 
     transform: scale(1.1);
+  }
+  @media (max-width: 768px) {
+    font-size: 0.8em;
   }
 `;
 
