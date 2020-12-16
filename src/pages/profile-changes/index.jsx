@@ -13,6 +13,9 @@ import {
   Input,
   Options,
   SubmitButton,
+  LineButton,
+  LineAvatar,
+  Error,
 } from "./style";
 import { schema } from "./validations";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
@@ -116,23 +119,26 @@ const ProfileChanges = () => {
       <Header />
       <Container>
         <Form onSubmit={handleSubmit(handleForm)}>
-          <Avatar>
-            <label htmlFor="avatar">
-              <img
-                src={profile.avatar_url ? profile.avatar_url : defaultAvatar}
-                alt={profile.name}
+          <LineAvatar>
+            <Avatar>
+              <label htmlFor="avatar">
+                <img
+                  src={profile.avatar_url ? profile.avatar_url : defaultAvatar}
+                  alt={profile.name}
+                />
+              </label>
+              <input
+                id="avatar"
+                type="file"
+                accept="image/*"
+                ref={register}
+                name="avatar_url"
+                onChange={handleAvatarChange}
               />
-            </label>
-            <input
-              id="avatar"
-              type="file"
-              accept="image/*"
-              ref={register}
-              name="avatar_url"
-              onChange={handleAvatarChange}
-            />
-            <p>{errors.user_avatar?.message}</p>
-          </Avatar>
+
+              <Error>{errors.user_avatar?.message}</Error>
+            </Avatar>
+          </LineAvatar>
           <Field>
             <Title htmlFor="name">Nome</Title>
             <Input
@@ -145,7 +151,7 @@ const ProfileChanges = () => {
               }
               inputMode="text"
             />
-            <span>{errors.name?.message}</span>
+            <Error>{errors.name?.message}</Error>
           </Field>
           <Field>
             <Title htmlFor="email">Email</Title>
@@ -159,7 +165,7 @@ const ProfileChanges = () => {
               }
               inputMode="email"
             />
-            <span>{errors.email?.message}</span>
+            <Error>{errors.email?.message}</Error>
           </Field>
           <Field>
             <Title htmlFor="course_module">Módulo</Title>
@@ -181,7 +187,7 @@ const ProfileChanges = () => {
                 </option>
               ))}
             </Options>
-            <span>{errors.course_module?.message}</span>
+            <Error>{errors.course_module?.message}</Error>
           </Field>
           <Field>
             <Title htmlFor="bio">Bio</Title>
@@ -195,7 +201,7 @@ const ProfileChanges = () => {
               }
               inputMode="text"
             />
-            <span>{errors.bio?.message}</span>
+            <Error>{errors.bio?.message}</Error>
           </Field>
           <Field>
             <Title htmlFor="contact">Contato</Title>
@@ -209,7 +215,7 @@ const ProfileChanges = () => {
               }
               inputMode="text"
             />
-            <span>{errors.contact?.message}</span>
+            <Error>{errors.contact?.message}</Error>
           </Field>
           <Field>
             <Title htmlFor="old_password">Senha antiga</Title>
@@ -220,7 +226,7 @@ const ProfileChanges = () => {
               ref={register}
               inputMode="text"
             />
-            <span>{errors.old_password?.message}</span>
+            <Error>{errors.old_password?.message}</Error>
           </Field>
           <Field>
             <Title htmlFor="password" name="password">
@@ -233,7 +239,7 @@ const ProfileChanges = () => {
               ref={register}
               inputMode="text"
             />
-            <span>{errors.password?.message}</span>
+            <Error>{errors.password?.message}</Error>
           </Field>
           <Field>
             <Title htmlFor="password" name="password">
@@ -246,12 +252,14 @@ const ProfileChanges = () => {
               ref={register}
               inputMode="text"
             />
-            <span>{errors.password_confirm?.message}</span>
+            <Error>{errors.password_confirm?.message}</Error>
           </Field>
-          <p>{errors.user_changes?.message}</p>
-          <SubmitButton type="submit" disabled={loading}>
-            {loading ? <Loading3QuartersOutlined spin /> : "Salvar"}
-          </SubmitButton>
+          <LineButton>
+            <SubmitButton type="submit" disabled={loading}>
+              {loading ? <Loading3QuartersOutlined spin /> : "Salvar"}
+            </SubmitButton>
+            <Error>{errors.user_changes?.message}</Error>
+          </LineButton>
         </Form>
       </Container>
     </>

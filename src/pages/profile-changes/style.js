@@ -1,68 +1,133 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Form = styled.form`
+  width: 50%;
+  height: 80%;
+  background: #ffcc8a;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 5%;
+`;
+
+export const Field = styled.div`
+  height: 15%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-export const Field = styled.p`
+export const LineButton = styled.div`
+  height: 10%;
   width: 100%;
-  margin-top: 5px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
-  span {
-    margin-top: 5px;
-  }
+export const LineAvatar = styled(LineButton)`
+  height: 20%;
 `;
 
 export const Input = styled.input`
-  width: 100%;
+  height: 40%;
+  width: 90%;
   padding: 10px;
   border-radius: 5px;
   border: none;
-  background: #fff;
-  font: 400 1rem;
+  background: #ffebd4;
+  font: 1em;
+
+  :hover {
+    background: #ffae42;
+  }
+
+  :focus {
+    background: #ffae42;
+    font-weight: bold;
+  }
 `;
 
 export const Bio = styled.textarea`
-  width: 100%;
+  height: 40%;
+  width: 90%;
   padding: 10px;
   border-radius: 5px;
   border: none;
-  background: #fff;
+  background: #ffebd4;
   resize: none;
-  font: 400 1rem;
+  font: 1em;
+
+  :hover {
+    background: #ffae42;
+  }
+
+  :focus {
+    background: #ffae42;
+    font-weight: bold;
+  }
 `;
 
 export const Options = styled.select`
-  width: 100%;
+  width: 90%;
+  height: 40%;
+
   padding: 10px;
   border-radius: 5px;
   border: none;
-  background: #fff;
-  font: 400 1rem;
+  background: #ffebd4;
+  font: 1em;
+
+  :hover {
+    background: #ffae42;
+  }
+
+  :focus {
+    background: #ffae42;
+    font-weight: bold;
+  }
 `;
 
-export const Title = styled.label`
-  font: 400 1rem Roboto, sans-serif;
+export const Title = styled.div`
+  height: 20%;
+  font: 1em Roboto, sans-serif;
+  font-weight: bold;
+  color: #3f403a;
 `;
 
 export const Avatar = styled.div`
-  margin: 0 auto;
+  width: 125px;
+  height: 125px;
 
   label {
     img {
       border-radius: 50%;
       display: block;
-      width: 150px;
-      height: 150px;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      padding: 5px;
+      width: 125px;
+      height: 125px;
+      border: 2px solid rgba(0, 0, 0, 0.2);
+      background: #ffae42;
+      padding: 2.5px;
       margin: 0 auto;
       cursor: pointer;
+      :hover {
+        filter: invert(15%);
+      }
     }
   }
 
@@ -71,31 +136,25 @@ export const Avatar = styled.div`
   }
 `;
 
+export const Error = styled.p`
+  height: 20%;
+  font-weight: bold;
+  color: #3f403a;
+  margin: 0;
+`;
+
 export const SubmitButton = styled.button`
+  width: 10%;
+  height: 50%;
   border: none;
-  border-radius: 15px;
+  border-radius: 5px;
   font-size: 100%;
-  padding: 2%;
   background: rgba(255, 174, 66);
   max-width: 100%;
 
   :hover {
     cursor: pointer;
-    background-color: #d1101d;
+    background-color: #006c5f;
     color: white;
   }
-`;
-
-export const Form = styled.form`
-  margin: 3%;
-  min-width: 700px;
-  max-width: 850px;
-  background: rgba(255, 174, 66, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-radius: 10%;
-  padding: 7% 3%;
 `;
