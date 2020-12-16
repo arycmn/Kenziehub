@@ -85,11 +85,10 @@ const Profile = () => {
             alt={profile.name}
           />
           <Name>{profile.name}</Name>
-          <hr />
           <Info>
             <img
               alt="e-mail"
-              src="https://img.icons8.com/clouds/100/000000/email.png"
+              src="https://img.icons8.com/clouds/70/000000/email.png"
             />
             {profile.email}
           </Info>
@@ -97,24 +96,24 @@ const Profile = () => {
             {profile.course_module}
             <img
               alt="tech"
-              src="https://img.icons8.com/clouds/100/000000/laptop.png"
+              src="https://img.icons8.com/clouds/70/000000/laptop.png"
             />
           </Info>
           <Bio>
             <img
               alt="aspasesquerdas"
-              src="https://img.icons8.com/doodle/48/000000/quote-left.png"
+              src="https://img.icons8.com/doodle/38/000000/quote-left.png"
             />
             {profile.bio}
             <img
               alt="aspasdireitas"
-              src="https://img.icons8.com/doodle/48/000000/quote-right.png"
+              src="https://img.icons8.com/doodle/38/000000/quote-right.png"
             />
           </Bio>
           <Info>
             <img
               alt="contact"
-              src="https://img.icons8.com/clouds/100/000000/business-contact.png"
+              src="https://img.icons8.com/clouds/70/000000/business-contact.png"
             />
             {profile.contact}
           </Info>

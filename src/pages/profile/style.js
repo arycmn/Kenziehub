@@ -17,7 +17,7 @@ export const Box = styled.div`
   align-items: center;
   text-align: center;
   border-radius: 10%;
-  padding: 7% 3%;
+  padding: 4%;
   hr {
     margin: 5px;
     border: none;
@@ -37,15 +37,14 @@ export const Avatar = styled.img`
 export const Name = styled.h1`
   font: 700 2rem;
   background: rgba(255, 174, 66, 0);
-  padding: 5px;
+  padding-top: 2%;
 `;
 
 export const Info = styled.div`
-  font: 400 1.2rem;
-  color: black;
-  padding: 5px;
   font-size: 130%;
   background: rgba(255, 174, 66, 0);
+  margin: 0;
+  padding: 0;
 
   a {
     text-decoration: none;
@@ -61,6 +60,7 @@ export const Info = styled.div`
   }
 
   hr {
+    margin-top: 0;
     margin: 5px;
     border: none;
     border-top: 0.5px solid rgb(255, 174, 66);
@@ -70,7 +70,6 @@ export const Info = styled.div`
   }
   h5 {
     text-align: center;
-    margin: 0;
   }
 `;
 
@@ -79,10 +78,8 @@ export const ProfileButton = styled.button`
 `;
 
 export const Bio = styled.p`
-  font: 400 1rem Roboto, sans-serif;
-  color: #333;
+  font-size: 120%;
   background: rgba(255, 174, 66, 0);
-  padding: 5px;
 `;
 export const ChangeInfo = styled.button`
   border: none;
@@ -107,8 +104,6 @@ export const ButtonsDiv = styled.div`
   padding: 5px;
 `;
 export const Tech = styled.div`
-  font: 400 1.3rem;
-
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
