@@ -90,7 +90,13 @@ const AddWork = () => {
           <div className="content">
             <form onSubmit={handleSubmit(handleAddWork)}>
               <label htmlFor="title">Título</label>
-              <input type="text" name="title" id="title" ref={register} />
+              <input
+                type="text"
+                name="title"
+                id="title"
+                ref={register}
+                inputMode="text"
+              />
               <span>{errors.title?.message}</span>
 
               <label htmlFor="description">Descrição</label>
@@ -99,6 +105,7 @@ const AddWork = () => {
                 name="description"
                 id="description"
                 ref={register}
+                inputMode="text"
               />
               <span>{errors.description?.message}</span>
 
@@ -108,6 +115,7 @@ const AddWork = () => {
                 name="deploy_url"
                 id="deploy_url"
                 ref={register}
+                inputMode="url"
               />
               <span>{errors.deploy_url?.message}</span>
 

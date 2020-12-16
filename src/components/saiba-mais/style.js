@@ -46,3 +46,12 @@ export const Image = styled.img`
   height: 200px;
   border-radius: 50%;
 `;
+
+export const Button = styled.button`
+  font-size: 100%;
+  border-radius: 20px;
+  :hover {
+    cursor: pointer;
+    background-color: rgba(225, 225, 225, 0.5);
+  }
+`;

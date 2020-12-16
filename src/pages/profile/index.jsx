@@ -26,11 +26,10 @@ import AttTech from "../../components/attTech";
 const Profile = () => {
   const { profile, token } = useSelector((state) => state);
 
-  const imageDefault =
-    "https://www.auctus.com.br/wp-content/uploads/2017/09/sem-imagem-avatar.png";
-
   const dispatch = useDispatch();
   const history = useHistory();
+  const imageProfile =
+    "https://img.icons8.com/clouds/500/000000/test-account.png";
 
   const handleRemoveWork = (id) => {
     api
@@ -80,7 +79,7 @@ const Profile = () => {
       <Container>
         <Box>
           <Avatar
-            src={profile.avatar_url ? profile.avatar_url : imageDefault}
+            src={profile.avatar_url ? profile.avatar_url : imageProfile}
             alt={profile.name}
           />
           <Name>{profile.name}</Name>

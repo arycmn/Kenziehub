@@ -1,12 +1,20 @@
 import React from "react";
 import Popup from "reactjs-popup";
-import { Modal, Image } from "./style";
+import { Modal, Image, Button } from "./style";
 
 const SaibaMais = ({ user, imageDefault }) => {
   console.log(user);
   return (
     <Popup
-      trigger={<button className="button"> Saiba Mais </button>}
+      trigger={
+        <Button className="button">
+          Mais informações
+          <img
+            alt="more"
+            src="https://img.icons8.com/clouds/50/000000/about.png"
+          />
+        </Button>
+      }
       modal
       nested
     >

@@ -143,6 +143,7 @@ const ProfileChanges = () => {
               onChange={(e) =>
                 setProfileChange({ ...profileChange, name: e.target.value })
               }
+              inputMode="text"
             />
             <span>{errors.name?.message}</span>
           </Field>
@@ -156,6 +157,7 @@ const ProfileChanges = () => {
               onChange={(e) =>
                 setProfileChange({ ...profileChange, email: e.target.value })
               }
+              inputMode="email"
             />
             <span>{errors.email?.message}</span>
           </Field>
@@ -191,6 +193,7 @@ const ProfileChanges = () => {
               onChange={(e) =>
                 setProfileChange({ ...profileChange, bio: e.target.value })
               }
+              inputMode="text"
             />
             <span>{errors.bio?.message}</span>
           </Field>
@@ -204,6 +207,7 @@ const ProfileChanges = () => {
               onChange={(e) =>
                 setProfileChange({ ...profileChange, contact: e.target.value })
               }
+              inputMode="text"
             />
             <span>{errors.contact?.message}</span>
           </Field>
@@ -214,6 +218,7 @@ const ProfileChanges = () => {
               name="old_password"
               type="password"
               ref={register}
+              inputMode="text"
             />
             <span>{errors.old_password?.message}</span>
           </Field>
@@ -226,6 +231,7 @@ const ProfileChanges = () => {
               type="password"
               name="password"
               ref={register}
+              inputMode="text"
             />
             <span>{errors.password?.message}</span>
           </Field>
@@ -238,6 +244,7 @@ const ProfileChanges = () => {
               type="password"
               name="password_confirm"
               ref={register}
+              inputMode="text"
             />
             <span>{errors.password_confirm?.message}</span>
           </Field>

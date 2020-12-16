@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { Container, Input, SearchArea } from "./style";
+import { Container, Input, SearchArea, Pages } from "./style";
 import Header from "../../components/header";
 import CardContainer from "../../components/card-container";
-
 import { getDevThunk } from "../../store/modules/devs/thunks";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -41,16 +40,34 @@ const Devs = () => {
       <Header />
 
       <Container>
-        {page > 1 && <button onClick={prev}>Anterior</button>}
-        {page < totalPages && <button onClick={next}>Próxima</button>}
+        <Pages>
+          {page > 1 && (
+            <button onClick={prev}>
+              {" "}
+              <img
+                alt="previous"
+                src="https://img.icons8.com/clouds/100/000000/left.png"
+              />
+            </button>
+          )}
 
-        <SearchArea>
-          <Input
-            placeholder="Procure o dev pelo nome"
-            onChange={handleInput}
-            value={input}
-          />
-        </SearchArea>
+          <SearchArea>
+            <Input
+              placeholder="Procure o dev pelo nome"
+              onChange={handleInput}
+              value={input}
+            />
+          </SearchArea>
+
+          {page < totalPages && (
+            <button onClick={next}>
+              <img
+                alt="next"
+                src="https://img.icons8.com/clouds/100/000000/right.png"
+              />
+            </button>
+          )}
+        </Pages>
 
         <CardContainer
           devs={devs}
