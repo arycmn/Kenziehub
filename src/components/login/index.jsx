@@ -44,10 +44,6 @@ const Login = () => {
 
   const [loading, setLoad] = useState(false);
 
-  const closePopUp = (close) => {
-    close();
-  };
-
   const handleForm = (data) => {
     setLoad(true);
 
