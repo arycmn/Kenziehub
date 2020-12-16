@@ -122,6 +122,7 @@ export const SelectSign = styled.select`
     cursor: pointer;
     background: #7fab99;
     color: white;
+    font-weight: bold;
   }
 `;
 
