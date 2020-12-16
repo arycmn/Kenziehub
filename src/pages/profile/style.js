@@ -6,6 +6,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 export const Box = styled.div`
   margin: 3%;
   min-width: 700px;
@@ -49,14 +50,10 @@ export const Info = styled.div`
   a {
     text-decoration: none;
     color: #006c5f;
-    background: rgba(255, 174, 66, 0);
 
     :hover {
       text-decoration: underline;
     }
-  }
-  div {
-    background: rgba(255, 174, 66, 0);
   }
 
   hr {
@@ -79,8 +76,8 @@ export const ProfileButton = styled.button`
 
 export const Bio = styled.p`
   font-size: 120%;
-  background: rgba(255, 174, 66, 0);
 `;
+
 export const ChangeInfo = styled.button`
   border: none;
   border-radius: 15px;
@@ -95,6 +92,7 @@ export const ChangeInfo = styled.button`
     color: white;
   }
 `;
+
 export const ButtonsDiv = styled.div`
   justify-content: center;
   display: flex;
@@ -103,6 +101,7 @@ export const ButtonsDiv = styled.div`
   width: inherit;
   padding: 5px;
 `;
+
 export const Tech = styled.div`
   display: flex;
   flex-direction: row;
@@ -110,37 +109,37 @@ export const Tech = styled.div`
   margin: 0px;
   padding: 10px;
   align-items: center;
-  background: rgba(255, 174, 66, 0);
 
   p {
     text-align: center;
-    background: rgba(255, 174, 66, 0);
   }
 `;
+
 export const Techs = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   min-width: 650px;
-  background: rgba(255, 174, 66, 0);
 `;
+
 export const Works = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   min-width: 650px;
-  background: rgba(255, 174, 66, 0);
 `;
+
 export const Button = styled.button`
   border: none;
-  background: rgba(255, 174, 66, 0);
   transition: all 0.5s;
   cursor: pointer;
+  background: rgba(255, 174, 66, 0);
   :hover {
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
+    color: white;
   }
 `;
 
@@ -159,9 +158,12 @@ export const ViewDescriptionButton = styled.button`
   background: none;
   outline: none;
   cursor: pointer;
+  transition: all 0.5s;
+
   :hover {
-    transform: scale(1.1);
-    filter: invert(10%);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    color: white;
   }
 
   img {
