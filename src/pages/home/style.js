@@ -110,7 +110,7 @@ export const ButtonsPlace = styled.div`
   }
 `;
 
-export const Login = styled.button`
+export const ButtonLogin = styled.button`
   background-color: #ffae42;
   color: #ffebd4;
   height: 35%;
@@ -133,7 +133,7 @@ export const Login = styled.button`
   }
 `;
 
-export const Register = styled(Login)`
+export const ButtonSingUp = styled(ButtonLogin)`
   background: #7fab99;
 
   :hover {

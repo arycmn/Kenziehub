@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
-  Container,
   FormLogin,
   InfoLog,
   InputLog,
   ButtonLog,
+  ButtonCloseLog,
   Image,
   FormContainer,
   ErrorParagraph,
+  StyledPopup,
+  Column,
+  Line,
 } from "./styled";
+import { ButtonLogin } from "../../pages/home/style";
 import { api } from "../../services/API";
 import { useDispatch } from "react-redux";
 import { getTokenThunk } from "../../store/modules/token/thunks";
@@ -46,14 +50,13 @@ const Login = () => {
     api
       .post("/sessions", { ...data })
       .then((res) => {
-        setLoad(false);
         message.success("Logado com sucesso");
         window.localStorage.setItem("token", res.data.token);
-
         dispatch(getTokenThunk(res.data.token));
         dispatch(validateThunk(true));
-        history.push("/profile");
         dispatch(getProfileThunk(res.data.user));
+        setLoad(false);
+        history.push("/profile");
       })
       .catch((err) => {
         setLoad(false);
@@ -67,23 +70,51 @@ const Login = () => {
 
   return (
     <>
-      <Container>
-        <Image image={ImageLogin}></Image>
-        <FormContainer>
-          <FormLogin onSubmit={handleSubmit(handleForm)}>
-            <InfoLog>Email</InfoLog>
-            <InputLog placeholder="Email" ref={register} name="email" />
-            <ErrorParagraph>{errors.email?.message}</ErrorParagraph>
-            <InfoLog>Senha</InfoLog>
-            <InputLog placeholder="Senha" ref={register} name="password" />
-            <ErrorParagraph>{errors.password?.message}</ErrorParagraph>
-            <ButtonLog type="submit" disabled={loading}>
-              {loading ? <Loading3QuartersOutlined spin /> : "Entrar"}
-            </ButtonLog>
-            <ErrorParagraph>{errors.user_login?.message}</ErrorParagraph>
-          </FormLogin>
-        </FormContainer>
-      </Container>
+      <StyledPopup
+        trigger={<ButtonLogin className="button"> Login </ButtonLogin>}
+        modal
+        nested
+      >
+        {(close) => (
+          <div className="modal">
+            <div className="header">
+              <ButtonCloseLog className="close" onClick={close}>
+                &times;
+              </ButtonCloseLog>
+            </div>
+            <div className="content">
+              <Image src={ImageLogin}></Image>
+              <FormContainer>
+                <FormLogin onSubmit={handleSubmit(handleForm)}>
+                  <Column>
+                    <InfoLog>Email</InfoLog>
+                    <InputLog placeholder="Email" ref={register} name="email" />
+                    <ErrorParagraph>{errors.email?.message}</ErrorParagraph>
+                  </Column>
+                  <Column>
+                    {" "}
+                    <InfoLog>Senha</InfoLog>
+                    <InputLog
+                      placeholder="Senha"
+                      ref={register}
+                      name="password"
+                    />
+                    <ErrorParagraph>{errors.password?.message}</ErrorParagraph>
+                  </Column>
+                  <Line>
+                    <ButtonLog type="submit" disabled={loading}>
+                      {loading ? <Loading3QuartersOutlined spin /> : "Entrar"}
+                    </ButtonLog>
+                    <ErrorParagraph>
+                      {errors.user_login?.message}
+                    </ErrorParagraph>
+                  </Line>
+                </FormLogin>
+              </FormContainer>
+            </div>
+          </div>
+        )}
+      </StyledPopup>
     </>
   );
 };
