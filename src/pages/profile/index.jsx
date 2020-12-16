@@ -11,6 +11,7 @@ import {
   ChangeInfo,
   Works,
   Button,
+  Line,
 } from "./style";
 import { message, Popconfirm } from "antd";
 import { useHistory } from "react-router-dom";
@@ -22,6 +23,7 @@ import AddWork from "../../components/add-work";
 import AttWork from "../../components/att-work";
 import AddTech from "../../components/add-tech";
 import AttTech from "../../components/attTech";
+import ViewDescription from "../../components/view-description";
 
 const Profile = () => {
   const { profile, token } = useSelector((state) => state);
@@ -85,34 +87,31 @@ const Profile = () => {
           <Name>{profile.name}</Name>
           <hr />
           <Info>
-            {" "}
             <img
               alt="e-mail"
               src="https://img.icons8.com/clouds/100/000000/email.png"
-            />{" "}
+            />
             {profile.email}
           </Info>
           <Info>
-            {profile.course_module}{" "}
+            {profile.course_module}
             <img
               alt="tech"
               src="https://img.icons8.com/clouds/100/000000/laptop.png"
             />
           </Info>
           <Bio>
-            {" "}
             <img
               alt="aspasesquerdas"
               src="https://img.icons8.com/doodle/48/000000/quote-left.png"
             />
-            {profile.bio}{" "}
+            {profile.bio}
             <img
               alt="aspasdireitas"
               src="https://img.icons8.com/doodle/48/000000/quote-right.png"
             />
           </Bio>
           <Info>
-            {" "}
             <img
               alt="contact"
               src="https://img.icons8.com/clouds/100/000000/business-contact.png"
@@ -128,7 +127,6 @@ const Profile = () => {
                 {profile.techs?.map((item, index) => (
                   <Techs key={index}>
                     <Info>
-                      {" "}
                       <h3>{item.title}</h3>
                       Nível: {item.status}
                     </Info>
@@ -159,11 +157,12 @@ const Profile = () => {
                 <Works key={index}>
                   <Info>
                     <h4>Nome: </h4>
-                    <h3>{item.title} </h3>
-                    <h5> "{item.description}"</h5>
+                    <Line>
+                      <h3>{item.title} </h3>
+                      <ViewDescription description={item.description} />
+                    </Line>
                   </Info>
                   <Info>
-                    {" "}
                     <h4>Site:</h4>
                     <h3>
                       <a

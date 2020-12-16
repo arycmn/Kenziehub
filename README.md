@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# 🖥️ ProgramMate
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O ProgramMate é um sistema front-end desenvolvido para fins didáticos, para simular o desenvolvimento de um sistema em uma equipe de trabalho, utilizando um framework Agile Software Development (ou Desenvolvimento Ágil, em português), sendo este o Scrum, no qual cada pessoa na equipe possui um papel importante, para o desenvolvimento.
 
-## Available Scripts
+## ❓ O que é?
 
-In the project directory, you can run:
+É uma rede social feita de devs para devs, onde é possível cadastrar-se, e encontrar devs que também estão cadastrados na plataforma.
 
-### `yarn start`
+Também é possível adicionar suas tecnologias de trabalhos, bem como o seu nível de conhecimento, nesta tecnologia e seus trabalhos, com uma descrição e link de deploy. Deste modo, há a possibilidade de pesquisar por devs e ver suas tecnologias e trabalhos.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 👨‍💻👩‍💻 Equipe
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[Ary Machado](https://gitlab.com/arycmn) - Product Owner
 
-### `yarn test`
+[Cláudio Siqueira](https://gitlab.com/claudio42) - Quality Assurance
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Débora Barros](https://gitlab.com/deborabarros) - Tech Leader
 
-### `yarn build`
+[Gabriel Fabiano](https://gitlab.com/gabrielfabianoo91) - Quality Assurance
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[Ingrid Benites](https://gitlab.com/ingridbgr) - Scrum Master
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 💿 Como instalar
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+⚠️ Você deve ter instalado na sua máquina:
 
-### `yarn eject`
+<ul>
+<li>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[Git](https://git-scm.com/downloads)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+</li>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<li>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+[Node](https://nodejs.org/en/download/package-manager/)
 
-## Learn More
+</li>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<li>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+(Opcional) [Yarn](https://yarnpkg.com/getting-started/install)
 
-### Code Splitting
+</li>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+</ul>
 
-### Analyzing the Bundle Size
+Tendo estes itens instalado, você precisa clonar o repositório em seu computador, com o seguinte comando, em um terminal:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<code>git clone https://gitlab.com/deborabarros/kenziehub</code>
 
-### Making a Progressive Web App
+Então, você precisa entrar na pasta do projeto e instalar as dependências, com os seguintes comandos:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+cd kenziehub
 
-### Advanced Configuration
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Caso você tenha o Yarn instalado, você pode substituir o <code>npm install</code> por <code>yarn install</code>.
 
-### Deployment
+Feito isso, já é possível rodar o sistema em sua máquina.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🚀 Rodando o sistema
 
-### `yarn build` fails to minify
+Para rodar o sistema, basta rodar este comando, no terminal, dentro da pasta do projeto:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<code>npm start</code>
+
+Ou, se tiver o Yarn instalado, é só rodar este comando: <code>yarn start</code>.
+
+E então, você terá o sistema rodando em sua máquina 🎆
+
+## 💻 Tecnologias utilizadas
+
+<img src="https://img.icons8.com/officel/12/000000/react.png"/> [ReactJs](https://pt-br.reactjs.org/) - Biblioteca javascript para desenvolvimento da interface
+
+<img src="https://img.icons8.com/color/12/000000/redux.png"/> [Redux](https://redux.js.org/) - Biblioteca javascript para gerenciamento de estados na aplicação
+
+[Axios](https://github.com/axios/axios) - Cliente HTTP, utilizado para fazer as requisições back-end
+
+<hr>
+
+Api desenvolvida por [Gabriel Araújo](https://gitlab.com/gabriel149)
+
+Design desenvolvido por [Ingrid Benites](https://gitlab.com/ingridbgr)
