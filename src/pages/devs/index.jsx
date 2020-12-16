@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Container, Input, SearchArea, Pages } from "./style";
+import { Container, Input, SearchArea, Pages, Button } from "./style";
 import Header from "../../components/header";
 import CardContainer from "../../components/card-container";
 import { getDevThunk } from "../../store/modules/devs/thunks";
@@ -42,13 +42,12 @@ const Devs = () => {
       <Container>
         <Pages>
           {page > 1 && (
-            <button onClick={prev}>
-              {" "}
+            <Button onClick={prev}>
               <img
                 alt="previous"
                 src="https://img.icons8.com/clouds/100/000000/left.png"
               />
-            </button>
+            </Button>
           )}
 
           <SearchArea>
@@ -60,12 +59,12 @@ const Devs = () => {
           </SearchArea>
 
           {page < totalPages && (
-            <button onClick={next}>
+            <Button onClick={next}>
               <img
                 alt="next"
                 src="https://img.icons8.com/clouds/100/000000/right.png"
               />
-            </button>
+            </Button>
           )}
         </Pages>
 

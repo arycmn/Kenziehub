@@ -139,6 +139,7 @@ export const StyledPopup = styled(Popup)`
         background: #006c5f;
         border: none;
         color: white;
+        box-sizing: content-box;
       }
     }
   }
