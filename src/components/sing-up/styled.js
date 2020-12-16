@@ -109,14 +109,19 @@ export const Line = styled(Column)`
 `;
 
 export const SelectSign = styled.select`
+  height: 40%;
   width: 90%;
-  color: #006c5f;
   outline: none;
+  border: none;
+  background: white;
+  border-radius: 5px;
   font-size: 1em;
+  color: #006c5f;
+  margin-top: 5px;
   :hover {
     cursor: pointer;
-    background: white;
-    color: #006c5f;
+    background: #7fab99;
+    color: white;
   }
 `;
 
@@ -134,6 +139,7 @@ export const InputSign = styled.input`
   height: 40%;
   font-size: 0.8em;
   padding: 10px;
+  margin-top: 5px;
   outline: none;
   border-radius: 5px;
   border: none;

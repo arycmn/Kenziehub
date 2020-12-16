@@ -88,7 +88,6 @@ export const FormContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 3%;
   text-align: center;
 `;
 
@@ -128,6 +127,7 @@ export const InputLog = styled.input`
   border-radius: 5px;
   outline: none;
   border: none;
+  margin-top: 5px;
 
   :hover {
     background: #ffcc8a;
