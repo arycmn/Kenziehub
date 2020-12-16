@@ -62,17 +62,6 @@ export const ButtonCloseLog = styled.button`
   }
 `;
 
-export const Container = styled.div`
-  height: 100%;
-  width: 100%;
-  background-color: #ffebd4;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-size: 120%;
-`;
-
 export const FormContainer = styled.div`
   width: 50%;
   height: 90%;
@@ -86,23 +75,35 @@ export const FormContainer = styled.div`
 
 export const FormLogin = styled.form`
   width: 100%;
-  height: 100%;
+  height: 80%;
   background: #ff9d89;
   border-radius: 10px;
   padding: 10px 0;
 `;
 
+export const Column = styled.div`
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Line = styled(Column)`
+  height: 20%;
+`;
+
 export const InfoLog = styled.div`
   text-align: center;
-  width: 100%;
+  width: 90%;
   height: 20%;
   font-weight: bolder;
   color: #d1101d;
   background: #ff9d89;
 `;
 export const InputLog = styled.input`
-  width: 70%;
-  height: 20%;
+  width: 90%;
+  height: 50%;
   font-size: 100%;
   padding: 10px;
   border-radius: 5px;
@@ -122,19 +123,20 @@ export const Image = styled.img`
   height: 235px;
 `;
 export const ErrorParagraph = styled.p`
-  color: white;
+  height: 10%;
+  color: #d1101d;
+  font-size: 0.8em;
   font-weight: bold;
   margin-bottom: 10px;
-  background: #d1101d;
 `;
 
 export const ButtonLog = styled.button`
+  height: 70%;
   width: 30%;
   font-size: 100%;
   font-family: "Offside";
   background: #ff503f;
   border-radius: 15px;
-  padding: 3%;
   color: white;
   outline: none;
   border: none;

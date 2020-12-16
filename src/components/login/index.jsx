@@ -10,6 +10,8 @@ import {
   FormContainer,
   ErrorParagraph,
   StyledPopup,
+  Column,
+  Line,
 } from "./styled";
 import { ButtonLogin } from "../../pages/home/style";
 import { api } from "../../services/API";
@@ -85,20 +87,29 @@ const Login = () => {
               <Image src={ImageLogin}></Image>
               <FormContainer>
                 <FormLogin onSubmit={handleSubmit(handleForm)}>
-                  <InfoLog>Email</InfoLog>
-                  <InputLog placeholder="Email" ref={register} name="email" />
-                  <ErrorParagraph>{errors.email?.message}</ErrorParagraph>
-                  <InfoLog>Senha</InfoLog>
-                  <InputLog
-                    placeholder="Senha"
-                    ref={register}
-                    name="password"
-                  />
-                  <ErrorParagraph>{errors.password?.message}</ErrorParagraph>
-                  <ButtonLog type="submit" disabled={loading}>
-                    {loading ? <Loading3QuartersOutlined spin /> : "Entrar"}
-                  </ButtonLog>
-                  <ErrorParagraph>{errors.user_login?.message}</ErrorParagraph>
+                  <Column>
+                    <InfoLog>Email</InfoLog>
+                    <InputLog placeholder="Email" ref={register} name="email" />
+                    <ErrorParagraph>{errors.email?.message}</ErrorParagraph>
+                  </Column>
+                  <Column>
+                    {" "}
+                    <InfoLog>Senha</InfoLog>
+                    <InputLog
+                      placeholder="Senha"
+                      ref={register}
+                      name="password"
+                    />
+                    <ErrorParagraph>{errors.password?.message}</ErrorParagraph>
+                  </Column>
+                  <Line>
+                    <ButtonLog type="submit" disabled={loading}>
+                      {loading ? <Loading3QuartersOutlined spin /> : "Entrar"}
+                    </ButtonLog>
+                    <ErrorParagraph>
+                      {errors.user_login?.message}
+                    </ErrorParagraph>
+                  </Line>
                 </FormLogin>
               </FormContainer>
             </div>
