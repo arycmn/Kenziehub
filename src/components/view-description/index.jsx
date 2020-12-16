@@ -7,7 +7,7 @@ const ViewDescription = ({ description }) => {
       trigger={(open) => (
         <ViewDescriptionButton className="button">
           <img
-            src="https://img.icons8.com/bubbles/100/000000/info.png"
+            src="https://img.icons8.com/clouds/100/000000/info.png"
             alt="info"
           />
         </ViewDescriptionButton>
