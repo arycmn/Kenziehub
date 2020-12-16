@@ -66,7 +66,7 @@ export const Info = styled.div`
     border-top: 0.5px solid rgb(255, 174, 66);
   }
   h3 {
-    color: gray;
+    color: #3f403a;
   }
   h5 {
     text-align: center;
@@ -146,5 +146,31 @@ export const Button = styled.button`
   :hover {
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
+  }
+`;
+
+export const Line = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h3 {
+    margin: 0 5px 0 0;
+  }
+`;
+
+export const ViewDescriptionButton = styled.button`
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  :hover {
+    transform: scale(1.1);
+    filter: invert(10%);
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
   }
 `;
