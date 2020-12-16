@@ -86,34 +86,31 @@ const Profile = () => {
           <Name>{profile.name}</Name>
           <hr />
           <Info>
-            {" "}
             <img
               alt="e-mail"
               src="https://img.icons8.com/clouds/100/000000/email.png"
-            />{" "}
+            />
             {profile.email}
           </Info>
           <Info>
-            {profile.course_module}{" "}
+            {profile.course_module}
             <img
               alt="tech"
               src="https://img.icons8.com/clouds/100/000000/laptop.png"
             />
           </Info>
           <Bio>
-            {" "}
             <img
               alt="aspasesquerdas"
               src="https://img.icons8.com/doodle/48/000000/quote-left.png"
             />
-            {profile.bio}{" "}
+            {profile.bio}
             <img
               alt="aspasdireitas"
               src="https://img.icons8.com/doodle/48/000000/quote-right.png"
             />
           </Bio>
           <Info>
-            {" "}
             <img
               alt="contact"
               src="https://img.icons8.com/clouds/100/000000/business-contact.png"
@@ -129,7 +126,6 @@ const Profile = () => {
                 {profile.techs?.map((item, index) => (
                   <Techs key={index}>
                     <Info>
-                      {" "}
                       <h3>{item.title}</h3>
                       Nível: {item.status}
                     </Info>
@@ -164,7 +160,6 @@ const Profile = () => {
                     <h5> "{item.description}"</h5>
                   </Info>
                   <Info>
-                    {" "}
                     <h4>Site:</h4>
                     <h3>
                       <a
