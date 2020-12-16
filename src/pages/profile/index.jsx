@@ -11,6 +11,7 @@ import {
   ChangeInfo,
   Works,
   Button,
+  Line,
 } from "./style";
 import { message, Popconfirm } from "antd";
 import { useHistory } from "react-router-dom";
@@ -22,6 +23,7 @@ import AddWork from "../../components/add-work";
 import AttWork from "../../components/att-work";
 import AddTech from "../../components/add-tech";
 import AttTech from "../../components/attTech";
+import ViewDescription from "../../components/view-description";
 
 const Profile = () => {
   const { profile, token } = useSelector((state) => state);
@@ -156,8 +158,10 @@ const Profile = () => {
                 <Works key={index}>
                   <Info>
                     <h4>Nome: </h4>
-                    <h3>{item.title} </h3>
-                    <h5> "{item.description}"</h5>
+                    <Line>
+                      <h3>{item.title} </h3>
+                      <ViewDescription description={item.description} />
+                    </Line>
                   </Info>
                   <Info>
                     <h4>Site:</h4>
