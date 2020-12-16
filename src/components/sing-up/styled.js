@@ -39,6 +39,10 @@ export const StyledPopup = styled(Popup)`
     align-items: center;
     animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 
+    @media (max-width: 425px) {
+      width: 90%;
+      height: 80%;
+    }
     .modal {
       width: 100%;
       height: 100%;
@@ -75,11 +79,29 @@ export const ButtonCloseSign = styled(ButtonCloseLog)`
 export const Image = styled.img`
   width: 492px;
   height: 330px;
+
+  @media (max-width: 1440px) {
+    width: 442px;
+    height: 297px;
+  }
+
+  @media (max-width: 1280px) {
+    width: 393px;
+    height: 264px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const FormContainer = styled.div`
   width: 50%;
   height: 80%;
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const FormSignIn = styled.form`
@@ -124,6 +146,9 @@ export const SelectSign = styled.select`
     color: white;
     font-weight: bold;
   }
+  @media (max-width: 280px) {
+    font-size: 0.7em;
+  }
 `;
 
 export const InfoSign = styled.div`
@@ -133,6 +158,13 @@ export const InfoSign = styled.div`
   font-weight: bold;
   color: #006c5f;
   font-size: 1em;
+
+  @media (max-width: 425px) {
+    font-size: 0.8em;
+  }
+  @media (max-width: 280px) {
+    font-size: 0.5em;
+  }
 `;
 
 export const InputSign = styled.input`
@@ -152,6 +184,9 @@ export const InputSign = styled.input`
   :focus {
     background: #7fab99;
   }
+  @media (max-width: 280px) {
+    font-size: 0.5em;
+  }
 `;
 
 export const ErrorParagraph = styled.p`
@@ -159,6 +194,21 @@ export const ErrorParagraph = styled.p`
   color: #006c5f;
   font-weight: bold;
   font-size: 0.8em;
+
+  @media (max-width: 1440px) {
+    font-size: 0.6em;
+    text-align: center;
+  }
+
+  @media (max-width: 1280px) {
+    font-size: 0.6em;
+    text-align: center;
+  }
+
+  @media (max-width: 425px) {
+    font-size: 0.5em;
+    text-align: center;
+  }
 `;
 
 export const ButtonSign = styled.button`
@@ -171,9 +221,19 @@ export const ButtonSign = styled.button`
   color: white;
   outline: none;
   border: none;
+
   :hover {
     cursor: pointer;
     background: #006c5f;
     color: white;
+  }
+  @media (max-width: 540px) {
+    width: 50%;
+  }
+  @media (max-width: 425px) {
+    width: 50%;
+  }
+  @media (max-width: 280px) {
+    width: 80%;
   }
 `;
