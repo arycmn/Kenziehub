@@ -16,10 +16,9 @@ const Header = () => {
     <Container>
       <Navegation>
         <Box>
-          <button onClick={handleToProfile}>Perfil</button>{" "}
+          <button onClick={handleToProfile}>Perfil</button>
         </Box>
         <Box>
-          {" "}
           <button onClick={handleToDevs}> Colegas</button>
         </Box>
       </Navegation>
