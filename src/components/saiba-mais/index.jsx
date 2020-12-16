@@ -101,7 +101,7 @@ const SaibaMais = ({ user, imageDefault }) => {
                             <a
                               href={user.deploy_url}
                               target="_blank"
-                              rel="noopener"
+                              rel="nooreferrer"
                             >
                               Ver deploy
                             </a>

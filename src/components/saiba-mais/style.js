@@ -38,8 +38,6 @@ export const StyledPopup = styled(Popup)`
     align-items: center;
     animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 
-
-   
     @media (max-width: 1440px) {
       width: 70%;
     }
@@ -92,16 +90,15 @@ export const StyledPopup = styled(Popup)`
         align-items: center;
         overflow: auto;
         ::-webkit-scrollbar {
-            width: 8px;
+          width: 8px;
         }
-  
+
         ::-webkit-scrollbar-thumb {
-            -webkit-border-radius: 10px;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.2); 
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+          -webkit-border-radius: 10px;
+          border-radius: 10px;
+          background: rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
         }
-    }
       }
     }
   }
