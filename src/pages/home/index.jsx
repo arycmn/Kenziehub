@@ -18,9 +18,7 @@ const Home = () => {
       <Menu>
         <Content>
           <Title>ProgramMate</Title>
-          <Phrase>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.{" "}
-          </Phrase>
+          <Phrase>Uma rede social de devs para devs. </Phrase>
         </Content>
         <ButtonsPlace>
           <Login />

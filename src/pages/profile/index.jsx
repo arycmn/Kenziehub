@@ -12,6 +12,7 @@ import {
   Works,
   Button,
   Line,
+  InfoContact,
 } from "./style";
 import { message, Popconfirm } from "antd";
 import { useHistory } from "react-router-dom";
@@ -85,20 +86,20 @@ const Profile = () => {
             alt={profile.name}
           />
           <Name>{profile.name}</Name>
-          <Info>
+          <InfoContact>
             <img
               alt="e-mail"
               src="https://img.icons8.com/clouds/70/000000/email.png"
             />
             {profile.email}
-          </Info>
-          <Info>
+          </InfoContact>
+          <InfoContact>
             {profile.course_module}
             <img
               alt="tech"
               src="https://img.icons8.com/clouds/70/000000/laptop.png"
             />
-          </Info>
+          </InfoContact>
           <Bio>
             <img
               alt="aspasesquerdas"
@@ -110,18 +111,17 @@ const Profile = () => {
               src="https://img.icons8.com/doodle/38/000000/quote-right.png"
             />
           </Bio>
-          <Info>
+          <InfoContact>
             <img
               alt="contact"
               src="https://img.icons8.com/clouds/70/000000/business-contact.png"
             />
             {profile.contact}
-          </Info>
+          </InfoContact>
 
           <ButtonsDiv>
-            <hr />
-            <h2> Tecnologias e Linguagens:</h2>
             <Tech>
+              <h2> Tecnologias e Linguagens:</h2>
               <div>
                 {profile.techs?.map((item, index) => (
                   <Techs key={index}>
@@ -129,29 +129,31 @@ const Profile = () => {
                       <h3>{item.title}</h3>
                       Nível: {item.status}
                     </Info>
-                    <AttTech id={item.id} />
+                    <div>
+                      <AttTech id={item.id} />
 
-                    <Button title="Excluir tecnologia">
-                      <Popconfirm
-                        title="Tem certeza que quer excluir esta tecnologia?"
-                        okText="Sim"
-                        cancelText="Não"
-                        onConfirm={() => handleRemoveTech(item.id)}
-                      >
-                        <img
-                          alt="lixo"
-                          src="https://img.icons8.com/clouds/80/000000/delete-trash.png"
-                        />
-                      </Popconfirm>
-                    </Button>
+                      <Button title="Excluir tecnologia">
+                        <Popconfirm
+                          title="Tem certeza que quer excluir esta tecnologia?"
+                          okText="Sim"
+                          cancelText="Não"
+                          onConfirm={() => handleRemoveTech(item.id)}
+                        >
+                          <img
+                            alt="lixo"
+                            src="https://img.icons8.com/clouds/80/000000/delete-trash.png"
+                          />
+                        </Popconfirm>
+                      </Button>
+                    </div>
                   </Techs>
                 ))}
               </div>
             </Tech>
             <AddTech />
-            <hr />
-            <h2> Trabalhos realizados: </h2>
+
             <Tech>
+              <h2> Trabalhos realizados: </h2>
               {profile.works?.map((item, index) => (
                 <Works key={index}>
                   <Info>
@@ -173,20 +175,22 @@ const Profile = () => {
                       </a>
                     </h3>
                   </Info>
-                  <AttWork id={item.id} />
-                  <Button title="Excluir trabalho">
-                    <Popconfirm
-                      title="Tem certeza que quer excluir este trabalho?"
-                      okText="Sim"
-                      cancelText="Não"
-                      onConfirm={() => handleRemoveWork(item.id)}
-                    >
-                      <img
-                        alt="lixo"
-                        src="https://img.icons8.com/clouds/80/000000/delete-trash.png"
-                      />
-                    </Popconfirm>
-                  </Button>
+                  <div>
+                    <AttWork id={item.id} />
+                    <Button title="Excluir trabalho">
+                      <Popconfirm
+                        title="Tem certeza que quer excluir este trabalho?"
+                        okText="Sim"
+                        cancelText="Não"
+                        onConfirm={() => handleRemoveWork(item.id)}
+                      >
+                        <img
+                          alt="lixo"
+                          src="https://img.icons8.com/clouds/80/000000/delete-trash.png"
+                        />
+                      </Popconfirm>
+                    </Button>
+                  </div>
                 </Works>
               ))}
             </Tech>
