@@ -1,10 +1,11 @@
 import Card from "../card";
+import { Box } from "./style";
 
 const CardContainer = ({ input, filteredUsers, devs }) => {
   return (
-    <div>
+    <Box>
       <>{input === "" ? <Card user={devs} /> : <Card user={filteredUsers} />}</>
-    </div>
+    </Box>
   );
 };
 

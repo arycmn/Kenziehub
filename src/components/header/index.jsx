@@ -16,7 +16,7 @@ const Header = () => {
     <Container>
       <Navegation>
         <Box>
-          <button onClick={handleToProfile}>Profile</button>{" "}
+          <button onClick={handleToProfile}>Perfil</button>{" "}
         </Box>
         <Box>
           {" "}

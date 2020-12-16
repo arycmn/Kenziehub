@@ -3,11 +3,15 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100vw;
   height: 95vh;
-  padding-top: 3.5%;
 `;
 
+export const Content = styled.div`
+  width: 80%;
+  height: 85%;
+`;
 export const SearchArea = styled.div`
   width: 100%;
+  height: 15%;
 `;
 
 export const Input = styled.input`
@@ -15,3 +19,9 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button``;
+
+export const CardContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  background-color: gray;
+`;
