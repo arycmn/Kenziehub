@@ -1,15 +1,7 @@
 import { useState, useEffect } from "react";
-import {
-  Container,
-  Input,
-  Button,
-  CardContainer,
-  Content,
-  SearchArea,
-} from "./style";
+import { Container, Input, SearchArea } from "./style";
 import Header from "../../components/header";
-
-import Card from "../../components/card";
+import CardContainer from "../../components/card-container";
 
 import { getDevThunk } from "../../store/modules/devs/thunks";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,11 +18,8 @@ const Devs = () => {
 
   useEffect(() => {
     setTotalPages(allDevs.length / 15);
-  }, [allDevs]);
-
-  useEffect(() => {
     dispatch(getDevThunk(page));
-  }, [page]);
+  }, [allDevs, page]);
 
   const next = () => {
     setPage(page + 1);
@@ -39,7 +28,7 @@ const Devs = () => {
     setPage(page - 1);
   };
 
-  const handdleInput = (e) => {
+  const handleInput = (e) => {
     setInput(e.target.value);
     const searchDevs = allDevs.filter((dev) =>
       dev.name.toLowerCase().includes(e.target.value.toLowerCase())
@@ -49,26 +38,25 @@ const Devs = () => {
 
   return (
     <>
+      <Header />
+
       <Container>
-        <Header />
-        <CardContainer page={page} setPage={setPage}>
-          <SearchArea>
-            <Input
-              placeholder="Procure o dev pelo nome"
-              onChange={handdleInput}
-              value={input}
-            />
-          </SearchArea>
-          <Content>
-            {input === "" ? (
-              <Card user={devs} />
-            ) : (
-              <Card user={filteredUsers} />
-            )}
-            {page > 1 && <button onClick={prev}>Anterior</button>}
-            {page < totalPages && <button onClick={next}>Próxima</button>}
-          </Content>
-        </CardContainer>
+        {page > 1 && <button onClick={prev}>Anterior</button>}
+        {page < totalPages && <button onClick={next}>Próxima</button>}
+
+        <SearchArea>
+          <Input
+            placeholder="Procure o dev pelo nome"
+            onChange={handleInput}
+            value={input}
+          />
+        </SearchArea>
+
+        <CardContainer
+          devs={devs}
+          input={input}
+          filteredUsers={filteredUsers}
+        />
       </Container>
     </>
   );
