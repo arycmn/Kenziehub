@@ -90,7 +90,7 @@ export const StyledPopup = styled(Popup)`
         align-items: center;
         overflow: auto;
         ::-webkit-scrollbar {
-          width: 8px;
+          height: 8px;
         }
 
         ::-webkit-scrollbar-thumb {
