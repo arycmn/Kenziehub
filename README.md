@@ -51,9 +51,11 @@ Tendo estes itens instalado, você precisa clonar o repositório em seu computad
 
 Então, você precisa entrar na pasta do projeto e instalar as dependências, com os seguintes comandos:
 
-<code>cd kenziehub
+<code>
+cd kenziehub
 
-npm install</code>
+npm install
+</code>
 
 Caso você tenha o Yarn instalado, você pode substituir o <code>npm install</code> por <code>yarn install</code>.
 
