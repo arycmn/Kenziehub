@@ -45,7 +45,7 @@ export const StyledPopup = styled(Popup)`
   }
 `;
 
-export const ButtonClose = styled.button`
+export const ButtonCloseLog = styled.button`
   width: 32px;
   height: 32px;
   font-size: 1.2em;

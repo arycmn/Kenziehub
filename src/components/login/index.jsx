@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
-  Container,
   FormLogin,
   InfoLog,
   InputLog,
   ButtonLog,
-  ButtonClose,
+  ButtonCloseLog,
   Image,
   FormContainer,
   ErrorParagraph,
@@ -78,9 +77,9 @@ const Login = () => {
         {(close) => (
           <div className="modal">
             <div className="header">
-              <ButtonClose className="close" onClick={close}>
+              <ButtonCloseLog className="close" onClick={close}>
                 &times;
-              </ButtonClose>
+              </ButtonCloseLog>
             </div>
             <div className="content">
               <Image src={ImageLogin}></Image>

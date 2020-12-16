@@ -2,18 +2,20 @@ import { useState } from "react";
 import { api } from "../../services/API";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {
-  Container,
   FormSignIn,
   InfoSign,
   InputSign,
+  Image,
   FormContainer,
   SelectSign,
   ErrorParagraph,
   StyledPopup,
   ButtonSign,
+  ButtonCloseSign,
+  Column,
+  Line,
 } from "./styled";
 import imageSignup from "../../images/imageSignup.jpg";
 import { message } from "antd";
@@ -21,8 +23,6 @@ import { Loading3QuartersOutlined } from "@ant-design/icons";
 import { ButtonSingUp } from "../../pages/home/style";
 
 const SingUp = () => {
-  const history = useHistory();
-
   const schema = yup.object().shape({
     email: yup.string().email("email invalido").required("Campo obrigatório"),
     name: yup
@@ -54,8 +54,6 @@ const SingUp = () => {
       .post("/users", { ...data })
       .then((res) => {
         setLoad(false);
-
-        history.push("/login");
         message.success("Cadastrado com sucesso");
       })
       .catch((err) => {
@@ -76,14 +74,16 @@ const SingUp = () => {
       >
         {(close) => (
           <div className="modal">
-            <button className="close" onClick={close}>
-              &times;
-            </button>
-            <div className="header"> Cadastro </div>
+            <div className="header">
+              <ButtonCloseSign className="close" onClick={close}>
+                &times;
+              </ButtonCloseSign>
+            </div>
             <div className="content">
-              <Container image={imageSignup}>
-                <FormContainer>
-                  <FormSignIn onSubmit={handleSubmit(handleForm)}>
+              <Image src={imageSignup} alt="imgSingUp" />
+              <FormContainer>
+                <FormSignIn onSubmit={handleSubmit(handleForm)}>
+                  <Column>
                     <InfoSign>Email</InfoSign>
                     <InputSign
                       placeholder="Email"
@@ -91,11 +91,14 @@ const SingUp = () => {
                       ref={register}
                     />
                     <ErrorParagraph>{errors.email?.message}</ErrorParagraph>
-
+                  </Column>
+                  <Column>
                     <InfoSign>Nome</InfoSign>
                     <InputSign placeholder="Nome" name="name" ref={register} />
                     <ErrorParagraph>{errors.name?.message}</ErrorParagraph>
+                  </Column>
 
+                  <Column>
                     <InfoSign>Bio</InfoSign>
                     <InputSign
                       placeholder="Sobre você"
@@ -103,7 +106,8 @@ const SingUp = () => {
                       ref={register}
                     />
                     <ErrorParagraph>{errors.bio?.message}</ErrorParagraph>
-
+                  </Column>
+                  <Column>
                     <InfoSign>Contact</InfoSign>
                     <InputSign
                       placeholder="Contato"
@@ -111,7 +115,9 @@ const SingUp = () => {
                       ref={register}
                     />
                     <ErrorParagraph>{errors.contact?.message}</ErrorParagraph>
+                  </Column>
 
+                  <Column>
                     <InfoSign>Senha</InfoSign>
                     <InputSign
                       placeholder="Senha"
@@ -119,7 +125,9 @@ const SingUp = () => {
                       ref={register}
                     />
                     <ErrorParagraph>{errors.password?.message}</ErrorParagraph>
+                  </Column>
 
+                  <Column>
                     <InfoSign>Confirme a senha</InfoSign>
                     <InputSign
                       placeholder="confirme a senha"
@@ -129,7 +137,8 @@ const SingUp = () => {
                     <ErrorParagraph>
                       {errors.password_confirm?.message}
                     </ErrorParagraph>
-
+                  </Column>
+                  <Line>
                     <InfoSign>Módulo do curso</InfoSign>
                     <SelectSign name="course_module" ref={register}>
                       <option value="">Selecione o Módulo</option>
@@ -149,7 +158,8 @@ const SingUp = () => {
                     <ErrorParagraph>
                       {errors.course_module?.message}
                     </ErrorParagraph>
-
+                  </Line>
+                  <Line>
                     <ButtonSign type="submit" disabled={loading}>
                       {loading ? (
                         <Loading3QuartersOutlined spin />
@@ -160,9 +170,9 @@ const SingUp = () => {
                     <ErrorParagraph>
                       {errors.user_register?.message}
                     </ErrorParagraph>
-                  </FormSignIn>
-                </FormContainer>
-              </Container>
+                  </Line>
+                </FormSignIn>
+              </FormContainer>
             </div>
           </div>
         )}

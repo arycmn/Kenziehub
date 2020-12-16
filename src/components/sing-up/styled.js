@@ -1,75 +1,99 @@
 import styled from "styled-components";
 import Popup from "reactjs-popup";
+import { ButtonCloseLog } from "../login/styled";
 
 export const StyledPopup = styled(Popup)`
   &-overlay {
-    background: red;
-    border: 1px solid blue;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &-content {
-    background: blue;
+    height: 70%;
+    width: 70%;
+    background: #ffebd4;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    border: 1px solid red;
+    .modal {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .header {
+        width: 100%;
+        height: 5%;
+      }
+      .content {
+        height: 95%;
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.1em;
+      }
+    }
   }
 `;
 
-export const Container = styled.div`
-  background-color: #ffebd4;
-  background-image: url(${(props) => props.image});
-  background-size: 50%;
-  background-position: right;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: rigth;
-  margin: 0 10%;
+export const ButtonCloseSign = styled(ButtonCloseLog)`
+  background: #7fab99;
+  :hover {
+    background: #006c5f;
+  }
+`;
+
+export const Image = styled.img`
+  width: 492px;
+  height: 330px;
 `;
 
 export const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 3%;
-  width: 30%;
-  height: 30%;
-  text-align: center;
-`;
-
-export const PageSignIn = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20%;
-  width: 30%;
-  height: 30%;
-  text-align: center;
+  width: 50%;
+  height: 80%;
 `;
 
 export const FormSignIn = styled.form`
-  width: 130%;
-  height: 70%;
-  background: #006c5f;
-  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  background: #bfcbb6;
   border-radius: 10px;
-  padding: 5% 0;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 `;
 
-export const ErrorParagraph = styled.p`
-  color: white;
-  font-weight: bold;
-  margin-bottom: 5%;
-  font-size: 100%;
+export const Column = styled.div`
+  width: 50%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Line = styled(Column)`
+  width: 100%;
+  height: 20%;
 `;
 
 export const SelectSign = styled.select`
-  outline: none;
-  padding: 3%;
+  width: 90%;
   color: #006c5f;
-  font-size: 100%;
+  outline: none;
+  font-size: 1em;
   :hover {
     cursor: pointer;
     background: white;
@@ -79,35 +103,51 @@ export const SelectSign = styled.select`
 
 export const InfoSign = styled.div`
   text-align: center;
-  background: #006c5f;
-  width: 100%;
+  width: 90%;
   height: 20%;
-  font-weight: bolder;
-  color: black;
-  font-size: 130%;
+  font-weight: bold;
+  color: #006c5f;
+  font-size: 1em;
 `;
 
 export const InputSign = styled.input`
-  width: 70%;
-  height: 70%;
-  font-size: 100%;
-  padding: 3%;
+  width: 90%;
+  height: 40%;
+  font-size: 0.8em;
+  padding: 10px;
   outline: none;
+  border-radius: 5px;
+  border: none;
+
+  :hover {
+    background: #7fab99;
+  }
+
+  :focus {
+    background: #7fab99;
+  }
+`;
+
+export const ErrorParagraph = styled.p`
+  height: 20%;
+  color: #006c5f;
+  font-weight: bold;
+  font-size: 0.8em;
 `;
 
 export const ButtonSign = styled.button`
   width: 30%;
-  font-size: 100%;
+  height: 50%;
+  font-size: 1em;
   font-family: "Offside";
-  background: #006c5f;
+  background: #7fab99;
   border-radius: 15px;
-  padding: 3%;
   color: white;
   outline: none;
-  border: black 2px;
+  border: none;
   :hover {
     cursor: pointer;
-    background: black;
+    background: #006c5f;
     color: white;
   }
 `;
