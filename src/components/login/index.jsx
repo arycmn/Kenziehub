@@ -6,10 +6,13 @@ import {
   InfoLog,
   InputLog,
   ButtonLog,
+  ButtonClose,
   Image,
   FormContainer,
   ErrorParagraph,
+  StyledPopup,
 } from "./styled";
+import { ButtonLogin } from "../../pages/home/style";
 import { api } from "../../services/API";
 import { useDispatch } from "react-redux";
 import { getTokenThunk } from "../../store/modules/token/thunks";
@@ -67,23 +70,42 @@ const Login = () => {
 
   return (
     <>
-      <Container>
-        <Image image={ImageLogin}></Image>
-        <FormContainer>
-          <FormLogin onSubmit={handleSubmit(handleForm)}>
-            <InfoLog>Email</InfoLog>
-            <InputLog placeholder="Email" ref={register} name="email" />
-            <ErrorParagraph>{errors.email?.message}</ErrorParagraph>
-            <InfoLog>Senha</InfoLog>
-            <InputLog placeholder="Senha" ref={register} name="password" />
-            <ErrorParagraph>{errors.password?.message}</ErrorParagraph>
-            <ButtonLog type="submit" disabled={loading}>
-              {loading ? <Loading3QuartersOutlined spin /> : "Entrar"}
-            </ButtonLog>
-            <ErrorParagraph>{errors.user_login?.message}</ErrorParagraph>
-          </FormLogin>
-        </FormContainer>
-      </Container>
+      <StyledPopup
+        trigger={<ButtonLogin className="button"> Login </ButtonLogin>}
+        modal
+        nested
+      >
+        {(close) => (
+          <div className="modal">
+            <div className="header">
+              <ButtonClose className="close" onClick={close}>
+                &times;
+              </ButtonClose>
+            </div>
+            <div className="content">
+              <Image src={ImageLogin}></Image>
+              <FormContainer>
+                <FormLogin onSubmit={handleSubmit(handleForm)}>
+                  <InfoLog>Email</InfoLog>
+                  <InputLog placeholder="Email" ref={register} name="email" />
+                  <ErrorParagraph>{errors.email?.message}</ErrorParagraph>
+                  <InfoLog>Senha</InfoLog>
+                  <InputLog
+                    placeholder="Senha"
+                    ref={register}
+                    name="password"
+                  />
+                  <ErrorParagraph>{errors.password?.message}</ErrorParagraph>
+                  <ButtonLog type="submit" disabled={loading}>
+                    {loading ? <Loading3QuartersOutlined spin /> : "Entrar"}
+                  </ButtonLog>
+                  <ErrorParagraph>{errors.user_login?.message}</ErrorParagraph>
+                </FormLogin>
+              </FormContainer>
+            </div>
+          </div>
+        )}
+      </StyledPopup>
     </>
   );
 };

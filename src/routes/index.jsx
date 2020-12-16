@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { validateThunk } from "../store/modules/auth/thunks";
 import Devs from "../pages/devs";
-import Login from "../pages/login";
-import SignUp from "../pages/sign-up";
 import Profile from "../pages/profile";
 import ProfileChanges from "../pages/profile-changes";
 import Home from "../pages/home";
@@ -32,14 +30,6 @@ const Routes = () => {
       <Switch>
         <Route exact path="/">
           <Home />
-        </Route>
-
-        <Route path="/login" exact>
-          <Login />
-        </Route>
-
-        <Route path="/register" exact>
-          <SignUp />
         </Route>
       </Switch>
     );

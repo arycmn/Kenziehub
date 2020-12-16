@@ -1,4 +1,18 @@
 import styled from "styled-components";
+import Popup from "reactjs-popup";
+
+export const StyledPopup = styled(Popup)`
+  &-overlay {
+    background: red;
+    border: 1px solid blue;
+  }
+
+  &-content {
+    background: blue;
+
+    border: 1px solid red;
+  }
+`;
 
 export const Container = styled.div`
   background-color: #ffebd4;

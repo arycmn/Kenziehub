@@ -5,23 +5,13 @@ import {
   Phrase,
   ButtonsPlace,
   Menu,
-  Login,
-  Register,
   Content,
 } from "./style";
-import { useHistory } from "react-router-dom";
 import imageHome from "../../images/imageHome.jpg";
+import Login from "../../components/login";
+import SingUp from "../../components/sing-up";
 
 const Home = () => {
-  let history = useHistory();
-
-  const handleClickLogin = () => {
-    history.push("/login");
-  };
-
-  const handleClickRegister = () => {
-    history.push("/register");
-  };
   return (
     <Container>
       <Logo src={imageHome} />
@@ -33,8 +23,8 @@ const Home = () => {
           </Phrase>
         </Content>
         <ButtonsPlace>
-          <Login onClick={handleClickLogin}>Login</Login>
-          <Register onClick={handleClickRegister}>Register</Register>
+          <Login />
+          <SingUp />
         </ButtonsPlace>
       </Menu>
     </Container>
