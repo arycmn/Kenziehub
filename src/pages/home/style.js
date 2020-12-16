@@ -143,7 +143,7 @@ export const ButtonLogin = styled.button`
   background-color: #ffae42;
   color: #ffebd4;
   height: 35%;
-  width: 22.5%;
+  width: 40%;
   margin-right: 20px;
   border-radius: 5px;
   font-family: "Offside";
@@ -165,7 +165,7 @@ export const ButtonLogin = styled.button`
     height: 25%;
   }
   @media (max-width: 280px) {
-    width: 50%;
+    width: 100%;
   }
 `;
 
