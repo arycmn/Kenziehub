@@ -1,12 +1,11 @@
 import { useState } from "react";
-import Popup from "reactjs-popup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/API";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
-import { Modal } from "../add-tech/style";
+import { StyledPopup } from "../add-work/style";
 import { Button } from "../../pages/profile/style";
 import { message } from "antd";
 import { Loading3QuartersOutlined } from "@ant-design/icons";
@@ -79,7 +78,7 @@ const AttWork = ({ id }) => {
 
   return (
     <>
-      <Popup
+      <StyledPopup
         onOpen={findWork}
         trigger={
           <Button className="button" title="Atualizar trabalho">
@@ -94,74 +93,76 @@ const AttWork = ({ id }) => {
         nested
       >
         {(close) => (
-          <Modal>
-            <div className="modal">
-              <button className="close" onClick={close}>
-                &times;
-              </button>
-              <div className="header">Atualizar Trabalho</div>
-              <div className="content">
-                <form onSubmit={handleSubmit(handleForm)}>
-                  <div>
-                    <label htmlFor="title">Título</label>
-                    <input
-                      type="text"
-                      name="title"
-                      id="title"
-                      value={changeWorks.title}
-                      ref={register}
-                      onChange={(e) =>
-                        setChangeWorks({ title: e.target.value })
-                      }
-                      inputMode="text"
-                    />
-                    <span>{errors.title?.message}</span>
-                  </div>
-                  <div>
-                    <label htmlFor="description">Descrição</label>
-                    <textarea
-                      type="text"
-                      name="description"
-                      value={changeWorks.description}
-                      onChange={(e) =>
-                        setChangeWorks({
-                          ...changeWorks,
-                          description: e.target.value,
-                        })
-                      }
-                      id="description"
-                      ref={register}
-                      inputMode="text"
-                    />
-                    <span>{errors.description?.message}</span>
-                  </div>
-                  <div>
-                    <label htmlFor="deploy_url">Url</label>
-                    <input
-                      type="url"
-                      name="deploy_url"
-                      value={changeWorks.deploy_url}
-                      onChange={(e) =>
-                        setChangeWorks({
-                          ...changeWorks,
-                          deploy_url: e.target.value,
-                        })
-                      }
-                      id="deploy_url"
-                      ref={register}
-                      inputMode="url"
-                    />
-                    <span>{errors.deploy_url?.message}</span>
-                  </div>
-                  <button type="submit" disabled={loading}>
-                    {loading ? <Loading3QuartersOutlined spin /> : "Atualizar"}
-                  </button>
-                </form>
-              </div>
+          <>
+            <button className="close" onClick={close}>
+              &times;
+            </button>
+            <div className="header">
+              Atualizar Trabalho
+              <img
+                alt="work"
+                src="https://img.icons8.com/clouds/350/000000/refresh.png"
+              />
             </div>
-          </Modal>
+            <div className="content">
+              <form onSubmit={handleSubmit(handleForm)}>
+                <div>
+                  <label htmlFor="title">Título</label>
+                  <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    value={changeWorks.title}
+                    ref={register}
+                    onChange={(e) => setChangeWorks({ title: e.target.value })}
+                    inputMode="text"
+                  />
+                  <span>{errors.title?.message}</span>
+                </div>
+                <div>
+                  <label htmlFor="description">Descrição</label>
+                  <textarea
+                    type="text"
+                    name="description"
+                    value={changeWorks.description}
+                    onChange={(e) =>
+                      setChangeWorks({
+                        ...changeWorks,
+                        description: e.target.value,
+                      })
+                    }
+                    id="description"
+                    ref={register}
+                    inputMode="text"
+                  />
+                  <span>{errors.description?.message}</span>
+                </div>
+                <div>
+                  <label htmlFor="deploy_url">Url</label>
+                  <input
+                    type="url"
+                    name="deploy_url"
+                    value={changeWorks.deploy_url}
+                    onChange={(e) =>
+                      setChangeWorks({
+                        ...changeWorks,
+                        deploy_url: e.target.value,
+                      })
+                    }
+                    id="deploy_url"
+                    ref={register}
+                    inputMode="url"
+                  />
+                  <span>{errors.deploy_url?.message}</span>
+                </div>
+                <button type="submit" disabled={loading}>
+                  {loading ? <Loading3QuartersOutlined spin /> : "Atualizar"}
+                </button>
+              </form>
+            </div>
+          </>
         )}
-      </Popup>
+      </StyledPopup>
     </>
   );
 };

@@ -1,12 +1,11 @@
 import { useState } from "react";
-import Popup from "reactjs-popup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/API";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
-import { Modal } from "../add-tech/style";
+import { StyledPopup } from "../add-tech/style";
 import { Button } from "../../pages/profile/style";
 import { message } from "antd";
 import { Loading3QuartersOutlined } from "@ant-design/icons";
@@ -58,7 +57,7 @@ const AttTech = ({ id }) => {
 
   return (
     <>
-      <Popup
+      <StyledPopup
         trigger={
           <Button className="button" title="Atualizar tecnologia">
             {" "}
@@ -72,31 +71,35 @@ const AttTech = ({ id }) => {
         nested
       >
         {(close) => (
-          <Modal>
-            <div className="modal">
-              <button className="close" onClick={close}>
-                &times;
-              </button>
-              <div className="header">Atualizar nível</div>
-              <div className="content">
-                <form onSubmit={handleSubmit(handleForm)}>
-                  <select name="status" ref={register}>
-                    <option value="">Selecione o nível</option>
-                    <option value="Iniciante">Iniciante</option>
-                    <option value="Intermediário">Intermediário</option>
-                    <option value="Avançado">Avançado</option>
-                  </select>
-                  <p>{errors.status?.message}</p>
-                  <button type="submit" disabled={loading}>
-                    {loading ? <Loading3QuartersOutlined spin /> : "Atualizar"}
-                  </button>
-                </form>
-              </div>
-              <div className="actions"></div>
+          <>
+            <button className="close" onClick={close}>
+              &times;
+            </button>
+            <div className="header">
+              Atualizar nível
+              <img
+                alt="update"
+                src="https://img.icons8.com/clouds/300/000000/available-updates.png"
+              />
             </div>
-          </Modal>
+            <div className="content">
+              <form onSubmit={handleSubmit(handleForm)}>
+                <select name="status" ref={register}>
+                  <option value="">Selecione o nível</option>
+                  <option value="Iniciante">Iniciante</option>
+                  <option value="Intermediário">Intermediário</option>
+                  <option value="Avançado">Avançado</option>
+                </select>
+                <p>{errors.status?.message}</p>
+                <button type="submit" disabled={loading}>
+                  {loading ? <Loading3QuartersOutlined spin /> : "Atualizar"}
+                </button>
+              </form>
+            </div>
+            <div className="actions"></div>
+          </>
         )}
-      </Popup>
+      </StyledPopup>
     </>
   );
 };

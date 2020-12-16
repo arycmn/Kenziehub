@@ -6,6 +6,7 @@ export const Box = styled.div`
   flex-wrap: wrap;
   margin: 3px 3%;
   justify-content: space-between;
+
   visibility: hidden;
 
   > * {

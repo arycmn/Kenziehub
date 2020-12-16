@@ -8,19 +8,21 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   position: fixed;
+  z-index: 1;
 `;
 
 export const Box = styled.span`
   font-size: 20px;
   margin: 3% 3% 3% 30%;
   background-color: rgb(255, 174, 66);
+
   button {
     background-color: rgb(255, 174, 66);
     border: none;
+    transition: all 0.5s;
     :hover {
-      cursor: pointer;
-      color: rgb(255, 204, 138);
-      border-radius: 10px;
+      color: #f2e8cf;
+      transform: scale(1.2);
     }
   }
 `;
