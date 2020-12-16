@@ -57,6 +57,7 @@ const Devs = () => {
               placeholder="Procure o dev pelo nome"
               onChange={handdleInput}
               value={input}
+              inputMode="search"
             />
           </SearchArea>
           <Content>

@@ -14,11 +14,21 @@ export const Container = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
 `;
 
 export const Logo = styled.img`
   width: 722.5px;
   height: 527px;
+
+  @media (max-width: 1280px) {
+    width: 578px;
+    height: 421px;
+  }
 
   @media (max-width: 1024px) {
     width: 578px;
@@ -38,11 +48,15 @@ export const Menu = styled.div`
   justify-content: center;
   align-items: center;
 
+  @media (max-width: 1280px) {
+  }
+
   @media (max-width: 768px) {
     height: 40%;
   }
   @media (max-width: 425px) {
     height: 50%;
+    justify-content: flex-start;
   }
 `;
 
@@ -53,6 +67,10 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+
+  @media (max-width: 425px) {
+    height: 80%;
+  }
 `;
 
 export const Title = styled.div`
@@ -75,6 +93,8 @@ export const Title = styled.div`
   }
   @media (max-width: 425px) {
     font-size: 2em;
+    align-items: flex-start;
+    height: 25%;
   }
 `;
 
@@ -95,6 +115,11 @@ export const Phrase = styled.div`
 
   @media (max-width: 425px) {
     font-size: 10px;
+    align-items: flex-start;
+    height: 30%;
+  }
+  @media (max-width: 280px) {
+    padding: 0 25px;
   }
 `;
 
@@ -107,6 +132,10 @@ export const ButtonsPlace = styled.div`
 
   @media (max-width: 768px) {
     align-items: flex-start;
+  }
+
+  @media (max-width: 425px) {
+    height: 70%;
   }
 `;
 
@@ -130,6 +159,13 @@ export const ButtonLogin = styled.button`
   }
   @media (max-width: 768px) {
     font-size: 0.8em;
+  }
+  @media (max-width: 425px) {
+    width: 35%;
+    height: 25%;
+  }
+  @media (max-width: 280px) {
+    width: 50%;
   }
 `;
 

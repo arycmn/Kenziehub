@@ -89,12 +89,18 @@ const SingUp = () => {
                       placeholder="Email"
                       name="email"
                       ref={register}
+                      inputMode="email"
                     />
                     <ErrorParagraph>{errors.email?.message}</ErrorParagraph>
                   </Column>
                   <Column>
                     <InfoSign>Nome</InfoSign>
-                    <InputSign placeholder="Nome" name="name" ref={register} />
+                    <InputSign
+                      placeholder="Nome"
+                      name="name"
+                      ref={register}
+                      inputMode="text"
+                    />
                     <ErrorParagraph>{errors.name?.message}</ErrorParagraph>
                   </Column>
 
@@ -104,6 +110,7 @@ const SingUp = () => {
                       placeholder="Sobre você"
                       name="bio"
                       ref={register}
+                      inputMode="text"
                     />
                     <ErrorParagraph>{errors.bio?.message}</ErrorParagraph>
                   </Column>
@@ -113,6 +120,7 @@ const SingUp = () => {
                       placeholder="Contato"
                       name="contact"
                       ref={register}
+                      inputMode="text"
                     />
                     <ErrorParagraph>{errors.contact?.message}</ErrorParagraph>
                   </Column>
@@ -124,6 +132,7 @@ const SingUp = () => {
                       name="password"
                       type="password"
                       ref={register}
+                      inputMode="text"
                     />
                     <ErrorParagraph>{errors.password?.message}</ErrorParagraph>
                   </Column>
@@ -135,6 +144,7 @@ const SingUp = () => {
                       name="password_confirm"
                       type="password"
                       ref={register}
+                      inputMode="text"
                     />
                     <ErrorParagraph>
                       {errors.password_confirm?.message}
