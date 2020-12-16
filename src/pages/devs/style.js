@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 95vh;
+  width: 100%;
+  height: 100%;
   padding-top: 3.5%;
   align-content: center;
   button {
