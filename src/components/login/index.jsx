@@ -88,7 +88,12 @@ const Login = () => {
                 <FormLogin onSubmit={handleSubmit(handleForm)}>
                   <Column>
                     <InfoLog>Email</InfoLog>
-                    <InputLog placeholder="Email" ref={register} name="email" />
+                    <InputLog
+                      placeholder="Email"
+                      ref={register}
+                      name="email"
+                      inputMode="email"
+                    />
                     <ErrorParagraph>{errors.email?.message}</ErrorParagraph>
                   </Column>
                   <Column>
@@ -99,6 +104,7 @@ const Login = () => {
                       ref={register}
                       name="password"
                       type="password"
+                      inputMode="text"
                     />
                     <ErrorParagraph>{errors.password?.message}</ErrorParagraph>
                   </Column>

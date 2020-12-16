@@ -78,6 +78,7 @@ const AddTech = () => {
                   placeholder="Nome da Tecnologia"
                   name="title"
                   ref={register}
+                  inputMode="text"
                 />
                 <span>{errors.title?.message}</span>
 

@@ -113,6 +113,7 @@ const AttWork = ({ id }) => {
                       onChange={(e) =>
                         setChangeWorks({ title: e.target.value })
                       }
+                      inputMode="text"
                     />
                     <span>{errors.title?.message}</span>
                   </div>
@@ -130,6 +131,7 @@ const AttWork = ({ id }) => {
                       }
                       id="description"
                       ref={register}
+                      inputMode="text"
                     />
                     <span>{errors.description?.message}</span>
                   </div>
@@ -147,6 +149,7 @@ const AttWork = ({ id }) => {
                       }
                       id="deploy_url"
                       ref={register}
+                      inputMode="url"
                     />
                     <span>{errors.deploy_url?.message}</span>
                   </div>
