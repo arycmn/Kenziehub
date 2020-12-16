@@ -91,6 +91,7 @@ export const StyledPopup = styled(Popup)`
         overflow: auto;
         ::-webkit-scrollbar {
           height: 8px;
+          width: 8px;
         }
 
         ::-webkit-scrollbar-thumb {
