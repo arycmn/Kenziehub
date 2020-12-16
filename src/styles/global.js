@@ -20,7 +20,7 @@ export default createGlobalStyle`
             -webkit-border-radius: 10px;
             border-radius: 10px;
             background: rgba(0,0,0,0.3); 
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+            box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
         }
     }
 
