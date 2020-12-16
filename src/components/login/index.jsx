@@ -98,6 +98,7 @@ const Login = () => {
                       placeholder="Senha"
                       ref={register}
                       name="password"
+                      type="password"
                     />
                     <ErrorParagraph>{errors.password?.message}</ErrorParagraph>
                   </Column>

@@ -122,6 +122,7 @@ const SingUp = () => {
                     <InputSign
                       placeholder="Senha"
                       name="password"
+                      type="password"
                       ref={register}
                     />
                     <ErrorParagraph>{errors.password?.message}</ErrorParagraph>
@@ -132,6 +133,7 @@ const SingUp = () => {
                     <InputSign
                       placeholder="confirme a senha"
                       name="password_confirm"
+                      type="password"
                       ref={register}
                     />
                     <ErrorParagraph>
