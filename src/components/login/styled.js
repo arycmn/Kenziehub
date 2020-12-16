@@ -36,7 +36,7 @@ export const StyledPopup = styled(Popup)`
     display: flex;
     justify-content: center;
     align-items: center;
-    -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+    animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 
     .modal {
       width: 100%;
