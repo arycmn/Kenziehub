@@ -3,25 +3,29 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100vw;
   height: 95vh;
+  padding-top: 3.5%;
+  align-content: center;
+  button {
+    border: none;
+    background-color: transparent;
+  }
 `;
 
-export const Content = styled.div`
-  width: 80%;
-  height: 85%;
-`;
 export const SearchArea = styled.div`
   width: 100%;
-  height: 15%;
+  padding: 30px;
 `;
 
 export const Input = styled.input`
   width: 30%;
+  font-size: 120%;
 `;
 
 export const Button = styled.button``;
 
-export const CardContainer = styled.div`
-  width: 100%;
-  height: 500px;
-  background-color: gray;
+export const Pages = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
 `;

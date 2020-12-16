@@ -47,21 +47,15 @@ Também é possível adicionar suas tecnologias de trabalhos, bem como o seu ní
 
 Tendo estes itens instalado, você precisa clonar o repositório em seu computador, com o seguinte comando, em um terminal:
 
-<code>
-
-git clone https://gitlab.com/deborabarros/kenziehub
-
-</code>
+<code>git clone https://gitlab.com/deborabarros/kenziehub</code>
 
 Então, você precisa entrar na pasta do projeto e instalar as dependências, com os seguintes comandos:
 
-<code>
-
+```
 cd kenziehub
 
 npm install
-
-</code>
+```
 
 Caso você tenha o Yarn instalado, você pode substituir o <code>npm install</code> por <code>yarn install</code>.
 

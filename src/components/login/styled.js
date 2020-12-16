@@ -38,6 +38,25 @@ export const StyledPopup = styled(Popup)`
     align-items: center;
     animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 
+    @media (max-width: 1440px) {
+      width: 70%;
+    }
+
+    @media (max-width: 1280px) {
+      width: 90%;
+    }
+    @media (max-width: 768px) {
+      width: 90%;
+    }
+
+    @media (max-width: 540px) {
+      height: 90%;
+    }
+
+    @media (max-width: 425px) {
+      height: 80%;
+    }
+
     .modal {
       width: 100%;
       height: 100%;
@@ -89,6 +108,16 @@ export const FormContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  @media (max-width: 540px) {
+    height: 70%;
+    width: 90%;
+  }
+
+  @media (max-width: 425px) {
+    height: 60%;
+    width: 100%;
+  }
 `;
 
 export const FormLogin = styled.form`
@@ -97,6 +126,18 @@ export const FormLogin = styled.form`
   background: #ff9d89;
   border-radius: 10px;
   padding: 10px 0;
+
+  @media (max-width: 1280px) {
+    width: 90%;
+  }
+
+  @media (max-width: 768px) {
+    height: 70%;
+    width: 90%;
+  }
+  @media (max-width: 425px) {
+    height: 80%;
+  }
 `;
 
 export const Column = styled.div`
@@ -118,6 +159,10 @@ export const InfoLog = styled.div`
   font-weight: bolder;
   color: #d1101d;
   background: #ff9d89;
+
+  @media (max-width: 425px) {
+    font-size: 0.9em;
+  }
 `;
 export const InputLog = styled.input`
   width: 90%;
@@ -137,16 +182,40 @@ export const InputLog = styled.input`
     background: #ffcc8a;
   }
 `;
+
 export const Image = styled.img`
   width: 370px;
   height: 235px;
+
+  @media (max-width: 1280px) {
+    width: 444px;
+    height: 282px;
+  }
+  @media (max-width: 768px) {
+    width: 296px;
+    height: 188px;
+  }
+  @media (max-width: 425px) {
+    width: 259px;
+    height: 164px;
+  }
+
+  @media (max-width: 280px) {
+    width: 233px;
+    height: 147px;
+  }
 `;
+
 export const ErrorParagraph = styled.p`
   height: 10%;
   color: #d1101d;
   font-size: 0.8em;
   font-weight: bold;
   margin-bottom: 10px;
+
+  @media (max-width: 425px) {
+    font-size: 0.6em;
+  }
 `;
 
 export const ButtonLog = styled.button`
@@ -163,5 +232,8 @@ export const ButtonLog = styled.button`
     cursor: pointer;
     background: #d1101d;
     color: white;
+  }
+  @media (max-width: 280px) {
+    font-size: 0.8em;
   }
 `;
