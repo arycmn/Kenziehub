@@ -1,4 +1,4 @@
-import { Modal, AddButton } from "./style";
+import { StyledPopup, AddButton } from "./style";
 import { useState } from "react";
 import { api } from "../../services/API";
 import { useForm } from "react-hook-form";
@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
 import { message } from "antd";
 import { Loading3QuartersOutlined } from "@ant-design/icons";
-import Popup from "reactjs-popup";
+
 import * as yup from "yup";
 
 const AddWork = () => {
@@ -76,17 +76,23 @@ const AddWork = () => {
   };
 
   return (
-    <Popup
+    <StyledPopup
       trigger={<AddButton className="add"> Adicionar Trabalho </AddButton>}
       modal
       nested
     >
       {(close) => (
-        <Modal>
+        <>
           <button className="close" onClick={close}>
             &times;
           </button>
-          <div className="header"> Adicionar Trabalho </div>
+          <div className="header">
+            Adicionar Trabalho
+            <img
+              alt="work"
+              src="https://img.icons8.com/clouds/350/000000/home-office.png"
+            />
+          </div>
           <div className="content">
             <form onSubmit={handleSubmit(handleAddWork)}>
               <label htmlFor="title">Título</label>
@@ -124,9 +130,9 @@ const AddWork = () => {
               </button>
             </form>
           </div>
-        </Modal>
+        </>
       )}
-    </Popup>
+    </StyledPopup>
   );
 };
 export default AddWork;

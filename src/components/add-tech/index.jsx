@@ -1,4 +1,4 @@
-import { Modal, AddButton } from "./style";
+import { StyledPopup, AddButton } from "./style";
 import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/API";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
-import Popup from "reactjs-popup";
 import { message } from "antd";
 import { Loading3QuartersOutlined } from "@ant-design/icons";
 
@@ -61,17 +60,23 @@ const AddTech = () => {
 
   return (
     <>
-      <Popup
-        trigger={<AddButton> Adicionar Tecnologia </AddButton>}
+      <StyledPopup
+        trigger={<AddButton>Adicionar Tecnologia</AddButton>}
         modal
         nested
       >
         {(close) => (
-          <Modal>
+          <>
             <button className="close" onClick={close}>
               &times;
             </button>
-            <div className="header">Adicionar tecnologia</div>
+            <div className="header">
+              Adicionar tecnologia{" "}
+              <img
+                alt="tech"
+                src="https://img.icons8.com/clouds/350/000000/code-file.png"
+              />
+            </div>
             <div className="content">
               <form onSubmit={handleSubmit(handleForm)}>
                 <input
@@ -97,9 +102,9 @@ const AddTech = () => {
 
               <div className="actions"></div>
             </div>
-          </Modal>
+          </>
         )}
-      </Popup>
+      </StyledPopup>
     </>
   );
 };
