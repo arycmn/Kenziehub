@@ -19,6 +19,7 @@ export const Box = styled.span`
   button {
     background-color: rgb(255, 174, 66);
     border: none;
+    cursor: pointer;
     transition: all 0.5s;
     :hover {
       color: #f2e8cf;

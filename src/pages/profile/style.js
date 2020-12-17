@@ -164,6 +164,10 @@ export const Works = styled.div`
     justify-content: center;
     align-items: center;
   }
+
+  @media (max-width: 540px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const Button = styled.button`
