@@ -21,6 +21,13 @@ export const Form = styled.form`
   align-items: center;
   text-align: center;
   border-radius: 5%;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+  @media (max-width: 425px) {
+    width: 90%;
+  }
 `;
 
 export const Field = styled.div`
@@ -30,6 +37,14 @@ export const Field = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 425px) {
+    font-size: 0.8em;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 0.8em;
+  }
 `;
 
 export const LineButton = styled.div`
@@ -51,7 +66,11 @@ export const Input = styled.input`
   border-radius: 5px;
   border: none;
   background: #ffebd4;
-  font: 1em;
+  font-size: 1em;
+
+  @media (max-width: 360px) {
+    font-size: 0.8em;
+  }
 
   :hover {
     background: #ffae42;
@@ -71,7 +90,14 @@ export const Bio = styled.textarea`
   border: none;
   background: #ffebd4;
   resize: none;
-  font: 1em;
+  font-size: 1em;
+
+  @media (max-width: 1280px) {
+    font-size: 0.8em;
+  }
+  @media (max-width: 360px) {
+    font-size: 0.7em;
+  }
 
   :hover {
     background: #ffae42;
@@ -91,7 +117,14 @@ export const Options = styled.select`
   border-radius: 5px;
   border: none;
   background: #ffebd4;
-  font: 1em;
+  font-size: 1em;
+
+  @media (max-width: 425px) {
+    font-size: 0.7em;
+  }
+  @media (max-width: 360px) {
+    font-size: 0.6em;
+  }
 
   :hover {
     background: #ffae42;
@@ -114,6 +147,18 @@ export const Avatar = styled.div`
   width: 125px;
   height: 125px;
 
+  @media (max-width: 1280px) {
+    padding-top: 15px;
+  }
+
+  @media (max-width: 540px) {
+    padding-top: 15px;
+  }
+
+  @media (max-width: 425px) {
+    padding-top: 20px;
+  }
+
   label {
     img {
       border-radius: 50%;
@@ -125,6 +170,12 @@ export const Avatar = styled.div`
       padding: 2.5px;
       margin: 0 auto;
       cursor: pointer;
+
+      @media (max-width: 425px) {
+        height: 100px;
+        width: 100px;
+      }
+
       :hover {
         filter: invert(15%);
       }
@@ -156,5 +207,13 @@ export const SubmitButton = styled.button`
     cursor: pointer;
     background-color: #006c5f;
     color: white;
+  }
+
+  @media (max-width: 540px) {
+    width: 20%;
+  }
+
+  @media (max-width: 425px) {
+    width: 30%;
   }
 `;
