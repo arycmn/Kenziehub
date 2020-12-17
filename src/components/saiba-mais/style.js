@@ -21,41 +21,24 @@ export const StyledPopup = styled(Popup)`
   }
 
   &-overlay {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   &-content {
-    height: 80%;
-    width: 50%;
+    height: fit-content;
+    width: fit-content;
     background: #7fab99;
     border-radius: 10px;
+    font-size: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
-
-    @media (max-width: 1440px) {
-      width: 70%;
-    }
-
-    @media (max-width: 1280px) {
-      width: 90%;
-    }
-    @media (max-width: 768px) {
-      width: 90%;
-    }
-
-    @media (max-width: 540px) {
-      height: 90%;
-    }
-
-    @media (max-width: 425px) {
-      height: 80%;
-    }
+    overflow: auto;
 
     .modal {
       width: 100%;
@@ -65,28 +48,47 @@ export const StyledPopup = styled(Popup)`
       justify-content: center;
       align-items: center;
 
+      @media (max-width: 1440px) {
+      }
+
+      @media (max-width: 1280px) {
+      }
+      @media (max-width: 768px) {
+        flex-direction: colunmn;
+      }
+
+      @media (max-width: 540px) {
+        flex-direction: row;
+      }
+
+      @media (max-width: 425px) {
+        flex-direction: row;
+      }
+
       .header {
         width: 100%;
         height: 15%;
         background: #006c5f;
         border-radius: 10px 10px 0 0;
         border-bottom: 2px solid #bfcbb6;
-
         font-size: 1.2em;
         padding: 5px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: flex-start;
+        @media (max-width: 640px) {
+          width: 100%;
+          height: 10%;
+          padding: 0;
+        }
       }
       .content {
-        height: 85%;
-        width: 100%;
-        padding: 10px 5px;
+        height: fit-content;
+        width: fit-content;
+        padding: 5%;
         display: flex;
-        flex-wrap: wrap;
-        flex-direction: column !important;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
         overflow: auto;
         ::-webkit-scrollbar {
@@ -99,6 +101,32 @@ export const StyledPopup = styled(Popup)`
           border-radius: 10px;
           background: rgba(0, 0, 0, 0.2);
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        }
+        @media (max-width: 1440px) {
+          flex-wrap: wrap;
+          width: 80%;
+        }
+
+        @media (max-width: 1280px) {
+          width: 80%;
+          flex-wrap: wrap;
+        }
+        @media (max-width: 768px) {
+          flex-direction: row;
+          flex-wrap: wrap;
+          height: 80%;
+        }
+
+        @media (max-width: 540px) {
+          height: 80%;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        @media (max-width: 425px) {
+          height: 80%;
+          flex-direction: row;
+          flex-wrap: wrap;
         }
       }
     }
@@ -140,6 +168,10 @@ export const Image = styled.img`
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  @media (max-width: 640px) {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 export const LineImg = styled.div`
@@ -156,6 +188,25 @@ export const LineInfo = styled(LineImg)`
   height: 80%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  @media (max-width: 1440px) {
+    margin: 2%;
+  }
+
+  @media (max-width: 1280px) {
+    margin: 2%;
+  }
+  @media (max-width: 768px) {
+    margin: 2%;
+  }
+
+  @media (max-width: 540px) {
+    margin: 2%;
+  }
+
+  @media (max-width: 425px) {
+    margin: 2%;
+  }
 
   div {
     width: 90%;
@@ -167,7 +218,7 @@ export const LineInfo = styled(LineImg)`
     justify-content: center;
     text-align: center;
     h3 {
-      margin: 0;
+      margin: 10 px;
       font-weight: bold;
     }
   }
@@ -198,11 +249,32 @@ export const Column = styled.div`
       display: flex;
       flex-direction: column;
     }
+    @media (max-width: 1440px) {
+      width: 80%;
+    }
+
+    @media (max-width: 1280px) {
+      width: 80%;
+    }
+    @media (max-width: 768px) {
+      flex-direction: colunmn;
+
+      height: 80%;
+    }
+
+    @media (max-width: 540px) {
+      height: 80%;
+      flex-direction: column;
+    }
+
+    @media (max-width: 425px) {
+      height: 80%;
+      flex-direction: column;
+    }
   }
 `;
 
 export const Button = styled.button`
-  width: 90%;
   font-size: 1em;
   border-radius: 20px;
   :hover {
