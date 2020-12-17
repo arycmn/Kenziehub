@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   max-width: 100vw;
   min-height: 100vh;
-  padding-top: 3.5%;
+  padding-top: 60px;
   align-content: center;
   button {
     border: none;
@@ -15,12 +15,22 @@ export const SearchArea = styled.div`
   height: 10vh;
   width: 100%;
   padding: 30px;
+  @media (max-width: 1440px) {
+    height: 12.5vh;
+  }
+  @media (max-width: 768px) {
+    height: 10vh;
+  }
+
+  @media (max-width: 540px) {
+    height: 15vh;
+  }
 `;
 
 export const Input = styled.input`
   height: 100%;
   width: 30%;
-  font-size: 120%;
+  font-size: 1.2em;
   border: none;
   border-radius: 5px;
   padding: 10px;
@@ -28,15 +38,16 @@ export const Input = styled.input`
   :hover {
     background: #ffcc8a;
   }
+  @media (max-width: 1440px) {
+    width: 50%;
+  }
+  @media (max-width: 540px) {
+    width: 80%;
+    font-size: 0.8em;
+  }
 `;
 
 export const Button = styled.button`
-  img {
-    width: 70px;
-    height: 70px;
-    background: #ffebd4;
-    border-radius: 25px;
-  }
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,6 +75,10 @@ export const Button = styled.button`
     border-radius: 25px;
     z-index: -1;
     animation: 1s clockwise infinite;
+    @media (max-width: 425px) {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   :hover:after {
@@ -208,6 +223,22 @@ export const Button = styled.button`
     100.00% {
       transform: translateY(-20px) translateX(-20px);
     }
+  }
+
+  img {
+    width: 70px;
+    height: 70px;
+    background: #ffebd4;
+    border-radius: 25px;
+
+    @media (max-width: 425px) {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  @media (max-width: 425px) {
+    width: 40px;
+    height: 40px;
   }
 `;
 

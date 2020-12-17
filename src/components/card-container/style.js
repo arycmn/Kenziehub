@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Box = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 3px 3%;
-  justify-content: space-between;
+  justify-content: center;
 
   visibility: hidden;
 

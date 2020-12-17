@@ -1,33 +1,34 @@
 import styled from "styled-components";
 
 export const CardContent = styled.div`
-  display: flex;
   background-color: #bfcbb6;
   border-radius: 10px;
-  width: 18%;
-  max-height: 20%;
-  min-height: 20%;
+  width: 300px;
+  min-width: 300px;
+  height: 300px;
+  min-height: 350px;
+  display: flex;
   flex-direction: column;
-  text-align: center;
+  align-items: center;
   margin: 12px;
   padding: 10px;
-  justify-content: space-between;
 `;
 
 export const Image = styled.img`
   position: center;
   align-self: center;
-  min-width: 100px;
-  max-width: 130px;
-  min-height: 100px;
-  max-height: 130px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
 `;
 
 export const Name = styled.h1`
-  margin: 5px;
+  margin: 5px 0;
+  font-size: 1.5em;
+  text-align: center;
 `;
 
 export const CourseModule = styled.div`
-  margin: 10px;
+  margin: 10px 0;
+  text-align: center;
 `;

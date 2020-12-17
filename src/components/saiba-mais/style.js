@@ -202,6 +202,7 @@ export const Column = styled.div`
 `;
 
 export const Button = styled.button`
+  width: 90%;
   font-size: 1em;
   border-radius: 20px;
   :hover {
