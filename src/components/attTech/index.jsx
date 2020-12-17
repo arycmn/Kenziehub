@@ -5,10 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { api } from "../../services/API";
 import { getProfileThunk } from "../../store/modules/profile/thunks";
-import { StyledPopup } from "../add-tech/style";
+// import { StyledPopup } from "../add-tech/style";
 import { Button } from "../../pages/profile/style";
 import { message } from "antd";
 import { Loading3QuartersOutlined } from "@ant-design/icons";
+import StyledPopup from "./style";
 
 const AttTech = ({ id }) => {
   const [loading, setLoad] = useState(false);
