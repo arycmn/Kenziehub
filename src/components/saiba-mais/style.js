@@ -26,29 +26,9 @@ export const StyledPopup = styled(Popup)`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* 
-    @media (max-width: 1440px) {
-      width: 90%;
-    }
-
-    @media (max-width: 1280px) {
-      width: 80%;
-    }
-    @media (max-width: 768px) {
-      height: 100%;
-    }
-
-    @media (max-width: 540px) {
-      height: 100%;
-    }
-
-    @media (max-width: 425px) {
-      height: 80%;
-    } */
   }
 
   &-content {
-    box-sizing: content-box;
     height: fit-content;
     width: fit-content;
     background: #7fab99;
@@ -58,25 +38,7 @@ export const StyledPopup = styled(Popup)`
     justify-content: center;
     align-items: center;
     animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
-
-    /* @media (max-width: 1440px) {
-      width: 85%;
-    }
-
-    @media (max-width: 1280px) {
-      width: 80%;
-    }
-    @media (max-width: 768px) {
-      width: 80%;
-    }
-
-    @media (max-width: 540px) {
-      height: 80%;
-    }
-
-    @media (max-width: 425px) {
-      height: 80%;
-    } */
+    overflow: auto;
 
     .modal {
       width: 100%;
@@ -313,7 +275,6 @@ export const Column = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 90%;
   font-size: 1em;
   border-radius: 20px;
   :hover {
