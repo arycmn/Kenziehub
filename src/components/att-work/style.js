@@ -68,15 +68,16 @@ export const StyledPopup = styled(Popup)`
       padding: 5px;
       border-radius: 20px;
       align-items: center;
+
+      div {
+        font-weight: bold;
+      }
     }
     .content {
       width: 80%;
       padding: 10px 5px;
       border-radius: 20px;
       text-align: center;
-
-      /* display: flex !important;
-    flex-direction: column !important; */
     }
     .actions {
       width: 100%;
@@ -108,34 +109,35 @@ export const StyledPopup = styled(Popup)`
       border-radius: 20px;
       text-align: center;
 
-      input,
-      textarea {
-        text-align: center;
-        width: 100%;
-        padding: 10px;
-        border-radius: 10px;
-        border-color: black;
-      }
-
       input {
         width: 100%;
         padding: 10px;
         border-radius: 10px;
-        border-color: #ddbea9;
-        padding: 3%;
-        margin: 3%;
+        border: none;
         text-align: center;
+        :hover {
+          background: #7fab99;
+        }
+
+        :focus {
+          background: #7fab99;
+        }
       }
 
       textarea {
         width: 100%;
-        padding: 3%;
-        margin: 3%;
         resize: none;
         height: 100px;
         border-radius: 10px;
-        border-color: black;
+        border: none;
         text-align: center;
+        :hover {
+          background: #7fab99;
+        }
+
+        :focus {
+          background: #7fab99;
+        }
       }
 
       button {
@@ -147,6 +149,11 @@ export const StyledPopup = styled(Popup)`
         border: none;
         box-sizing: content-box;
         color: white;
+
+        :hover {
+          color: black;
+          background: #7fab99;
+        }
       }
     }
   }

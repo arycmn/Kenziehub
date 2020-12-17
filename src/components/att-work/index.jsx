@@ -98,7 +98,7 @@ const AttWork = ({ id }) => {
               &times;
             </button>
             <div className="header">
-              Atualizar Trabalho
+              <div> Atualizar Trabalho</div>
               <img
                 alt="work"
                 src="https://img.icons8.com/clouds/350/000000/refresh.png"

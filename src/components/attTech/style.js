@@ -22,11 +22,11 @@ const StyledPopup = styled(Popup)`
   }
   &-overlay {
   }
-  // use your custom style for ".popup-content"
   &-content {
     width: fit-content;
     max-height: 90%;
     border-radius: 10px;
+    background: #ff9d89;
 
     img {
       max-width: 90%;
@@ -37,12 +37,45 @@ const StyledPopup = styled(Popup)`
       flex-direction: column;
       justify-content: center;
       text-align: center;
+
+      form {
+        select {
+          width: 100%;
+          border-radius: 5px;
+          border: none;
+          background: #ffebd4;
+
+          :hover {
+            background: #d1101d;
+            color: white;
+            font-weight: bold;
+          }
+        }
+
+        button {
+          width: 100%;
+          background: #ffebd4;
+          outline: none;
+          cursor: pointer;
+          border: none;
+          border-radius: 5px;
+          :hover {
+            background: #d1101d;
+            color: white;
+            font-weight: bold;
+          }
+        }
+      }
     }
     .header {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin: 0 auto;
+
+      div {
+        font-weight: bold;
+      }
     }
     .close {
       width: 25px;

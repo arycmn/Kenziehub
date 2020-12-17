@@ -77,7 +77,7 @@ const AttTech = ({ id }) => {
               &times;
             </button>
             <div className="header">
-              Atualizar nível
+              <div>Atualizar nível</div>
               <img
                 alt="update"
                 src="https://img.icons8.com/clouds/300/000000/available-updates.png"
