@@ -39,7 +39,7 @@ const ProfileChanges = () => {
   });
 
   const defaultAvatar =
-    "https://www.ecp.org.br/wp-content/uploads/2017/12/default-avatar-1.png";
+    "https://img.icons8.com/clouds/500/000000/test-account.png";
 
   const handleAvatarChange = (e) => {
     const data = new FormData();

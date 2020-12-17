@@ -69,7 +69,6 @@ const AddWork = () => {
         })
         .catch((err) => {
           setLoad(false);
-          console.log(err);
           message.error("Erro ao adicionar trabalho");
         });
     }
@@ -86,44 +85,45 @@ const AddWork = () => {
           <button className="close" onClick={close}>
             &times;
           </button>
-          <div className="header">
-            Adicionar Trabalho
+          <div className="header">Adicionar Trabalho</div>
+          <div className="content">
             <img
               alt="work"
               src="https://img.icons8.com/clouds/350/000000/home-office.png"
             />
-          </div>
-          <div className="content">
             <form onSubmit={handleSubmit(handleAddWork)}>
               <label htmlFor="title">Título</label>
               <input
+                placeholder="Titulo"
                 type="text"
                 name="title"
                 id="title"
                 ref={register}
                 inputMode="text"
               />
-              <span>{errors.title?.message}</span>
+              <p>{errors.title?.message}</p>
 
               <label htmlFor="description">Descrição</label>
-              <textarea
+              <input
+                placeholder="descrição"
                 type="text"
                 name="description"
                 id="description"
                 ref={register}
                 inputMode="text"
               />
-              <span>{errors.description?.message}</span>
+              <p>{errors.description?.message}</p>
 
               <label htmlFor="deploy_url">Url</label>
               <input
+                placeholder="Site"
                 type="url"
                 name="deploy_url"
                 id="deploy_url"
                 ref={register}
                 inputMode="url"
               />
-              <span>{errors.deploy_url?.message}</span>
+              <p>{errors.deploy_url?.message}</p>
 
               <button type="submit" disabled={loading}>
                 {loading ? <Loading3QuartersOutlined spin /> : "Adicionar"}
