@@ -34,6 +34,7 @@ export const StyledPopup = styled(Popup)`
     background: #bfcbb6;
     border-radius: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 
@@ -56,33 +57,33 @@ export const StyledPopup = styled(Popup)`
       height: 80%;
     }
 
-    font-size: 20px;
     .header {
+      height: 5%;
       width: 100%;
       border: none;
-      font-size: 18px;
+      font-size: 1em;
       text-align: center;
+      font-weight: bold;
       padding: 5px;
       border-radius: 20px;
       align-items: center;
     }
     .content {
+      height: 95%;
       width: 80%;
       padding: 10px 5px;
       border-radius: 20px;
       text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      /* display: flex !important;
-    flex-direction: column !important; */
+      @media (max-width: 540px) {
+        flex-direction: column;
+        height: 80%;
+      }
     }
-    .actions {
-      width: 100%;
-      padding: 10px 5px;
-      margin: auto;
-      border-radius: 20px;
-      text-align: center;
-      color: black;
-    }
+
     .close {
       cursor: pointer;
       position: absolute;
@@ -97,53 +98,92 @@ export const StyledPopup = styled(Popup)`
       border: 1px solid;
     }
 
+    img {
+      width: 350px;
+      height: 350px;
+
+      @media (max-width: 768px) {
+        width: 250px;
+        height: 250px;
+      }
+
+      @media (max-width: 425px) {
+        width: 125px;
+        height: 125px;
+      }
+    }
+
     form {
+      height: 80%;
+      width: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 3%;
       border-radius: 20px;
       text-align: center;
 
-      input,
-      textarea {
-        text-align: center;
-        width: 100%;
-        padding: 10px;
-        border-radius: 10px;
-        border-color: black;
+      @media (max-width: 540px) {
+        width: 90%;
+      }
+
+      @media (max-width: 425px) {
+        width: 80%;
+      }
+
+      label {
+        font-weight: bold;
+        @media (max-width: 425px) {
+          font-size: 0.8em;
+        }
       }
 
       input {
         width: 100%;
+        height: 30%;
         padding: 10px;
         border-radius: 10px;
         border-color: #ddbea9;
-        padding: 3%;
-        margin: 3%;
-        text-align: center;
+        padding: 10px;
+        outline: none;
+        border: none;
+
+        :hover {
+          background: #7fab99;
+        }
+
+        :focus {
+          background: #7fab99;
+        }
+
+        @media (max-width: 425px) {
+          font-size: 0.8em;
+        }
       }
 
-      textarea {
-        width: 100%;
-        padding: 3%;
-        margin: 3%;
-        resize: none;
-        height: 100px;
-        border-radius: 10px;
-        border-color: black;
-        text-align: center;
+      p {
+        height: 10%;
+
+        @media (max-width: 425px) {
+          font-size: 0.6em;
+        }
       }
 
       button {
+        height: 25%;
         width: 50%;
-        margin-top: 20px;
-        padding: 18px;
         border-radius: 10px;
         background: #006c5f;
         border: none;
         box-sizing: content-box;
         color: white;
+        :hover {
+          background: #7fab99;
+          color: black;
+        }
+
+        @media (max-width: 425px) {
+          height: 50%;
+        }
       }
     }
   }
