@@ -1,20 +1,23 @@
-import styled from "styled-components";
-
+import "antd/dist/antd.css";
+import "reactjs-popup/dist/index.css";
 import Routes from "./routes";
 import GlobalStyle from "./styles/global";
+import { allDevsThunk } from "./store/modules/allDevs/thunks";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(allDevsThunk());
+  }, [dispatch]);
+
   return (
-    <Body>
+    <>
       <GlobalStyle />
       <Routes />
-    </Body>
+    </>
   );
-}
-
-const Body = styled.div`
-  width: 100vw;
-  height: 100vh;
-`;
+};
 
 export default App;

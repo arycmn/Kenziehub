@@ -1,12 +1,32 @@
-import { Container } from "./style";
-import { Link } from "react-router-dom";
+import { Container, Box, Navegation } from "./style";
+import LogoutButton from "../button-logout";
+import { useHistory } from "react-router-dom";
 
-const Header = () => (
-  <Container>
-    <Link to="/home">Home</Link>
-    <Link to="/profile">Profile</Link>
-    <Link to="/devs">Devs</Link>
-  </Container>
-);
+const Header = () => {
+  const history = useHistory();
+
+  const handleToProfile = () => {
+    history.push("/profile");
+  };
+
+  const handleToDevs = () => {
+    history.push("/devs");
+  };
+  return (
+    <Container>
+      <Navegation>
+        <Box>
+          <button onClick={handleToProfile}>Perfil</button>
+        </Box>
+        <Box>
+          <button onClick={handleToDevs}> Devs</button>
+        </Box>
+      </Navegation>
+      <Box>
+        <LogoutButton />
+      </Box>
+    </Container>
+  );
+};
 
 export default Header;
