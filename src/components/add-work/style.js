@@ -65,6 +65,10 @@ export const StyledPopup = styled(Popup)`
       padding: 5px;
       border-radius: 20px;
       align-items: center;
+
+      @media (max-width: 540px) {
+        height: 80%;
+      }
     }
     .content {
       width: 80%;
