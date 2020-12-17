@@ -277,6 +277,7 @@ export const Column = styled.div`
 export const Button = styled.button`
   font-size: 1em;
   border-radius: 20px;
+  width: 100%;
   :hover {
     cursor: pointer;
     background-color: rgba(225, 225, 225, 0.5);
