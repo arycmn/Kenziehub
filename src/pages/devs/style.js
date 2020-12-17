@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
-  height: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
   padding-top: 3.5%;
   align-content: center;
   button {
@@ -12,13 +12,22 @@ export const Container = styled.div`
 `;
 
 export const SearchArea = styled.div`
+  height: 10vh;
   width: 100%;
   padding: 30px;
 `;
 
 export const Input = styled.input`
+  height: 100%;
   width: 30%;
   font-size: 120%;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+
+  :hover {
+    background: #ffcc8a;
+  }
 `;
 
 export const Button = styled.button`
