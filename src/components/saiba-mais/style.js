@@ -26,7 +26,7 @@ export const StyledPopup = styled(Popup)`
     display: flex;
     justify-content: center;
     align-items: center;
-
+    /* 
     @media (max-width: 1440px) {
       width: 90%;
     }
@@ -44,13 +44,13 @@ export const StyledPopup = styled(Popup)`
 
     @media (max-width: 425px) {
       height: 80%;
-    }
+    } */
   }
 
   &-content {
     box-sizing: content-box;
-    height: 80%;
-    width: 50%;
+    height: fit-content;
+    width: fit-content;
     background: #7fab99;
     border-radius: 10px;
     font-size: 100%;
@@ -59,7 +59,7 @@ export const StyledPopup = styled(Popup)`
     align-items: center;
     animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 
-    @media (max-width: 1440px) {
+    /* @media (max-width: 1440px) {
       width: 85%;
     }
 
@@ -76,7 +76,7 @@ export const StyledPopup = styled(Popup)`
 
     @media (max-width: 425px) {
       height: 80%;
-    }
+    } */
 
     .modal {
       width: 100%;
@@ -121,8 +121,8 @@ export const StyledPopup = styled(Popup)`
         }
       }
       .content {
-        height: 85%;
-        width: 100%;
+        height: fit-content;
+        width: fit-content;
         padding: 5%;
         display: flex;
         flex-direction: column;
@@ -296,18 +296,18 @@ export const Column = styled.div`
     }
     @media (max-width: 768px) {
       flex-direction: colunmn;
-      justify-content: space-around;
+
       height: 80%;
     }
 
     @media (max-width: 540px) {
       height: 80%;
-      flex-direction: row;
+      flex-direction: column;
     }
 
     @media (max-width: 425px) {
       height: 80%;
-      flex-direction: row;
+      flex-direction: column;
     }
   }
 `;
