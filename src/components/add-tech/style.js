@@ -34,6 +34,7 @@ export const StyledPopup = styled(Popup)`
     background: #bfcbb6;
     border-radius: 10px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
@@ -59,28 +60,28 @@ export const StyledPopup = styled(Popup)`
 
     font-size: 20px;
     .header {
+      height: 5%;
       width: 100%;
       border: none;
       font-size: 18px;
+      font-weight: bold;
       padding: 5px;
       border-radius: 20px;
       text-align: center;
       justify-content: center;
     }
     .content {
+      height: 95%;
       width: 100%;
       padding: 10px 5px;
-      border-radius: 20px;
-      /* display: flex !important;
-    flex-direction: column !important; */
-    }
-    .actions {
-      width: 100%;
-      padding: 10px 5px;
-      margin: auto;
-      border-radius: 20px;
-      text-align: center;
-      color: black;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @media (max-width: 540px) {
+        flex-direction: column;
+      }
     }
     .close {
       cursor: pointer;
@@ -96,50 +97,116 @@ export const StyledPopup = styled(Popup)`
       border: 1px solid;
     }
 
+    img {
+      @media (max-width: 540px) {
+        width: 200px;
+        height: 200px;
+      }
+
+      @media (max-width: 425px) {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
     form {
+      width: 50%;
+      height: 80%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 3%;
+      padding: 10px;
       border-radius: 20px;
 
-      input,
-      textarea {
-        width: 80%;
-        padding: 10px;
-        border-radius: 10px;
-        border-color: black;
+      @media (max-width: 540px) {
+        width: 70%;
       }
 
-      input {
-        width: 80%;
-        padding: 10px;
-        border-radius: 10px;
-        border-color: #ddbea9;
-        padding: 3%;
-        margin: 3%;
+      @media (max-width: 425px) {
+        width: 100%;
       }
 
-      textarea {
+      div {
         width: 80%;
-        padding: 3%;
-        margin: 3%;
-        resize: none;
-        height: 100px;
-        border-radius: 10px;
-        border-color: black;
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h4 {
+          font-weight: bold;
+          margin: 0px;
+        }
+
+        input {
+          width: 100%;
+          height: 60%;
+          padding: 10px;
+          border-radius: 10px;
+          border-color: #ddbea9;
+          padding: 10px;
+          outline: none;
+          border: none;
+
+          :hover {
+            background: #7fab99;
+          }
+
+          :focus {
+            background: #7fab99;
+          }
+
+          @media (max-width: 425px) {
+            height: 50%;
+            font-size: 0.8em;
+          }
+        }
+
+        select {
+          width: 100%;
+          height: 40%;
+          border-radius: 5px;
+          border: none;
+
+          :hover {
+            background: #7fab99;
+          }
+
+          :focus {
+            background: #7fab99;
+          }
+          @media (max-width: 425px) {
+            font-size: 0.8em;
+          }
+        }
+
+        p {
+          height: 20%;
+          font-size: 0.8em;
+          text-align: center;
+          margin: 0;
+        }
       }
 
       button {
-        box-sizing: content-box;
+        height: 50%;
         width: 50%;
-        margin-top: 20px;
-        padding: 18px;
         border-radius: 10px;
         background: #006c5f;
         border: none;
         color: white;
-        box-sizing: content-box;
+        font-size: 1em;
+
+        :hover {
+          background: #7fab99;
+          color: black;
+        }
+
+        @media (max-width: 425px) {
+          width: 70%;
+          height: 60%;
+        }
       }
     }
   }
