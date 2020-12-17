@@ -54,7 +54,7 @@ export const StyledPopup = styled(Popup)`
       @media (max-width: 1280px) {
       }
       @media (max-width: 768px) {
-        flex-direction: colunmn;
+        flex-direction: column;
       }
 
       @media (max-width: 540px) {
