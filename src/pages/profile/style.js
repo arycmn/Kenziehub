@@ -155,7 +155,6 @@ export const Techs = styled.div`
 export const Works = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-between;
   min-width: 650px;
 
