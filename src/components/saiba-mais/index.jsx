@@ -1,6 +1,6 @@
 import React from "react";
-import { StyledPopup } from "./style";
 import {
+  StyledPopup,
   Image,
   Button,
   ClosePlace,
