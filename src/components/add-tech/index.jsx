@@ -70,37 +70,41 @@ const AddTech = () => {
             <button className="close" onClick={close}>
               &times;
             </button>
-            <div className="header">
-              Adicionar tecnologia{" "}
+            <div className="header">Adicionar tecnologia </div>
+            <div className="content">
               <img
                 alt="tech"
                 src="https://img.icons8.com/clouds/350/000000/code-file.png"
               />
-            </div>
-            <div className="content">
               <form onSubmit={handleSubmit(handleForm)}>
-                <input
-                  placeholder="Nome da Tecnologia"
-                  name="title"
-                  ref={register}
-                  inputMode="text"
-                />
-                <span>{errors.title?.message}</span>
+                <div>
+                  <h4>Nome da tech</h4>
+                  <input
+                    placeholder="Nome da Tecnologia"
+                    name="title"
+                    ref={register}
+                    inputMode="text"
+                  />
+                  <p>{errors.title?.message}</p>
+                </div>
 
-                <select name="status" ref={register}>
-                  <option value="">Selecione o nível</option>
-                  <option value="Iniciante">Iniciante</option>
-                  <option value="Intermediário">Intermediário</option>
-                  <option value="Avançado">Avançado</option>
-                </select>
-                <p>{errors.status?.message}</p>
-                <p>{errors.user_tech?.message}</p>
-                <button type="submit" disabled={loading}>
-                  {loading ? <Loading3QuartersOutlined spin /> : "Adicionar"}
-                </button>
+                <div>
+                  <select name="status" ref={register}>
+                    <option value="">Selecione o nível</option>
+                    <option value="Iniciante">Iniciante</option>
+                    <option value="Intermediário">Intermediário</option>
+                    <option value="Avançado">Avançado</option>
+                  </select>
+                  <p>{errors.status?.message}</p>
+                </div>
+
+                <div>
+                  <p>{errors.user_tech?.message}</p>
+                  <button type="submit" disabled={loading}>
+                    {loading ? <Loading3QuartersOutlined spin /> : "Adicionar"}
+                  </button>
+                </div>
               </form>
-
-              <div className="actions"></div>
             </div>
           </>
         )}
