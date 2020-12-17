@@ -19,7 +19,7 @@ const Header = () => {
           <button onClick={handleToProfile}>Perfil</button>
         </Box>
         <Box>
-          <button onClick={handleToDevs}> Colegas</button>
+          <button onClick={handleToDevs}> Devs</button>
         </Box>
       </Navegation>
       <Box>

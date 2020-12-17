@@ -17,7 +17,7 @@ export const Box = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-radius: 10%;
+  border-radius: 20px;
   padding: 10px;
   height: 80%;
   width: 50%;
